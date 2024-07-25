@@ -1,0 +1,234 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|c:\\users\\erick\\source\\repos\\proyectoclinica\\proyectoclinica\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|c:\\users\\erick\\source\\repos\\proyectoclinica\\proyectoclinica\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\adminfarmacia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\adminfarmacia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|c:\\users\\erick\\source\\repos\\proyectoclinica\\proyectoclinica\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\formquirofano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\formquirofano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\formadminprecio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\formadminprecio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\formagenda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\formagenda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\formhospitalizaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\formhospitalizaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|c:\\users\\erick\\source\\repos\\proyectoclinica\\proyectoclinica\\proyectoclinica.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\proyectoclinica.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\proyectoclinica\\formdoctores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E8FCBFFE-8E7B-4BFC-B205-DB9F4F06722D}|ProyectoClinica\\ProyectoClinica.csproj|solutionrelative:proyectoclinica\\formdoctores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\Form1.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.cs",
+              "RelativeToolTip": "ProyectoClinica\\Form1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-21T05:56:43.061Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\Form1.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ProyectoClinica\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-21T05:27:13.197Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.Designer.cs",
+              "RelativeToolTip": "ProyectoClinica\\Form1.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-29T00:14:41.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form2.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form2.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\Form2.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form2.cs",
+              "RelativeToolTip": "ProyectoClinica\\Form2.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAIA1wBcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-26T15:45:20.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProyectoClinica",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\ProyectoClinica.csproj",
+              "RelativeDocumentMoniker": "ProyectoClinica\\ProyectoClinica.csproj",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\ProyectoClinica.csproj",
+              "RelativeToolTip": "ProyectoClinica\\ProyectoClinica.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2023-11-26T03:09:54.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.resx",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.resx",
+              "RelativeDocumentMoniker": "ProyectoClinica\\Form1.resx",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form1.resx",
+              "RelativeToolTip": "ProyectoClinica\\Form1.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2023-11-29T00:14:40.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "formQuirofano.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\formQuirofano.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\formQuirofano.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\formQuirofano.cs",
+              "RelativeToolTip": "ProyectoClinica\\formQuirofano.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2023-11-26T16:02:25.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdminFarmacia.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\AdminFarmacia.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\AdminFarmacia.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\AdminFarmacia.cs",
+              "RelativeToolTip": "ProyectoClinica\\AdminFarmacia.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2023-11-26T16:00:16.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form2.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form2.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\Form2.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\Form2.cs",
+              "RelativeToolTip": "ProyectoClinica\\Form2.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2023-11-21T17:35:11.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FormAdminPrecio.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormAdminPrecio.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\FormAdminPrecio.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormAdminPrecio.cs",
+              "RelativeToolTip": "ProyectoClinica\\FormAdminPrecio.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2023-11-26T16:01:13.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FormHospitalizaciones.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormHospitalizaciones.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\FormHospitalizaciones.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormHospitalizaciones.cs",
+              "RelativeToolTip": "ProyectoClinica\\FormHospitalizaciones.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2023-11-26T15:51:51.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FormAgenda.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormAgenda.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\FormAgenda.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormAgenda.cs",
+              "RelativeToolTip": "ProyectoClinica\\FormAgenda.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2023-11-26T16:03:10.919Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FormDoctores.cs",
+              "DocumentMoniker": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormDoctores.cs",
+              "RelativeDocumentMoniker": "ProyectoClinica\\FormDoctores.cs",
+              "ToolTip": "C:\\Users\\Erick\\source\\repos\\ProyectoClinica\\ProyectoClinica\\FormDoctores.cs",
+              "RelativeToolTip": "ProyectoClinica\\FormDoctores.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2023-11-21T18:04:43.814Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
