@@ -34,7 +34,7 @@ namespace ProyectoClinica
         }
         private Form activeForm = null;
 
-        
+
         private void BtnPacientes_Click(object sender, EventArgs e)
         {
             MostrarsubMenus(panelSubMenuPacientes);
@@ -145,6 +145,11 @@ namespace ProyectoClinica
             panelDePaneles.Controls.Add(form);
             form.Visible = true;
             EscondersubMenus();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
