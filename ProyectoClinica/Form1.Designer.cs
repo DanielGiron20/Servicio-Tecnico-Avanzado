@@ -29,7 +29,6 @@ namespace ProyectoClinica
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CentroMedicoLaPaz));
             PanelMenuLateral = new Panel();
             panelQuirofanos = new Panel();
             BtnAgenda = new Button();
@@ -356,8 +355,8 @@ namespace ProyectoClinica
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, -1);
+            pictureBox1.Image = Properties.Resources.Captura_de_pantalla_2024_07_28_154510;
+            pictureBox1.Location = new Point(0, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(256, 209);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -378,7 +377,7 @@ namespace ProyectoClinica
             // 
             pictureBoxGrande.Dock = DockStyle.Fill;
             pictureBoxGrande.Enabled = false;
-            pictureBoxGrande.Image = (Image)resources.GetObject("pictureBoxGrande.Image");
+            pictureBoxGrande.Image = Properties.Resources.WhatsApp_Image_2024_07_28_at_15_35_08;
             pictureBoxGrande.InitialImage = null;
             pictureBoxGrande.Location = new Point(0, 0);
             pictureBoxGrande.Name = "pictureBoxGrande";
