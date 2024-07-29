@@ -1,0 +1,17 @@
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\bin\Debug\Proyecto DB2.exe.config
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\bin\Debug\Proyecto DB2.exe
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\bin\Debug\Proyecto DB2.pdb
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.SuggestedBindingRedirects.cache
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Form1.resources
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Properties.Resources.resources
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.GenerateResource.cache
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto DB2.exe
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Agenda.resources
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Servicios.resources
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Clientes.resources
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Compras.resources
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Tecnicos.resources
+C:\Users\DELL\source\repos\Proyecto DB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Inventario.resources
