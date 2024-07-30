@@ -16,5 +16,10 @@ namespace Proyecto_DB2
         {
             InitializeComponent();
         }
+
+        private void Clientes_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
