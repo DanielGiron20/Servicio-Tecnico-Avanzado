@@ -73,6 +73,16 @@ namespace Proyecto_DB2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Manutenção {
+            get {
+                object obj = ResourceManager.GetObject("Manutenção", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WhatsApp_Image_2024_07_28_at_15_35_08 {
             get {
                 object obj = ResourceManager.GetObject("WhatsApp Image 2024-07-28 at 15.35.08", resourceCulture);

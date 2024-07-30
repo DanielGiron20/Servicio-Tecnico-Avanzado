@@ -31,3 +31,21 @@ C:\Users\easl2\Desktop\Proyecto\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.Gener
 C:\Users\easl2\Desktop\Proyecto\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.CoreCompileInputs.cache
 C:\Users\easl2\Desktop\Proyecto\Proyecto DB2\obj\Debug\Proyecto DB2.exe
 C:\Users\easl2\Desktop\Proyecto\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\bin\Debug\Proyecto DB2.exe.config
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\bin\Debug\Proyecto DB2.exe
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\bin\Debug\Proyecto DB2.pdb
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.AssemblyReference.cache
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.SuggestedBindingRedirects.cache
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Agenda.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Clientes.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Compras.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Form1.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Inventario.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Properties.Resources.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Servicios.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Tecnicos.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.GenerateResource.cache
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.CoreCompileInputs.cache
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.exe
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Login.resources
