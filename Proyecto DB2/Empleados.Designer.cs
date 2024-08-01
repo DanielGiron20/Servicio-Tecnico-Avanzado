@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_DB2
 {
-    partial class Tecnicos
+    partial class Empleados
     {
         /// <summary>
         /// Required designer variable.

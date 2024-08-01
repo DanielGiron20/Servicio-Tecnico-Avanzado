@@ -66,3 +66,20 @@ C:\Users\elias\OneDrive\Desktop\PROYECTO BDD II\Servicio-Tecnico-Avanzado\Proyec
 C:\Users\elias\OneDrive\Desktop\PROYECTO BDD II\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.CoreCompileInputs.cache
 C:\Users\elias\OneDrive\Desktop\PROYECTO BDD II\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.exe
 C:\Users\elias\OneDrive\Desktop\PROYECTO BDD II\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\bin\Debug\Proyecto DB2.exe.config
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\bin\Debug\Proyecto DB2.exe
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\bin\Debug\Proyecto DB2.pdb
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.AssemblyReference.cache
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Agenda.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Clientes.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Compras.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Form1.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Inventario.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Login.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Properties.Resources.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Servicios.resources
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.GenerateResource.cache
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.CoreCompileInputs.cache
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.exe
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
+C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Empleados.resources
