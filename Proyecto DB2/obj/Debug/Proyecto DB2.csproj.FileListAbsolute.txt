@@ -83,3 +83,22 @@ C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.Co
 C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.exe
 C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
 C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Empleados.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\bin\Debug\Proyecto DB2.exe.config
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\bin\Debug\Proyecto DB2.exe
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\bin\Debug\Proyecto DB2.pdb
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.AssemblyReference.cache
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.SuggestedBindingRedirects.cache
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Agenda.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Clientes.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Compras.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Form1.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.frmOrden.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Inventario.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Login.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Properties.Resources.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Servicios.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto_DB2.Empleados.resources
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.GenerateResource.cache
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.CoreCompileInputs.cache
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto DB2.exe
+C:\Users\kenne\OneDrive\Documentos\Visual Studio 2022\Proyectos\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
