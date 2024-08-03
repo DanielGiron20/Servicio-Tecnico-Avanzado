@@ -25,7 +25,7 @@ namespace Proyecto_DB2
             panel5.Visible = false;
             panel6.Visible = false;
             panel7.Visible = false;
-
+            pnlSubMenuGestionVentas.Visible = false;
         }
 
         private void ocultar()
@@ -40,6 +40,8 @@ namespace Proyecto_DB2
                 panel6.Visible = false;
             if (panel7.Visible == true)
                 panel7.Visible = false;
+            if(pnlSubMenuGestionVentas.Visible == true)
+                pnlSubMenuGestionVentas.Visible = false;
         }
 
         private void mostrar(Panel subMenu)
@@ -141,6 +143,17 @@ namespace Proyecto_DB2
             child.Show();
 
 
+        }
+
+        private void btnGestionVentas_Click(object sender, EventArgs e)
+        {
+            mostrar(pnlSubMenuGestionVentas);
+        }
+
+        private void btnOrdenMD_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmOrden());
+            ocultar();
         }
     }
 
