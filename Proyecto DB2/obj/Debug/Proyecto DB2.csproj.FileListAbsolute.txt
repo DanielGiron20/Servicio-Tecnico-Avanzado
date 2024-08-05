@@ -43,7 +43,6 @@ C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Pro
 C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Inventario.resources
 C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Properties.Resources.resources
 C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Servicios.resources
-C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Tecnicos.resources
 C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.GenerateResource.cache
 C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.CoreCompileInputs.cache
 C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto DB2.exe
@@ -83,3 +82,5 @@ C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.csproj.Co
 C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.exe
 C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto DB2.pdb
 C:\Users\easl2\Desktop\ProyectoDB2\Proyecto DB2\obj\Debug\Proyecto_DB2.Empleados.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.Empleados.resources
+C:\Proyecto Base de datos 2\Servicio-Tecnico-Avanzado\Proyecto DB2\obj\Debug\Proyecto_DB2.IngresarServicios.resources

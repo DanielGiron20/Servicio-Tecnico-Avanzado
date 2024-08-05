@@ -24,7 +24,7 @@ namespace Proyecto_DB2
             try
             {
                 con.Open();
-                MessageBox.Show("Se conectó correctamente a la base de datos");
+               
             }
             catch (SqlException e)
             {
