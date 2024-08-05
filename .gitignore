@@ -26,3 +26,5 @@ Thumbs.db
 # Carpetas de compilación
 bin/
 obj/
+
+*.csproj
