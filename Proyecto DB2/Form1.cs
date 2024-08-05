@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,15 @@ namespace Proyecto_DB2
 {
     public partial class Form1 : Form
     {
+        SqlConnection conexionMenu;
+
         public Form1()
+        {
+            InitializeComponent();
+            personalizar();
+        }
+
+        public Form1(SqlConnection cnx)
         {
             InitializeComponent();
             personalizar();
@@ -25,7 +34,7 @@ namespace Proyecto_DB2
             panel5.Visible = false;
             panel6.Visible = false;
             panel7.Visible = false;
-
+            pnlSubMenuGestionVentas.Visible = false;
         }
 
         private void ocultar()
@@ -40,6 +49,8 @@ namespace Proyecto_DB2
                 panel6.Visible = false;
             if (panel7.Visible == true)
                 panel7.Visible = false;
+            if(pnlSubMenuGestionVentas.Visible == true)
+                pnlSubMenuGestionVentas.Visible = false;
         }
 
         private void mostrar(Panel subMenu)
@@ -118,7 +129,17 @@ namespace Proyecto_DB2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            Login frm = new Login();
+            frm.ShowDialog();
+
+            if (frm.Conectado)
+            {
+                conexionMenu = frm.Con;
+            }
+            else 
+            {
+                this.Dispose();
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -141,6 +162,17 @@ namespace Proyecto_DB2
             child.Show();
 
 
+        }
+
+        private void btnGestionVentas_Click(object sender, EventArgs e)
+        {
+            mostrar(pnlSubMenuGestionVentas);
+        }
+
+        private void btnOrdenMD_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmOrden(conexionMenu));
+            ocultar();
         }
     }
 
