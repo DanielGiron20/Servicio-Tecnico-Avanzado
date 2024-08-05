@@ -27,7 +27,7 @@ namespace Proyecto_DB2
 
         private void frmOrden_Load(object sender, EventArgs e)
         {
-
+            //solo quiero hacer este cambio
         }
 
         private void button3_Click(object sender, EventArgs e)
