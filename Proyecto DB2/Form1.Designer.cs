@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlSubMenuGestionVentas = new System.Windows.Forms.Panel();
+            this.btnFacturaPorCliente = new System.Windows.Forms.Button();
+            this.btnOrdenPorCliente = new System.Windows.Forms.Button();
+            this.btnFactura = new System.Windows.Forms.Button();
+            this.btnOrdenMD = new System.Windows.Forms.Button();
+            this.btnGestionVentas = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -49,13 +55,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnGestionVentas = new System.Windows.Forms.Button();
-            this.pnlSubMenuGestionVentas = new System.Windows.Forms.Panel();
-            this.btnOrdenMD = new System.Windows.Forms.Button();
-            this.btnFactura = new System.Windows.Forms.Button();
-            this.btnOrdenPorCliente = new System.Windows.Forms.Button();
-            this.btnFacturaPorCliente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.pnlSubMenuGestionVentas.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -65,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlSubMenuGestionVentas.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,6 +90,119 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 705);
             this.panel1.TabIndex = 0;
+            // 
+            // pnlSubMenuGestionVentas
+            // 
+            this.pnlSubMenuGestionVentas.Controls.Add(this.btnFacturaPorCliente);
+            this.pnlSubMenuGestionVentas.Controls.Add(this.btnOrdenPorCliente);
+            this.pnlSubMenuGestionVentas.Controls.Add(this.btnFactura);
+            this.pnlSubMenuGestionVentas.Controls.Add(this.btnOrdenMD);
+            this.pnlSubMenuGestionVentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSubMenuGestionVentas.Location = new System.Drawing.Point(0, 701);
+            this.pnlSubMenuGestionVentas.Name = "pnlSubMenuGestionVentas";
+            this.pnlSubMenuGestionVentas.Size = new System.Drawing.Size(194, 160);
+            this.pnlSubMenuGestionVentas.TabIndex = 11;
+            // 
+            // btnFacturaPorCliente
+            // 
+            this.btnFacturaPorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnFacturaPorCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFacturaPorCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFacturaPorCliente.FlatAppearance.BorderSize = 0;
+            this.btnFacturaPorCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnFacturaPorCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnFacturaPorCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturaPorCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacturaPorCliente.ForeColor = System.Drawing.Color.LightGray;
+            this.btnFacturaPorCliente.Location = new System.Drawing.Point(0, 120);
+            this.btnFacturaPorCliente.Name = "btnFacturaPorCliente";
+            this.btnFacturaPorCliente.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnFacturaPorCliente.Size = new System.Drawing.Size(194, 40);
+            this.btnFacturaPorCliente.TabIndex = 4;
+            this.btnFacturaPorCliente.Text = "Factura/Cliente";
+            this.btnFacturaPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturaPorCliente.UseVisualStyleBackColor = false;
+            // 
+            // btnOrdenPorCliente
+            // 
+            this.btnOrdenPorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnOrdenPorCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrdenPorCliente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOrdenPorCliente.FlatAppearance.BorderSize = 0;
+            this.btnOrdenPorCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnOrdenPorCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnOrdenPorCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrdenPorCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrdenPorCliente.ForeColor = System.Drawing.Color.LightGray;
+            this.btnOrdenPorCliente.Location = new System.Drawing.Point(0, 80);
+            this.btnOrdenPorCliente.Name = "btnOrdenPorCliente";
+            this.btnOrdenPorCliente.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnOrdenPorCliente.Size = new System.Drawing.Size(194, 40);
+            this.btnOrdenPorCliente.TabIndex = 3;
+            this.btnOrdenPorCliente.Text = "Orden/Cliente";
+            this.btnOrdenPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrdenPorCliente.UseVisualStyleBackColor = false;
+            // 
+            // btnFactura
+            // 
+            this.btnFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFactura.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFactura.FlatAppearance.BorderSize = 0;
+            this.btnFactura.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFactura.ForeColor = System.Drawing.Color.LightGray;
+            this.btnFactura.Location = new System.Drawing.Point(0, 40);
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnFactura.Size = new System.Drawing.Size(194, 40);
+            this.btnFactura.TabIndex = 2;
+            this.btnFactura.Text = "Facturas";
+            this.btnFactura.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFactura.UseVisualStyleBackColor = false;
+            // 
+            // btnOrdenMD
+            // 
+            this.btnOrdenMD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnOrdenMD.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrdenMD.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOrdenMD.FlatAppearance.BorderSize = 0;
+            this.btnOrdenMD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnOrdenMD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnOrdenMD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrdenMD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrdenMD.ForeColor = System.Drawing.Color.LightGray;
+            this.btnOrdenMD.Location = new System.Drawing.Point(0, 0);
+            this.btnOrdenMD.Name = "btnOrdenMD";
+            this.btnOrdenMD.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnOrdenMD.Size = new System.Drawing.Size(194, 40);
+            this.btnOrdenMD.TabIndex = 1;
+            this.btnOrdenMD.Text = "Orden";
+            this.btnOrdenMD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrdenMD.UseVisualStyleBackColor = false;
+            this.btnOrdenMD.Click += new System.EventHandler(this.btnOrdenMD_Click);
+            // 
+            // btnGestionVentas
+            // 
+            this.btnGestionVentas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionVentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGestionVentas.FlatAppearance.BorderSize = 0;
+            this.btnGestionVentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnGestionVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnGestionVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGestionVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionVentas.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnGestionVentas.Location = new System.Drawing.Point(0, 656);
+            this.btnGestionVentas.Name = "btnGestionVentas";
+            this.btnGestionVentas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnGestionVentas.Size = new System.Drawing.Size(194, 45);
+            this.btnGestionVentas.TabIndex = 1;
+            this.btnGestionVentas.Text = "Gestión de Ventas";
+            this.btnGestionVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionVentas.UseVisualStyleBackColor = true;
+            this.btnGestionVentas.Click += new System.EventHandler(this.btnGestionVentas_Click);
             // 
             // panel7
             // 
@@ -395,6 +508,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Image = global::Proyecto_DB2.Properties.Resources.WhatsApp_Image_2024_07_28_at_15_35_08;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
@@ -402,119 +516,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnGestionVentas
-            // 
-            this.btnGestionVentas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestionVentas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGestionVentas.FlatAppearance.BorderSize = 0;
-            this.btnGestionVentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnGestionVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnGestionVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGestionVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionVentas.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnGestionVentas.Location = new System.Drawing.Point(0, 656);
-            this.btnGestionVentas.Name = "btnGestionVentas";
-            this.btnGestionVentas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGestionVentas.Size = new System.Drawing.Size(194, 45);
-            this.btnGestionVentas.TabIndex = 1;
-            this.btnGestionVentas.Text = "Gestión de Ventas";
-            this.btnGestionVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGestionVentas.UseVisualStyleBackColor = true;
-            this.btnGestionVentas.Click += new System.EventHandler(this.btnGestionVentas_Click);
-            // 
-            // pnlSubMenuGestionVentas
-            // 
-            this.pnlSubMenuGestionVentas.Controls.Add(this.btnFacturaPorCliente);
-            this.pnlSubMenuGestionVentas.Controls.Add(this.btnOrdenPorCliente);
-            this.pnlSubMenuGestionVentas.Controls.Add(this.btnFactura);
-            this.pnlSubMenuGestionVentas.Controls.Add(this.btnOrdenMD);
-            this.pnlSubMenuGestionVentas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSubMenuGestionVentas.Location = new System.Drawing.Point(0, 701);
-            this.pnlSubMenuGestionVentas.Name = "pnlSubMenuGestionVentas";
-            this.pnlSubMenuGestionVentas.Size = new System.Drawing.Size(194, 160);
-            this.pnlSubMenuGestionVentas.TabIndex = 11;
-            // 
-            // btnOrdenMD
-            // 
-            this.btnOrdenMD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnOrdenMD.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOrdenMD.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOrdenMD.FlatAppearance.BorderSize = 0;
-            this.btnOrdenMD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnOrdenMD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnOrdenMD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrdenMD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrdenMD.ForeColor = System.Drawing.Color.LightGray;
-            this.btnOrdenMD.Location = new System.Drawing.Point(0, 0);
-            this.btnOrdenMD.Name = "btnOrdenMD";
-            this.btnOrdenMD.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnOrdenMD.Size = new System.Drawing.Size(194, 40);
-            this.btnOrdenMD.TabIndex = 1;
-            this.btnOrdenMD.Text = "Orden";
-            this.btnOrdenMD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrdenMD.UseVisualStyleBackColor = false;
-            this.btnOrdenMD.Click += new System.EventHandler(this.btnOrdenMD_Click);
-            // 
-            // btnFactura
-            // 
-            this.btnFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnFactura.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFactura.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFactura.FlatAppearance.BorderSize = 0;
-            this.btnFactura.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFactura.ForeColor = System.Drawing.Color.LightGray;
-            this.btnFactura.Location = new System.Drawing.Point(0, 40);
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnFactura.Size = new System.Drawing.Size(194, 40);
-            this.btnFactura.TabIndex = 2;
-            this.btnFactura.Text = "Facturas";
-            this.btnFactura.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFactura.UseVisualStyleBackColor = false;
-            // 
-            // btnOrdenPorCliente
-            // 
-            this.btnOrdenPorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnOrdenPorCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOrdenPorCliente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOrdenPorCliente.FlatAppearance.BorderSize = 0;
-            this.btnOrdenPorCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnOrdenPorCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnOrdenPorCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrdenPorCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrdenPorCliente.ForeColor = System.Drawing.Color.LightGray;
-            this.btnOrdenPorCliente.Location = new System.Drawing.Point(0, 80);
-            this.btnOrdenPorCliente.Name = "btnOrdenPorCliente";
-            this.btnOrdenPorCliente.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnOrdenPorCliente.Size = new System.Drawing.Size(194, 40);
-            this.btnOrdenPorCliente.TabIndex = 3;
-            this.btnOrdenPorCliente.Text = "Orden/Cliente";
-            this.btnOrdenPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrdenPorCliente.UseVisualStyleBackColor = false;
-            // 
-            // btnFacturaPorCliente
-            // 
-            this.btnFacturaPorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnFacturaPorCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFacturaPorCliente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFacturaPorCliente.FlatAppearance.BorderSize = 0;
-            this.btnFacturaPorCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnFacturaPorCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnFacturaPorCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturaPorCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacturaPorCliente.ForeColor = System.Drawing.Color.LightGray;
-            this.btnFacturaPorCliente.Location = new System.Drawing.Point(0, 120);
-            this.btnFacturaPorCliente.Name = "btnFacturaPorCliente";
-            this.btnFacturaPorCliente.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnFacturaPorCliente.Size = new System.Drawing.Size(194, 40);
-            this.btnFacturaPorCliente.TabIndex = 4;
-            this.btnFacturaPorCliente.Text = "Factura/Cliente";
-            this.btnFacturaPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturaPorCliente.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -530,6 +531,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.pnlSubMenuGestionVentas.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -539,7 +541,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlSubMenuGestionVentas.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

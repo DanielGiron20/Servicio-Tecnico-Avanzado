@@ -16,6 +16,19 @@ namespace Proyecto_DB2
 {
     public partial class Login : Form
     {
+
+        private SqlConnection con;
+        private bool conectado;
+        public SqlConnection Con
+        {
+            get { return con;}
+        }
+
+        public bool Conectado
+        {
+            get { return conectado; }
+        }
+
         public Login()
         {
             InitializeComponent();
@@ -28,7 +41,7 @@ namespace Proyecto_DB2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
+             
 
              string servidor = server.Text.Trim();
              string bd = bd2.Text.Trim();
@@ -41,19 +54,12 @@ namespace Proyecto_DB2
 
             try
             {
-                using (SqlConnection conx = new SqlConnection(connectionString))
-                {
-                    conx.Open();
-                    MessageBox.Show("Se conecto correctamente a la base de datos");
-                }
-
-                
-                Form1 mainForm = new Form1();
-                mainForm.Show();
-                this.Hide();
-
-                CConexion conexion = new CConexion();
-                conexion.EstablecerConexion();
+                conectado = false;
+                con = new SqlConnection(connectionString);
+                con.Open();
+                conectado = true;
+                MessageBox.Show("Se conecto correctamente a la base de datos");
+                Dispose();
 
             }
                 catch (SqlException ex)
@@ -66,7 +72,7 @@ namespace Proyecto_DB2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Dispose();
         }
     }
 }
