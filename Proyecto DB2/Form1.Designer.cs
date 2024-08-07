@@ -162,6 +162,7 @@
             this.btnFactura.Text = "Facturas";
             this.btnFactura.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFactura.UseVisualStyleBackColor = false;
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
             // 
             // btnOrdenMD
             // 

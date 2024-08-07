@@ -171,7 +171,13 @@ namespace Proyecto_DB2
 
         private void btnOrdenMD_Click(object sender, EventArgs e)
         {
-            openchildform(new frmOrden());
+            openchildform(new frmOrden(conexionMenu));
+            ocultar();
+        }
+
+        private void btnFactura_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmFactura());
             ocultar();
         }
     }
