@@ -94,7 +94,7 @@ namespace Proyecto_DB2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            openchildform(new Clientes());
+            openchildform(new frmClienteLista(conexionMenu));
             ocultar();
         }
 
