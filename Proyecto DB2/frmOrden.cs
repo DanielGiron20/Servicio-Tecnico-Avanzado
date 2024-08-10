@@ -15,10 +15,12 @@ namespace Proyecto_DB2
     {
         SqlDataAdapter adpOrden;
         DataTable dtOrden;
+        
 
         public frmOrden()
         {
             InitializeComponent();
+
         }
 
         public frmOrden(SqlConnection cnx)
@@ -27,6 +29,23 @@ namespace Proyecto_DB2
 
             adpOrden = new SqlDataAdapter();
             dtOrden = new DataTable();
+
+            adpOrden.SelectCommand = new SqlCommand("spSelectOrden", cnx);
+            adpOrden.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+            adpOrden.InsertCommand = new SqlCommand("spInsertarOrden", cnx);
+            adpOrden.InsertCommand.CommandType = CommandType.StoredProcedure;
+            adpOrden.InsertCommand.Parameters.Add("@ordenid", SqlDbType.Int, 4, "OrdenID");
+            adpOrden.InsertCommand.Parameters.Add("@clienteid", SqlDbType.Int, 4, "ClienteID");
+            adpOrden.InsertCommand.Parameters.Add("@empleadoid", SqlDbType.Int, 4, "EmpleadoID");
+            adpOrden.InsertCommand.Parameters.Add("@tipoOrden", SqlDbType.VarChar, 1, "TipoOrden");
+            adpOrden.InsertCommand.Parameters.Add("@duracion", SqlDbType.Int, 4, "Duracion");
+            adpOrden.InsertCommand.Parameters.Add("@estado", SqlDbType.VarChar, 1, "Estado");
+            adpOrden.InsertCommand.Parameters.Add("@fechaInicio", SqlDbType.DateTime, 8, "FechaInicio");
+            adpOrden.InsertCommand.Parameters.Add("@fechaFinal", SqlDbType.DateTime, 8, "FechaFinal");
+            adpOrden.InsertCommand.Parameters.Add("@activo", SqlDbType.Int, 1, "Activo");
+            adpOrden.InsertCommand.Parameters[0].Direction = ParameterDirection.InputOutput;
         }
 
         private void refrescardgvOrden()
@@ -36,17 +55,13 @@ namespace Proyecto_DB2
 
         private void obtenerOrdenes()
         {
-            CConexion con = new CConexion();
-            SqlConnection c=null;
+            
+        }
 
+        private void frmOrden_Load(object sender, EventArgs e)
+        {
             try
             {
-                
-                c = con.EstablecerConexion();
-
-                adpOrden = new SqlDataAdapter("spSelectOrden", c);
-                adpOrden.SelectCommand.CommandType = CommandType.StoredProcedure;
-
                 dtOrden = new DataTable();
                 adpOrden.Fill(dtOrden);
                 dgvOrden.DataSource = dtOrden;
@@ -55,18 +70,6 @@ namespace Proyecto_DB2
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally 
-            {
-                if(c != null && c.State == ConnectionState.Open)
-                {
-                    c.Close();
-                }
-            }
-        }
-
-        private void frmOrden_Load(object sender, EventArgs e)
-        {
-            obtenerOrdenes();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -81,32 +84,7 @@ namespace Proyecto_DB2
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            CConexion con = new CConexion();
-            SqlConnection c = null;
-
-            try
-            {
-                adpOrden = new SqlDataAdapter();
-                dtOrden = new DataTable();
-
-                c = con.EstablecerConexion();
-
-                adpOrden.InsertCommand.Parameters["@clienteid"].Value = Convert.ToInt32(cmbClienteID.SelectedItem.ToString());
-                adpOrden.InsertCommand.Parameters["@empleadoid"].Value = Convert.ToInt32(cmbEmpleadoID.SelectedItem.ToString());
-                adpOrden.InsertCommand.Parameters["@tipoOrden"].Value = cmbTipoOrden.SelectedItem.ToString();
-                adpOrden.InsertCommand.Parameters["@duracion"].Value = Convert.ToInt32(txtDuracion.Text);
-                adpOrden.InsertCommand.Parameters["@estado"].Value = cmbEstado.SelectedItem.ToString();
-                adpOrden.InsertCommand.Parameters["@fechaInicio"].Value = dtpFechaInicio.Value;
-                adpOrden.InsertCommand.Parameters["@fechaFinal"].Value = dtpFechaFinal.Value;
-                adpOrden.InsertCommand.Parameters["@activo"].Value = Convert.ToInt32(chkActivo.Checked);
-
-                adpOrden.Update(dtOrden);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
     }
 }
