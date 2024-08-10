@@ -64,7 +64,7 @@
             this.cmdGuardar.Location = new System.Drawing.Point(157, 355);
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.Size = new System.Drawing.Size(142, 45);
-            this.cmdGuardar.TabIndex = 12;
+            this.cmdGuardar.TabIndex = 13;
             this.cmdGuardar.Text = "Guardar";
             this.cmdGuardar.UseVisualStyleBackColor = true;
             this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
@@ -74,7 +74,7 @@
             this.cmdCancelar.Location = new System.Drawing.Point(388, 355);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(138, 45);
-            this.cmdCancelar.TabIndex = 13;
+            this.cmdCancelar.TabIndex = 14;
             this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.UseVisualStyleBackColor = true;
             this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
@@ -220,7 +220,7 @@
             this.txtRTN.Location = new System.Drawing.Point(408, 102);
             this.txtRTN.Name = "txtRTN";
             this.txtRTN.Size = new System.Drawing.Size(150, 20);
-            this.txtRTN.TabIndex = 1;
+            this.txtRTN.TabIndex = 12;
             this.txtRTN.TextChanged += new System.EventHandler(this.txtRTN_TextChanged);
             this.txtRTN.Leave += new System.EventHandler(this.txtRTN_Leave);
             // 
@@ -233,6 +233,7 @@
             // 
             // cmbTipo
             // 
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Location = new System.Drawing.Point(408, 139);
             this.cmbTipo.Name = "cmbTipo";
@@ -258,6 +259,7 @@
             // 
             // cmbSexo
             // 
+            this.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSexo.FormattingEnabled = true;
             this.cmbSexo.Location = new System.Drawing.Point(107, 251);
             this.cmbSexo.Name = "cmbSexo";
@@ -266,6 +268,7 @@
             // 
             // cmbCivil
             // 
+            this.cmbCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCivil.FormattingEnabled = true;
             this.cmbCivil.Location = new System.Drawing.Point(107, 289);
             this.cmbCivil.Name = "cmbCivil";

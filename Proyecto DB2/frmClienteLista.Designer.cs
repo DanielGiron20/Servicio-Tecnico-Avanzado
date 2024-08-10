@@ -34,22 +34,20 @@
             this.cmdModificar = new System.Windows.Forms.Button();
             this.cmdInsertar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.Button();
+            this.cmdDesactivar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbOpcion
             // 
+            this.cmbOpcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOpcion.FormattingEnabled = true;
-            this.cmbOpcion.Items.AddRange(new object[] {
-            "Todos",
-            "Activos",
-            "Inactivos"});
             this.cmbOpcion.Location = new System.Drawing.Point(416, 447);
             this.cmbOpcion.Margin = new System.Windows.Forms.Padding(2);
             this.cmbOpcion.Name = "cmbOpcion";
             this.cmbOpcion.Size = new System.Drawing.Size(135, 21);
             this.cmbOpcion.TabIndex = 12;
+            this.cmbOpcion.SelectedIndexChanged += new System.EventHandler(this.cmbOpcion_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -114,25 +112,27 @@
             this.dataGridView1.Size = new System.Drawing.Size(650, 409);
             this.dataGridView1.TabIndex = 7;
             // 
-            // Eliminar
+            // cmdDesactivar
             // 
-            this.Eliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
-            this.Eliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
-            this.Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Eliminar.Location = new System.Drawing.Point(227, 434);
-            this.Eliminar.Margin = new System.Windows.Forms.Padding(2);
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Size = new System.Drawing.Size(95, 44);
-            this.Eliminar.TabIndex = 13;
-            this.Eliminar.Text = "Eliminar";
-            this.Eliminar.UseVisualStyleBackColor = true;
+            this.cmdDesactivar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdDesactivar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmdDesactivar.Location = new System.Drawing.Point(227, 434);
+            this.cmdDesactivar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdDesactivar.Name = "cmdDesactivar";
+            this.cmdDesactivar.Size = new System.Drawing.Size(95, 44);
+            this.cmdDesactivar.TabIndex = 13;
+            this.cmdDesactivar.Text = "Desactivar";
+            this.cmdDesactivar.UseVisualStyleBackColor = true;
+            this.cmdDesactivar.Click += new System.EventHandler(this.cmdDesactivar_Click);
             // 
             // frmClienteLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(673, 488);
-            this.Controls.Add(this.Eliminar);
+            this.Controls.Add(this.cmdDesactivar);
             this.Controls.Add(this.cmbOpcion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdSalir);
@@ -160,6 +160,6 @@
         private System.Windows.Forms.Button cmdModificar;
         private System.Windows.Forms.Button cmdInsertar;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button Eliminar;
+        private System.Windows.Forms.Button cmdDesactivar;
     }
 }

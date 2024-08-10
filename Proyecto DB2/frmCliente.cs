@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -15,11 +16,12 @@ namespace Proyecto_DB2
     {
         SqlDataAdapter adpCliente;
         DataTable tabCliente;
+        
 
-        /*public DataTable tCliente
+        public DataTable tCliente
         {
             get { return tabCliente; }
-        }*/
+        }
 
         public frmCliente()
         {
@@ -267,8 +269,14 @@ namespace Proyecto_DB2
                     infoToolTip.SetToolTip(txtEmail, "El e-mail es opcional.");
                 }
 
+                if( chkActivo.Checked == false )
+                {
+                    errorProvider1.SetError(chkActivo, "Marque la casilla de activo");
+                    
+                }
 
-                if(!errores) 
+
+                if (!errores) 
                 {
                     if (MessageBox.Show("Desea guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -276,19 +284,46 @@ namespace Proyecto_DB2
                         String[] tipos = { "P", "E" };
                         String[] estadosciviles = { "S", "C", "U" };
 
+                        if(txtDNI.Enabled = true && txtDNI.Text != "") 
+                            tabCliente.Rows[0]["dni"] = txtDNI.Text;
+                        else
+                            tabCliente.Rows[0]["dni"] = DBNull.Value;
 
-                        tabCliente.Rows[0]["dni"] = txtDNI.Text;
-                        tabCliente.Rows[0]["rtn"] = txtRTN.Text;
+                        if ( txtRTN.Text != "")
+                            tabCliente.Rows[0]["rtn"] = txtRTN.Text;
+                        else
+                            tabCliente.Rows[0]["rtn"] = DBNull.Value;
+
+                    
                         tabCliente.Rows[0]["nombre"] = txtNombre.Text;
                         tabCliente.Rows[0]["tipo"] = tipos[cmbTipo.SelectedIndex];
                         tabCliente.Rows[0]["direccion"] = txtDireccion.Text;
-                        tabCliente.Rows[0]["sexo"] = sexos[cmbSexo.SelectedIndex];
-                        tabCliente.Rows[0]["civil"] = estadosciviles[cmbCivil.SelectedIndex];
-                        tabCliente.Rows[0]["razon"] = txtRazon.Text;
-                        tabCliente.Rows[0]["telefono"] = txtTelefono.Text;
-                        tabCliente.Rows[0]["email"] = txtEmail.Text;
-                        tabCliente.Rows[0]["activo"] = chkActivo.Checked;
 
+                        //tabCliente.Rows[0]["sexo"] = sexos[cmbSexo.SelectedIndex];
+                        if (cmbSexo.Enabled = true && cmbSexo.SelectedIndex >= 0)
+                            tabCliente.Rows[0]["sexo"] = sexos[cmbSexo.SelectedIndex];
+                        else
+                            tabCliente.Rows[0]["sexo"] = DBNull.Value; // Asigna nulo si no se selecciona
+
+                        //tabCliente.Rows[0]["civil"] = estadosciviles[cmbCivil.SelectedIndex];
+                        if (cmbCivil.Enabled = true && cmbCivil.SelectedIndex >= 0 )
+                            tabCliente.Rows[0]["civil"] = estadosciviles[cmbCivil.SelectedIndex];
+                        else
+                            tabCliente.Rows[0]["civil"] = DBNull.Value; // Asigna nulo si no se selecciona
+
+                        if (txtRazon.Text != "")
+                            tabCliente.Rows[0]["razon"] = txtRazon.Text;
+                        else
+                            tabCliente.Rows[0]["razon"] = DBNull.Value;
+                        
+                        tabCliente.Rows[0]["telefono"] = txtTelefono.Text;
+
+                        if (txtEmail.Text != "")
+                            tabCliente.Rows[0]["email"] = txtEmail.Text;
+                        else
+                            tabCliente.Rows[0]["email"] = DBNull.Value;
+
+                        tabCliente.Rows[0]["activo"] = chkActivo.Checked;
 
 
                         adpCliente.Update(tabCliente);
@@ -297,10 +332,21 @@ namespace Proyecto_DB2
                 }
 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
 
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+
+                    if (ex.Errors[i].Number == 2627)
+                    {
+                        MessageBox.Show("Los nombres de clientes y telefonos deben ser unicos, validar estos campos" ,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Errors[i].Message, ex.Errors[i].Number.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
