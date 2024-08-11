@@ -35,6 +35,7 @@ namespace Proyecto_DB2
             panel6.Visible = false;
             panel7.Visible = false;
             pnlSubMenuGestionVentas.Visible = false;
+            pnlverproveedor.Visible = false;
         }
 
         private void ocultar()
@@ -51,6 +52,8 @@ namespace Proyecto_DB2
                 panel7.Visible = false;
             if(pnlSubMenuGestionVentas.Visible == true)
                 pnlSubMenuGestionVentas.Visible = false;
+            if (pnlverproveedor.Visible == true)
+                pnlverproveedor.Visible = false;
         }
 
         private void mostrar(Panel subMenu)
@@ -178,6 +181,23 @@ namespace Proyecto_DB2
         private void btnFactura_Click(object sender, EventArgs e)
         {
             openchildform(new frmFactura());
+            ocultar();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProveedor_Click(object sender, EventArgs e)
+        {
+
+            mostrar(pnlverproveedor);
+        }
+
+        private void verProveedor_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmProveedor());
             ocultar();
         }
     }
