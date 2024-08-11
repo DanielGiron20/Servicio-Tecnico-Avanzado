@@ -101,23 +101,11 @@
     <Compile Include="frmFactura.Designer.cs">
       <DependentUpon>frmFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNuevoProv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNuevoProv.Designer.cs">
-      <DependentUpon>frmNuevoProv.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmOrden.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmOrden.Designer.cs">
       <DependentUpon>frmOrden.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmProveedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProveedor.Designer.cs">
-      <DependentUpon>frmProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="IngresarServicios.cs">
       <SubType>Form</SubType>
@@ -193,14 +181,8 @@
     <EmbeddedResource Include="frmFactura.resx">
       <DependentUpon>frmFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNuevoProv.resx">
-      <DependentUpon>frmNuevoProv.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmOrden.resx">
       <DependentUpon>frmOrden.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmProveedor.resx">
-      <DependentUpon>frmProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngresarServicios.resx">
       <DependentUpon>IngresarServicios.cs</DependentUpon>
