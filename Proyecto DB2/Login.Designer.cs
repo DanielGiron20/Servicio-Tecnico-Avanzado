@@ -46,7 +46,7 @@
             // 
             this.pictureBox1.Image = global::Proyecto_DB2.Properties.Resources.Manutenção;
             this.pictureBox1.Location = new System.Drawing.Point(68, 14);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(147, 141);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -104,7 +104,7 @@
             // server
             // 
             this.server.Location = new System.Drawing.Point(113, 185);
-            this.server.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.server.Margin = new System.Windows.Forms.Padding(2);
             this.server.Name = "server";
             this.server.Size = new System.Drawing.Size(143, 20);
             this.server.TabIndex = 5;
@@ -113,7 +113,7 @@
             // bd2
             // 
             this.bd2.Location = new System.Drawing.Point(113, 220);
-            this.bd2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bd2.Margin = new System.Windows.Forms.Padding(2);
             this.bd2.Name = "bd2";
             this.bd2.Size = new System.Drawing.Size(143, 20);
             this.bd2.TabIndex = 6;
@@ -122,7 +122,7 @@
             // user
             // 
             this.user.Location = new System.Drawing.Point(113, 253);
-            this.user.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.user.Margin = new System.Windows.Forms.Padding(2);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(143, 20);
             this.user.TabIndex = 7;
@@ -131,8 +131,9 @@
             // pw
             // 
             this.pw.Location = new System.Drawing.Point(113, 284);
-            this.pw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pw.Margin = new System.Windows.Forms.Padding(2);
             this.pw.Name = "pw";
+            this.pw.PasswordChar = '*';
             this.pw.Size = new System.Drawing.Size(143, 20);
             this.pw.TabIndex = 8;
             this.pw.Text = "ES20212000317";
@@ -144,7 +145,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(19, 322);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 37);
             this.button1.TabIndex = 9;
@@ -159,7 +160,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
             this.button2.Location = new System.Drawing.Point(145, 322);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 36);
             this.button2.TabIndex = 10;
@@ -184,13 +185,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "v";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
