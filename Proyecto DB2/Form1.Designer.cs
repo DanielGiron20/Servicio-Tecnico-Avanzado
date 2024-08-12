@@ -100,7 +100,7 @@
             this.pnlSubMenuGestionVentas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSubMenuGestionVentas.Location = new System.Drawing.Point(0, 701);
             this.pnlSubMenuGestionVentas.Name = "pnlSubMenuGestionVentas";
-            this.pnlSubMenuGestionVentas.Size = new System.Drawing.Size(194, 160);
+            this.pnlSubMenuGestionVentas.Size = new System.Drawing.Size(185, 160);
             this.pnlSubMenuGestionVentas.TabIndex = 11;
             // 
             // btnFacturaPorCliente
@@ -117,7 +117,7 @@
             this.btnFacturaPorCliente.Location = new System.Drawing.Point(0, 120);
             this.btnFacturaPorCliente.Name = "btnFacturaPorCliente";
             this.btnFacturaPorCliente.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnFacturaPorCliente.Size = new System.Drawing.Size(194, 40);
+            this.btnFacturaPorCliente.Size = new System.Drawing.Size(185, 40);
             this.btnFacturaPorCliente.TabIndex = 4;
             this.btnFacturaPorCliente.Text = "Factura/Cliente";
             this.btnFacturaPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -137,7 +137,7 @@
             this.btnOrdenPorCliente.Location = new System.Drawing.Point(0, 80);
             this.btnOrdenPorCliente.Name = "btnOrdenPorCliente";
             this.btnOrdenPorCliente.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnOrdenPorCliente.Size = new System.Drawing.Size(194, 40);
+            this.btnOrdenPorCliente.Size = new System.Drawing.Size(185, 40);
             this.btnOrdenPorCliente.TabIndex = 3;
             this.btnOrdenPorCliente.Text = "Orden/Cliente";
             this.btnOrdenPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,7 +157,7 @@
             this.btnFactura.Location = new System.Drawing.Point(0, 40);
             this.btnFactura.Name = "btnFactura";
             this.btnFactura.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnFactura.Size = new System.Drawing.Size(194, 40);
+            this.btnFactura.Size = new System.Drawing.Size(185, 40);
             this.btnFactura.TabIndex = 2;
             this.btnFactura.Text = "Facturas";
             this.btnFactura.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -177,7 +177,7 @@
             this.btnOrdenMD.Location = new System.Drawing.Point(0, 0);
             this.btnOrdenMD.Name = "btnOrdenMD";
             this.btnOrdenMD.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnOrdenMD.Size = new System.Drawing.Size(194, 40);
+            this.btnOrdenMD.Size = new System.Drawing.Size(185, 40);
             this.btnOrdenMD.TabIndex = 1;
             this.btnOrdenMD.Text = "Orden";
             this.btnOrdenMD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -197,7 +197,7 @@
             this.btnGestionVentas.Location = new System.Drawing.Point(0, 656);
             this.btnGestionVentas.Name = "btnGestionVentas";
             this.btnGestionVentas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGestionVentas.Size = new System.Drawing.Size(194, 45);
+            this.btnGestionVentas.Size = new System.Drawing.Size(185, 45);
             this.btnGestionVentas.TabIndex = 1;
             this.btnGestionVentas.Text = "Gestión de Ventas";
             this.btnGestionVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,7 +211,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 611);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(194, 45);
+            this.panel7.Size = new System.Drawing.Size(185, 45);
             this.panel7.TabIndex = 10;
             // 
             // button10
@@ -227,7 +227,7 @@
             this.button10.Location = new System.Drawing.Point(0, 0);
             this.button10.Name = "button10";
             this.button10.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button10.Size = new System.Drawing.Size(194, 44);
+            this.button10.Size = new System.Drawing.Size(185, 44);
             this.button10.TabIndex = 1;
             this.button10.Text = "Ver Inventario";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -247,7 +247,7 @@
             this.button12.Location = new System.Drawing.Point(0, 566);
             this.button12.Name = "button12";
             this.button12.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button12.Size = new System.Drawing.Size(194, 45);
+            this.button12.Size = new System.Drawing.Size(185, 45);
             this.button12.TabIndex = 9;
             this.button12.Text = "Inventario";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -262,7 +262,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 474);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(194, 92);
+            this.panel6.Size = new System.Drawing.Size(185, 92);
             this.panel6.TabIndex = 8;
             // 
             // button9
@@ -278,7 +278,7 @@
             this.button9.Location = new System.Drawing.Point(0, 45);
             this.button9.Name = "button9";
             this.button9.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button9.Size = new System.Drawing.Size(194, 44);
+            this.button9.Size = new System.Drawing.Size(185, 44);
             this.button9.TabIndex = 1;
             this.button9.Text = "Ver Empleados";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -298,7 +298,7 @@
             this.button7.Location = new System.Drawing.Point(0, 0);
             this.button7.Name = "button7";
             this.button7.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button7.Size = new System.Drawing.Size(194, 45);
+            this.button7.Size = new System.Drawing.Size(185, 45);
             this.button7.TabIndex = 0;
             this.button7.Text = "Compras";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -318,7 +318,7 @@
             this.button8.Location = new System.Drawing.Point(0, 429);
             this.button8.Name = "button8";
             this.button8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button8.Size = new System.Drawing.Size(194, 45);
+            this.button8.Size = new System.Drawing.Size(185, 45);
             this.button8.TabIndex = 7;
             this.button8.Text = "Administracion";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -332,7 +332,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 385);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(194, 44);
+            this.panel5.Size = new System.Drawing.Size(185, 44);
             this.panel5.TabIndex = 6;
             // 
             // button5
@@ -348,7 +348,7 @@
             this.button5.Location = new System.Drawing.Point(0, 0);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(194, 44);
+            this.button5.Size = new System.Drawing.Size(185, 44);
             this.button5.TabIndex = 0;
             this.button5.Text = "Ver clientes";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -368,7 +368,7 @@
             this.button6.Location = new System.Drawing.Point(0, 340);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(194, 45);
+            this.button6.Size = new System.Drawing.Size(185, 45);
             this.button6.TabIndex = 5;
             this.button6.Text = "Clientes";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -382,7 +382,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 289);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(194, 51);
+            this.panel4.Size = new System.Drawing.Size(185, 51);
             this.panel4.TabIndex = 4;
             // 
             // button3
@@ -398,7 +398,7 @@
             this.button3.Location = new System.Drawing.Point(0, 0);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(194, 51);
+            this.button3.Size = new System.Drawing.Size(185, 51);
             this.button3.TabIndex = 0;
             this.button3.Text = "Ver paquetes y servicios";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -418,7 +418,7 @@
             this.button4.Location = new System.Drawing.Point(0, 244);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(194, 45);
+            this.button4.Size = new System.Drawing.Size(185, 45);
             this.button4.TabIndex = 3;
             this.button4.Text = "Servicios";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -432,7 +432,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 197);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(194, 47);
+            this.panel3.Size = new System.Drawing.Size(185, 47);
             this.panel3.TabIndex = 2;
             // 
             // button2
@@ -448,7 +448,7 @@
             this.button2.Location = new System.Drawing.Point(0, 0);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(194, 47);
+            this.button2.Size = new System.Drawing.Size(185, 47);
             this.button2.TabIndex = 0;
             this.button2.Text = "Servicios pendientes";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -468,7 +468,7 @@
             this.button1.Location = new System.Drawing.Point(0, 152);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(194, 45);
+            this.button1.Size = new System.Drawing.Size(185, 45);
             this.button1.TabIndex = 1;
             this.button1.Text = "Agenda";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -481,7 +481,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(194, 152);
+            this.panel2.Size = new System.Drawing.Size(185, 152);
             this.panel2.TabIndex = 0;
             // 
             // pictureBox2
@@ -503,7 +503,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(211, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(911, 705);
+            this.panel8.Size = new System.Drawing.Size(930, 705);
             this.panel8.TabIndex = 1;
             // 
             // pictureBox1
@@ -519,9 +519,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 705);
+            this.ClientSize = new System.Drawing.Size(1141, 705);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

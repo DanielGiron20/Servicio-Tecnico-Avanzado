@@ -13,6 +13,7 @@ namespace Proyecto_DB2
 {
     public partial class Servicios : Form
     {
+
         public Servicios()
         {
             InitializeComponent();
@@ -143,6 +144,22 @@ namespace Proyecto_DB2
             else
             {
                 MessageBox.Show("Por favor, seleccione una fila para modificar.");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewServicios.SelectedRows.Count > 0)
+            {
+                int servicioID = Convert.ToInt32(dataGridViewServicios.SelectedRows[0].Cells["ServicioID"].Value);
+
+                // Crear instancia del formulario de artículos y pasar el ID del servicio
+                ServicioDetalle Articulos = new ServicioDetalle(servicioID);
+                Articulos.Show();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un servicio.");
             }
         }
     }

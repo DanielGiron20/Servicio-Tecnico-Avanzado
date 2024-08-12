@@ -95,6 +95,12 @@
     <Compile Include="IngresarServicios.Designer.cs">
       <DependentUpon>IngresarServicios.cs</DependentUpon>
     </Compile>
+    <Compile Include="IngresoArticulosxServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IngresoArticulosxServicio.Designer.cs">
+      <DependentUpon>IngresoArticulosxServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,18 @@
     <Compile Include="PuestoEmpleado.Designer.cs">
       <DependentUpon>PuestoEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeleccionArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionArticulos.Designer.cs">
+      <DependentUpon>SeleccionArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServicioDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServicioDetalle.Designer.cs">
+      <DependentUpon>ServicioDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Servicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +181,9 @@
     <EmbeddedResource Include="IngresarServicios.resx">
       <DependentUpon>IngresarServicios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IngresoArticulosxServicio.resx">
+      <DependentUpon>IngresoArticulosxServicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventario.resx">
       <DependentUpon>Inventario.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +200,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SeleccionArticulos.resx">
+      <DependentUpon>SeleccionArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServicioDetalle.resx">
+      <DependentUpon>ServicioDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Servicios.resx">
       <DependentUpon>Servicios.cs</DependentUpon>
     </EmbeddedResource>
