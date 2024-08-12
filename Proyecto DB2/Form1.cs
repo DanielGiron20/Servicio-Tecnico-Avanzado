@@ -180,7 +180,7 @@ namespace Proyecto_DB2
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
-            openchildform(new frmFactura());
+            openchildform(new frmFactura(conexionMenu));
             ocultar();
         }
 
