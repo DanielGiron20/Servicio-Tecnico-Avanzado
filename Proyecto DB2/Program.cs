@@ -16,7 +16,7 @@ namespace Proyecto_DB2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AreaEmpleado());
+            Application.Run(new Form1());
         }
     }
 }
