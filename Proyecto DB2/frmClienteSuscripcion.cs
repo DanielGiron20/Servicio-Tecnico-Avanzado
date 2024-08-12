@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_DB2
 {
-    public partial class Clientes : Form
+    public partial class frmClienteSuscripcion : Form
     {
-        public Clientes()
+        public frmClienteSuscripcion()
         {
             InitializeComponent();
-        }
-
-        private void Clientes_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

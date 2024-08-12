@@ -43,11 +43,18 @@ namespace Proyecto_DB2
         {
              
 
-             string servidor = server.Text.Trim();
-             string bd = bd2.Text.Trim();
-             string usuario = user.Text.Trim();
+            string servidor = server.Text.Trim();
+            string bd = bd2.Text.Trim();
+            string usuario = user.Text.Trim();
             string pw2 = pw.Text.Trim();
             string puerto = "1433";
+
+            if (string.IsNullOrEmpty(bd))
+            {
+                MessageBox.Show("Por favor, ingrese el nombre de la base de datos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             string connectionString = $"Server={servidor};Database={bd};User Id={usuario};Password={pw2};";
 
@@ -62,11 +69,36 @@ namespace Proyecto_DB2
                 Dispose();
 
             }
-                catch (SqlException ex)
+            catch (SqlException ex)
+            {
+                for( int i = 0; i < ex.Errors.Count; i++)
                 {
-                    MessageBox.Show("No se logro conectar a la base de datos " + ex.ToString());
-
+                    if(ex.Errors[i].Number == 18456)
+                    {
+                        MessageBox.Show("El usuario o contraseña es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (ex.Errors[i].Number == 4060)
+                    {
+                        MessageBox.Show("El nombre de la base de datos es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (ex.Errors[i].Number == 53)
+                    {
+                        MessageBox.Show("Error de Comunicacion con el servidor " + server.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
+                    }
+                    else if(ex.Errors[i].Number == 2)
+                    {
+                        MessageBox.Show("Nombre o direccion del servidor incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else 
+                    {
+                        MessageBox.Show("No se logro conectar a la base de datos " + ex.ToString());
+                    }
                 }
+
+            }
                 
         }
 
