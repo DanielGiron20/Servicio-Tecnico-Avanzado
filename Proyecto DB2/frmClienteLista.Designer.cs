@@ -61,6 +61,8 @@
             // 
             // cmdSalir
             // 
+            this.cmdSalir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -103,6 +105,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(11, 11);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);

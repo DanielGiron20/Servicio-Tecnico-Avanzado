@@ -65,6 +65,12 @@
     <Compile Include="frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmClienteSuscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClienteSuscripcion.Designer.cs">
+      <DependentUpon>frmClienteSuscripcion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClienteLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,11 +89,11 @@
     <Compile Include="ConsultaAreaPuestos.Designer.cs">
       <DependentUpon>ConsultaAreaPuestos.cs</DependentUpon>
     </Compile>
-    <Compile Include="CuentasCliente.cs">
+    <Compile Include="frmClienteCredito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CuentasCliente.Designer.cs">
-      <DependentUpon>CuentasCliente.cs</DependentUpon>
+    <Compile Include="frmClienteCredito.Designer.cs">
+      <DependentUpon>frmClienteCredito.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -113,6 +119,18 @@
     <Compile Include="frmOrden.Designer.cs">
       <DependentUpon>frmOrden.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPaquete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaquete.Designer.cs">
+      <DependentUpon>frmPaquete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaqueteLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaqueteLista.Designer.cs">
+      <DependentUpon>frmPaqueteLista.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,12 +154,6 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Paquetes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Paquetes.Designer.cs">
-      <DependentUpon>Paquetes.cs</DependentUpon>
     </Compile>
     <Compile Include="Planilla.cs">
       <SubType>Form</SubType>
@@ -181,6 +193,9 @@
     <EmbeddedResource Include="frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClienteCredito.resx">
+      <DependentUpon>frmClienteCredito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClienteLista.resx">
       <DependentUpon>frmClienteLista.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +205,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClienteSuscripcion.resx">
+      <DependentUpon>frmClienteSuscripcion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFactura.resx">
       <DependentUpon>frmFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +216,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmOrden.resx">
       <DependentUpon>frmOrden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaquete.resx">
+      <DependentUpon>frmPaquete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaqueteLista.resx">
+      <DependentUpon>frmPaqueteLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>

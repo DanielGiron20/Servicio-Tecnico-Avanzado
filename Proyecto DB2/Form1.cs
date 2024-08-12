@@ -200,6 +200,24 @@ namespace Proyecto_DB2
             openchildform(new frmProveedor());
             ocultar();
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmPaqueteLista());
+            ocultar();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmClienteSuscripcion());
+            ocultar();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmClienteCredito());
+            ocultar();
+        }
     }
 
 }

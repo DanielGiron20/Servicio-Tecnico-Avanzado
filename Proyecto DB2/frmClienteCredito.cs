@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_DB2
 {
-    public partial class Paquetes : Form
+    public partial class frmClienteCredito : Form
     {
-        public Paquetes()
+        public frmClienteCredito()
         {
             InitializeComponent();
         }

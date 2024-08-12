@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_DB2
 {
-    public partial class CuentasCliente : Form
+    public partial class frmClienteSuscripcion : Form
     {
-        public CuentasCliente()
+        public frmClienteSuscripcion()
         {
             InitializeComponent();
         }
