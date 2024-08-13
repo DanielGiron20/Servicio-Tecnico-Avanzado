@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgPaqueteDetalle = new System.Windows.Forms.DataGridView();
             this.cmdGuardar = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.dgServicio = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,13 +41,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.txtPaqueteID = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtPrecioMensual = new System.Windows.Forms.TextBox();
+            this.txtCantidadHoras = new System.Windows.Forms.TextBox();
+            this.txtTarifaHoraExtra = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgPaqueteDetalle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgServicio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgPaqueteDetalle
@@ -55,25 +56,32 @@
             this.dgPaqueteDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPaqueteDetalle.Location = new System.Drawing.Point(12, 227);
             this.dgPaqueteDetalle.Name = "dgPaqueteDetalle";
-            this.dgPaqueteDetalle.Size = new System.Drawing.Size(308, 232);
+            this.dgPaqueteDetalle.Size = new System.Drawing.Size(797, 232);
             this.dgPaqueteDetalle.TabIndex = 9;
             // 
             // cmdGuardar
             // 
             this.cmdGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdGuardar.Location = new System.Drawing.Point(787, 39);
+            this.cmdGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdGuardar.Location = new System.Drawing.Point(684, 49);
             this.cmdGuardar.Name = "cmdGuardar";
-            this.cmdGuardar.Size = new System.Drawing.Size(142, 67);
+            this.cmdGuardar.Size = new System.Drawing.Size(125, 56);
             this.cmdGuardar.TabIndex = 7;
             this.cmdGuardar.Text = "Guardar";
             this.cmdGuardar.UseVisualStyleBackColor = true;
+            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
             // 
             // cmdCancelar
             // 
             this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdCancelar.Location = new System.Drawing.Point(787, 134);
+            this.cmdCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.cmdCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCancelar.Location = new System.Drawing.Point(684, 135);
             this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(142, 68);
+            this.cmdCancelar.Size = new System.Drawing.Size(125, 59);
             this.cmdCancelar.TabIndex = 8;
             this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.UseVisualStyleBackColor = true;
@@ -83,25 +91,17 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(378, 9);
+            this.label7.Location = new System.Drawing.Point(311, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(203, 24);
             this.label7.TabIndex = 16;
             this.label7.Text = "Ingreso de Paquetes";
             // 
-            // dgServicio
-            // 
-            this.dgServicio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgServicio.Location = new System.Drawing.Point(331, 227);
-            this.dgServicio.Name = "dgServicio";
-            this.dgServicio.Size = new System.Drawing.Size(598, 232);
-            this.dgServicio.TabIndex = 10;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(78, 66);
+            this.label1.Location = new System.Drawing.Point(52, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 18;
@@ -110,7 +110,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(348, 66);
+            this.label2.Location = new System.Drawing.Point(289, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 19;
@@ -119,7 +119,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(329, 119);
+            this.label3.Location = new System.Drawing.Point(270, 124);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 20;
@@ -128,7 +128,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 119);
+            this.label4.Location = new System.Drawing.Point(30, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 13);
             this.label4.TabIndex = 21;
@@ -137,7 +137,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(46, 172);
+            this.label5.Location = new System.Drawing.Point(20, 177);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 13);
             this.label5.TabIndex = 22;
@@ -146,7 +146,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(305, 172);
+            this.label6.Location = new System.Drawing.Point(246, 177);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 13);
             this.label6.TabIndex = 23;
@@ -155,7 +155,7 @@
             // chkActivo
             // 
             this.chkActivo.AutoSize = true;
-            this.chkActivo.Location = new System.Drawing.Point(642, 171);
+            this.chkActivo.Location = new System.Drawing.Point(583, 176);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(56, 17);
             this.chkActivo.TabIndex = 6;
@@ -164,46 +164,50 @@
             // 
             // txtPaqueteID
             // 
-            this.txtPaqueteID.Location = new System.Drawing.Point(142, 63);
+            this.txtPaqueteID.Location = new System.Drawing.Point(116, 68);
             this.txtPaqueteID.Name = "txtPaqueteID";
             this.txtPaqueteID.Size = new System.Drawing.Size(100, 20);
             this.txtPaqueteID.TabIndex = 0;
             // 
-            // textBox2
+            // txtNombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(398, 63);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(300, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtNombre.Location = new System.Drawing.Point(339, 68);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(300, 20);
+            this.txtNombre.TabIndex = 1;
             // 
-            // textBox3
+            // txtDescripcion
             // 
-            this.textBox3.Location = new System.Drawing.Point(398, 101);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(300, 51);
-            this.textBox3.TabIndex = 3;
+            this.txtDescripcion.Location = new System.Drawing.Point(339, 106);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(300, 51);
+            this.txtDescripcion.TabIndex = 3;
             // 
-            // textBox4
+            // txtPrecioMensual
             // 
-            this.textBox4.Location = new System.Drawing.Point(142, 116);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 2;
+            this.txtPrecioMensual.Location = new System.Drawing.Point(116, 121);
+            this.txtPrecioMensual.Name = "txtPrecioMensual";
+            this.txtPrecioMensual.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecioMensual.TabIndex = 2;
             // 
-            // textBox5
+            // txtCantidadHoras
             // 
-            this.textBox5.Location = new System.Drawing.Point(142, 169);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 4;
+            this.txtCantidadHoras.Location = new System.Drawing.Point(116, 174);
+            this.txtCantidadHoras.Name = "txtCantidadHoras";
+            this.txtCantidadHoras.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidadHoras.TabIndex = 4;
             // 
-            // textBox6
+            // txtTarifaHoraExtra
             // 
-            this.textBox6.Location = new System.Drawing.Point(398, 169);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 5;
+            this.txtTarifaHoraExtra.Location = new System.Drawing.Point(339, 174);
+            this.txtTarifaHoraExtra.Name = "txtTarifaHoraExtra";
+            this.txtTarifaHoraExtra.Size = new System.Drawing.Size(100, 20);
+            this.txtTarifaHoraExtra.TabIndex = 5;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmPaquete
             // 
@@ -211,12 +215,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancelar;
-            this.ClientSize = new System.Drawing.Size(943, 471);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(822, 471);
+            this.Controls.Add(this.txtTarifaHoraExtra);
+            this.Controls.Add(this.txtCantidadHoras);
+            this.Controls.Add(this.txtPrecioMensual);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtPaqueteID);
             this.Controls.Add(this.chkActivo);
             this.Controls.Add(this.label6);
@@ -225,7 +229,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgServicio);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.cmdGuardar);
@@ -238,7 +241,7 @@
             this.Text = "frmPaquete";
             this.Load += new System.EventHandler(this.frmPaquete_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPaqueteDetalle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgServicio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +253,6 @@
         private System.Windows.Forms.Button cmdGuardar;
         private System.Windows.Forms.Button cmdCancelar;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dgServicio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -259,10 +261,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkActivo;
         private System.Windows.Forms.TextBox txtPaqueteID;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtPrecioMensual;
+        private System.Windows.Forms.TextBox txtCantidadHoras;
+        private System.Windows.Forms.TextBox txtTarifaHoraExtra;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

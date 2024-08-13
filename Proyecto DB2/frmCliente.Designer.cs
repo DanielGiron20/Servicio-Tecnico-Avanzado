@@ -62,6 +62,9 @@
             // cmdGuardar
             // 
             this.cmdGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdGuardar.Location = new System.Drawing.Point(157, 355);
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.Size = new System.Drawing.Size(142, 45);
@@ -73,6 +76,9 @@
             // cmdCancelar
             // 
             this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.cmdCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdCancelar.Location = new System.Drawing.Point(388, 355);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(138, 45);
