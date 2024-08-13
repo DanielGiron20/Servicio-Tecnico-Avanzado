@@ -61,6 +61,7 @@
             // 
             // cmdGuardar
             // 
+            this.cmdGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdGuardar.Location = new System.Drawing.Point(157, 355);
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.Size = new System.Drawing.Size(142, 45);
@@ -71,6 +72,7 @@
             // 
             // cmdCancelar
             // 
+            this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancelar.Location = new System.Drawing.Point(388, 355);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(138, 45);
@@ -296,8 +298,10 @@
             // 
             // frmCliente
             // 
+            this.AcceptButton = this.cmdGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cmdCancelar;
             this.ClientSize = new System.Drawing.Size(694, 435);
             this.Controls.Add(this.txtRazon);
             this.Controls.Add(this.txtEmail);

@@ -63,6 +63,7 @@
             // 
             this.cmdSalir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -118,6 +119,7 @@
             // 
             // cmdDesactivar
             // 
+            this.cmdDesactivar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdDesactivar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
             this.cmdDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
             this.cmdDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -135,6 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cmdSalir;
             this.ClientSize = new System.Drawing.Size(673, 488);
             this.Controls.Add(this.cmdDesactivar);
             this.Controls.Add(this.cmbOpcion);

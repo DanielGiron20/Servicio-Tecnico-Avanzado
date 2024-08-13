@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmClienteCredito";
             this.Text = "frmClienteCredito";
+            this.Load += new System.EventHandler(this.frmClienteCredito_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

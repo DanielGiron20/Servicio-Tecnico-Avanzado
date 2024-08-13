@@ -203,19 +203,19 @@ namespace Proyecto_DB2
 
         private void button11_Click(object sender, EventArgs e)
         {
-            openchildform(new frmPaqueteLista());
+            openchildform(new frmPaqueteLista(conexionMenu));
             ocultar();
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            openchildform(new frmClienteSuscripcion());
+            openchildform(new frmClienteSuscripcion(conexionMenu));
             ocultar();
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            openchildform(new frmClienteCredito());
+            openchildform(new frmClienteCredito(conexionMenu));
             ocultar();
         }
     }

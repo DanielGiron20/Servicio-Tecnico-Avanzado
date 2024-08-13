@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,20 @@ namespace Proyecto_DB2
         public frmPaquete()
         {
             InitializeComponent();
+        }
+
+        public frmPaquete(SqlConnection conexion, int paqueteid )         {
+            InitializeComponent();
+        }
+
+        private void frmPaquete_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
