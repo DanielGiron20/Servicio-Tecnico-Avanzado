@@ -198,5 +198,33 @@ namespace Proyecto_DB2
             }
             
         }
+
+        private void txtTexto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTexto.Text.Length == 0)
+            {
+                tabCliente.DefaultView.RowFilter = "";
+            }
+            else
+            {
+                if (tabCliente.Columns[cmbCampo.Text].DataType == typeof(string))
+                {
+                    tabCliente.DefaultView.RowFilter = cmbCampo.Text + " like '%" + txtTexto.Text + "%'";
+                }
+                else
+                {
+                    int numero;
+                    if (int.TryParse(txtTexto.Text, out numero))
+                    {
+                        tabCliente.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                    }
+                    else
+                    {
+                        tabCliente.DefaultView.RowFilter = "1 = 0"; // No coincidirá con nada si el texto no es un número válido
+                    }
+                }
+
+            }
+        }
     }
 }

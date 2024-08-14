@@ -9,7 +9,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Proyecto_DB2
 {
@@ -27,7 +26,8 @@ namespace Proyecto_DB2
             InitializeComponent();
         }
 
-        public frmPaquete(SqlConnection conexion, int paqueteid )         {
+        public frmPaquete(SqlConnection conexion, int paqueteid)
+        {
             InitializeComponent();
 
             prmPaqueteDetalle = new SqlParameter();
@@ -80,6 +80,8 @@ namespace Proyecto_DB2
         {
             try
             {
+                dgPaqueteDetalle.AllowUserToAddRows = false;
+                dgPaqueteDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 txtPaqueteID.Enabled = false;
                 dsTablas = new DataSet();
 
@@ -92,7 +94,6 @@ namespace Proyecto_DB2
                 if (dsTablas.Tables["Paquete"].Rows.Count == 0)  //se usan los mismos metodos de un datatablle
                 {
                     dsTablas.Tables["Paquete"].Rows.Add();
-                    
 
                 }
                 else
@@ -108,6 +109,7 @@ namespace Proyecto_DB2
                 }
 
                 dgPaqueteDetalle.DataSource = dsTablas.Tables["PaqueteDetalle"];
+                dgPaqueteDetalle.Columns["paqueteid"].Visible = false;
 
             }
             catch (Exception ex)
@@ -117,12 +119,47 @@ namespace Proyecto_DB2
             }
         }
 
-        private void cmdCancelar_Click(object sender, EventArgs e)
+        private void dgPaqueteDetalle_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            this.Close();
+            String col = dgPaqueteDetalle.Columns[e.ColumnIndex].Name.ToLower();
+
+            if (col == "servicioid")
+            {
+                if (e.FormattedValue.ToString().Length > 0) //esta propiedad es el texto que se acaba de insertar o editar
+                {
+                    SqlDataAdapter adpServicio = new SqlDataAdapter("spPaquetesServiciosActivosSelect " + e.FormattedValue, con);   //Concatenando la sentencia con
+                    DataTable tabServicio = new DataTable();
+                    adpServicio.Fill(tabServicio);
+
+                    if (tabServicio.Rows.Count == 0) //El servicio viene vacio
+                    {
+                        MessageBox.Show("El servicio no existe o no esta activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Cancel = true;  //Esto hace que no permita ingresar el dato y no pueda salir de la celda hasta que se cambie.
+                    }
+                    else
+                    {
+                        dsTablas.Tables["PaqueteDetalle"].DefaultView[e.RowIndex]["Nombre"] = tabServicio.Rows[0]["Nombre"].ToString();
+                        dgPaqueteDetalle.Refresh();
+                    }
+
+                }
+            }
+
+            if (col == "activo")
+            {
+                if (e.FormattedValue.ToString().Length > 0)
+                {
+                    bool activo = Boolean.Parse(e.FormattedValue.ToString());
+                    if (activo == false )
+                    {
+                        MessageBox.Show("Marque la casilla de Activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Cancel = true;
+                    }
+                }
+            }
         }
 
-        private void cmdGuardar_Click(object sender, EventArgs e)
+        private void cmdGuardar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -133,6 +170,7 @@ namespace Proyecto_DB2
                 {
                     errorProvider1.SetError(txtNombre, "Falta el nombre del paquete");
                     errores = true;
+
                 }
 
                 if (txtDescripcion.Text.Length == 0)
@@ -147,17 +185,18 @@ namespace Proyecto_DB2
                     errorProvider1.SetError(txtPrecioMensual, "Falta el precio del paquete");
                     errores = true;
                 }
-
-                if (!float.TryParse(txtPrecioMensual.Text, out _))
+                else
                 {
-                    errorProvider1.SetError(txtPrecioMensual, "El precio mensual debe ser un número, no una letra");
-                    errores = true;
-                }
-
-                if (float.Parse(txtPrecioMensual.Text) < 0)
-                {
-                    errorProvider1.SetError(txtPrecioMensual, "El precio mensual no puede ser un número negativo");
-                    errores = true;
+                    if (!float.TryParse(txtPrecioMensual.Text, out float precioMensual))
+                    {
+                        errorProvider1.SetError(txtPrecioMensual, "El precio mensual debe ser un número válido");
+                        errores = true;
+                    }
+                    else if (precioMensual < 0)
+                    {
+                        errorProvider1.SetError(txtPrecioMensual, "El precio mensual no puede ser negativo");
+                        errores = true;
+                    }
                 }
 
 
@@ -166,86 +205,208 @@ namespace Proyecto_DB2
                     errorProvider1.SetError(txtCantidadHoras, "Falta las horas de soporte del paquete");
                     errores = true;
                 }
-
-                if (!float.TryParse(txtCantidadHoras.Text, out _))
+                else
                 {
-                    errorProvider1.SetError(txtCantidadHoras, "Las horas de soporte deben ser numeros");
-                    errores = true;
+                    if (!int.TryParse(txtCantidadHoras.Text, out int cantidadHoras))
+                    {
+                        errorProvider1.SetError(txtCantidadHoras, "La cantidad de horas debe ser un número válido");
+                        errores = true;
+                    }
+                    else if (cantidadHoras < 0)
+                    {
+                        errorProvider1.SetError(txtCantidadHoras, "La cantidad de horas no puede ser negativa");
+                        errores = true;
+                    }
                 }
 
-                if (float.Parse(txtCantidadHoras.Text) < 0)
-                {
-                    errorProvider1.SetError(txtCantidadHoras, "Las horas de soporte no pueden ser un número negativo");
-                    errores = true;
-                }
 
                 if (txtTarifaHoraExtra.Text.Length == 0)
                 {
                     errorProvider1.SetError(txtTarifaHoraExtra, "Falta la tarifa por horas extra");
                     errores = true;
                 }
-
-                if (!float.TryParse(txtTarifaHoraExtra.Text, out _))
+                else
                 {
-                    errorProvider1.SetError(txtTarifaHoraExtra, "La tarifa por horas extra debe ser un numero");
-                    errores = true;
+                    if (!float.TryParse(txtTarifaHoraExtra.Text, out float tarifaHoraExtra))
+                    {
+                        errorProvider1.SetError(txtTarifaHoraExtra, "La tarifa por horas extra debe ser un número válido");
+                        errores = true;
+                    }
+                    else if (tarifaHoraExtra < 0)
+                    {
+                        errorProvider1.SetError(txtTarifaHoraExtra, "La tarifa por horas extra no puede ser negativa");
+                        errores = true;
+                    }
                 }
-
-                if (float.Parse(txtTarifaHoraExtra.Text) < 0)
-                {
-                    errorProvider1.SetError(txtTarifaHoraExtra, "La tarifa por horas extra no puede ser un número negativo");
-                    errores = true;
-                }
-
 
 
                 if (chkActivo.Checked == false)
                 {
                     errorProvider1.SetError(chkActivo, "Marque la casilla de activo");
-
                 }
 
+                foreach (DataGridViewRow row in dgPaqueteDetalle.Rows)
+                {
+                    var cellValue = row.Cells["activo"].Value;
+
+                    // Comprobar si el valor es nulo o no es un booleano válido
+                    if (cellValue == null || !(cellValue is bool) || !(bool)cellValue)
+                    {
+                        errores = true;
+                        MessageBox.Show("Todas las filas deben tener la columna 'Activo' marcada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+                }
 
                 if (!errores)
                 {
-                    if (MessageBox.Show("Desea guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    try
                     {
-                        
-                        dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = txtPaqueteID.Text;
-                        dsTablas.Tables["Paquete"].Rows[0]["nombre"] = txtNombre.Text;
-                        dsTablas.Tables["Paquete"].Rows[0]["descripcion"] = txtDescripcion.Text;
-                        dsTablas.Tables["Paquete"].Rows[0]["preciomensual"] = txtPrecioMensual.Text;
-                        dsTablas.Tables["Paquete"].Rows[0]["cantidadhoras"] = txtCantidadHoras.Text;
-                        dsTablas.Tables["Paquete"].Rows[0]["tarifahoraextra"] = txtTarifaHoraExtra.Text;
-                        dsTablas.Tables["Paquete"].Rows[0]["activo"] = chkActivo.Checked;
+                        if (MessageBox.Show("Desea guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            // Comprobar si es una inserción o actualización
+                            if (string.IsNullOrEmpty(txtPaqueteID.Text))  // Es una inserción si el campo está vacío
+                            {
+                                dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = 0;  // Se maneja en el SP con un incremento automático
+                            }
+                            else  // Actualización
+                            {
+                                dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = int.Parse(txtPaqueteID.Text);
+                            }
 
-                        prmPaqueteDetalle.Value = txtPaqueteID.Text;
 
-                        adpPaquete.Update(dsTablas.Tables["Paquete"]);
-                        adpPaqueteDetalle.Update(dsTablas.Tables["PaqueteDetalle"]);
+                            //dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = int.Parse(txtPaqueteID.Text);
+                            dsTablas.Tables["Paquete"].Rows[0]["nombre"] = txtNombre.Text;
+                            dsTablas.Tables["Paquete"].Rows[0]["descripcion"] = txtDescripcion.Text;
+                            dsTablas.Tables["Paquete"].Rows[0]["preciomensual"] = txtPrecioMensual.Text;
+                            dsTablas.Tables["Paquete"].Rows[0]["cantidadhoras"] = txtCantidadHoras.Text;
+                            dsTablas.Tables["Paquete"].Rows[0]["tarifahoraextra"] = txtTarifaHoraExtra.Text;
+                            dsTablas.Tables["Paquete"].Rows[0]["activo"] = chkActivo.Checked;
 
-                        Close();
+                            prmPaqueteDetalle.Value = txtPaqueteID.Text;
 
+                            adpPaquete.Update(dsTablas.Tables["Paquete"]);
+                            adpPaqueteDetalle.Update(dsTablas.Tables["PaqueteDetalle"]);
+
+                            Close();
+
+                            if (dgPaqueteDetalle.Rows.Count > 0)
+                            {
+                                int lastRowIndex = dgPaqueteDetalle.Rows.Count - 1;
+                                dgPaqueteDetalle.CurrentCell = dgPaqueteDetalle.Rows[lastRowIndex].Cells[1]; // Puedes ajustar el índice de la columna si es necesario
+                                dgPaqueteDetalle.Rows[lastRowIndex].Selected = true;
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     
                 }
-
             }
             catch (SqlException ex)
             {
-
                 for (int i = 0; i < ex.Errors.Count; i++)
                 {
-
                     if (ex.Errors[i].Number == 2627)
                     {
-                        MessageBox.Show("Los nombres de paquetes  deben ser unicos, validar este campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Los nombres de paquetes y los servicios en detalle deben ser unicos, validar estos campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (ex.Errors[i].Number == 515)
+                    {
+                        MessageBox.Show("Por favor validar que el campo activo en el detalle este marcado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
                         MessageBox.Show(ex.Errors[i].Message, ex.Errors[i].Number.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void cmdCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmdVerServicios_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                frmPaqueteVerServicios frm = new frmPaqueteVerServicios(con);
+                frm.ShowDialog();
+                if (frm.FilaSeleccionada != null)
+                {
+                    DataRow row = dsTablas.Tables["PaqueteDetalle"].NewRow();
+                    
+                    row["servicioid"] = frm.FilaSeleccionada["servicioid"];
+                    row["nombre"] = frm.FilaSeleccionada["nombre"];
+                    row["activo"] = true;
+
+                    dsTablas.Tables["PaqueteDetalle"].Rows.Add(row);
+                    dgPaqueteDetalle.DataSource = dsTablas.Tables["PaqueteDetalle"];
+                    dgPaqueteDetalle.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("No se seleccionó ningún servicio.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmdEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgPaqueteDetalle.SelectedRows.Count > 0)
+            {
+                object paqueteIdObj = dsTablas.Tables["PaqueteDetalle"].DefaultView[dgPaqueteDetalle.CurrentRow.Index]["paqueteid"];
+                object servicioIdObj = dsTablas.Tables["PaqueteDetalle"].DefaultView[dgPaqueteDetalle.CurrentRow.Index]["servicioid"];
+
+                if (int.TryParse(paqueteIdObj?.ToString(), out int paqueteid) &&
+                    int.TryParse(servicioIdObj?.ToString(), out int servicioid))
+                {
+                    if (MessageBox.Show("Desea Eliminar el Servicio", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            if (con.State == ConnectionState.Closed)
+                            {
+                                con.Open(); // Abre la conexión si está cerrada
+                            }
+
+                            SqlCommand cmd = new SqlCommand("spPaqueteDetalleDelete", con);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@paqueteid", paqueteid);
+                            cmd.Parameters.AddWithValue("@servicioid", servicioid);
+
+                            
+                            cmd.ExecuteNonQuery();
+                            
+
+                            // Limpia y vuelve a llenar el DataTable
+                            dsTablas.Tables["PaqueteDetalle"].Clear();
+                            adpPaqueteDetalle.Fill(dsTablas.Tables["PaqueteDetalle"]);
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show($"Error al eliminar el servicio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ID del paquete o servicio no válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila de servicio para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

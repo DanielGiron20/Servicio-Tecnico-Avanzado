@@ -35,6 +35,9 @@
             this.cmdInsertar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmdDesactivar = new System.Windows.Forms.Button();
+            this.cmbCampo = new System.Windows.Forms.ComboBox();
+            this.txtTexto = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,12 +112,12 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 11);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 52);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(650, 409);
+            this.dataGridView1.Size = new System.Drawing.Size(651, 368);
             this.dataGridView1.TabIndex = 7;
             // 
             // cmdDesactivar
@@ -133,12 +136,52 @@
             this.cmdDesactivar.UseVisualStyleBackColor = true;
             this.cmdDesactivar.Click += new System.EventHandler(this.cmdDesactivar_Click);
             // 
+            // cmbCampo
+            // 
+            this.cmbCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCampo.FormattingEnabled = true;
+            this.cmbCampo.Items.AddRange(new object[] {
+            "ClienteID",
+            "DNI",
+            "RTN",
+            "Nombre",
+            "Tipo",
+            "Direccion",
+            "Sexo",
+            "Civil",
+            "Telefono",
+            "Email"});
+            this.cmbCampo.Location = new System.Drawing.Point(11, 17);
+            this.cmbCampo.Name = "cmbCampo";
+            this.cmbCampo.Size = new System.Drawing.Size(165, 21);
+            this.cmbCampo.TabIndex = 14;
+            // 
+            // txtTexto
+            // 
+            this.txtTexto.Location = new System.Drawing.Point(249, 17);
+            this.txtTexto.Name = "txtTexto";
+            this.txtTexto.Size = new System.Drawing.Size(200, 20);
+            this.txtTexto.TabIndex = 15;
+            this.txtTexto.TextChanged += new System.EventHandler(this.txtTexto_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(200, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Buscar:";
+            // 
             // frmClienteLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdSalir;
             this.ClientSize = new System.Drawing.Size(673, 488);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtTexto);
+            this.Controls.Add(this.cmbCampo);
             this.Controls.Add(this.cmdDesactivar);
             this.Controls.Add(this.cmbOpcion);
             this.Controls.Add(this.label1);
@@ -168,5 +211,8 @@
         private System.Windows.Forms.Button cmdInsertar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button cmdDesactivar;
+        private System.Windows.Forms.ComboBox cmbCampo;
+        private System.Windows.Forms.TextBox txtTexto;
+        private System.Windows.Forms.Label label2;
     }
 }

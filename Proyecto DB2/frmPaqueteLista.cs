@@ -111,6 +111,10 @@ namespace Proyecto_DB2
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@paqueteid", paqueteid);
 
+                    SqlCommand cmd2 = new SqlCommand("spPaqueteDetalleDesactivar", con);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.AddWithValue("@paqueteid", paqueteid);
+
                     try
                     {
                         // Verificar si la conexión está cerrada antes de abrirla
@@ -120,6 +124,7 @@ namespace Proyecto_DB2
                         }
 
                         cmd.ExecuteNonQuery();
+                        cmd2.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
@@ -191,6 +196,34 @@ namespace Proyecto_DB2
             {
 
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTexto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTexto.Text.Length == 0)
+            {
+                tabPaquete.DefaultView.RowFilter = "";
+            }
+            else
+            {
+                if (tabPaquete.Columns[cmbCampo.Text].DataType == typeof(string))
+                {
+                    tabPaquete.DefaultView.RowFilter = cmbCampo.Text + " like '%" + txtTexto.Text + "%'";
+                }
+                else
+                {
+                    int numero;
+                    if (int.TryParse(txtTexto.Text, out numero))
+                    {
+                        tabPaquete.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                    }
+                    else
+                    {
+                        tabPaquete.DefaultView.RowFilter = "1 = 0"; // No coincidirá con nada si el texto no es un número válido
+                    }
+                }
+
             }
         }
     }

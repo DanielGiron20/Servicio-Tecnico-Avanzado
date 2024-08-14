@@ -137,6 +137,12 @@
     <Compile Include="frmPaqueteLista.Designer.cs">
       <DependentUpon>frmPaqueteLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPaqueteVerServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaqueteVerServicios.Designer.cs">
+      <DependentUpon>frmPaqueteVerServicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaqueteLista.resx">
       <DependentUpon>frmPaqueteLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaqueteVerServicios.resx">
+      <DependentUpon>frmPaqueteVerServicios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
