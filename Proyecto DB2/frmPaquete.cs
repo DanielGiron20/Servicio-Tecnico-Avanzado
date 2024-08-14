@@ -47,7 +47,7 @@ namespace Proyecto_DB2
 
             adpPaqueteDetalle.InsertCommand = new SqlCommand("spPaqueteDetalleInsert", conexion);
             adpPaqueteDetalle.InsertCommand.CommandType = CommandType.StoredProcedure;
-            adpPaqueteDetalle.InsertCommand.Parameters.Add(prmPaqueteDetalle);  //parametro enviado como un objeto 
+            adpPaqueteDetalle.InsertCommand.Parameters.Add(prmPaqueteDetalle);
             adpPaqueteDetalle.InsertCommand.Parameters.Add("@servicioid", SqlDbType.Int, 4, "ServicioID");
             adpPaqueteDetalle.InsertCommand.Parameters.Add("@activo", SqlDbType.Bit, 1, "Activo");
 
@@ -82,7 +82,7 @@ namespace Proyecto_DB2
             {
                 dgPaqueteDetalle.AllowUserToAddRows = false;
                 dgPaqueteDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                txtPaqueteID.Enabled = false;
+                txtPaqueteID.Enabled = true;
                 dsTablas = new DataSet();
 
                 dsTablas.Tables.Add("Paquete"); //agregar las tablas y colocando los nombres
@@ -94,10 +94,11 @@ namespace Proyecto_DB2
                 if (dsTablas.Tables["Paquete"].Rows.Count == 0)  //se usan los mismos metodos de un datatablle
                 {
                     dsTablas.Tables["Paquete"].Rows.Add();
-
+                    cmdEliminar.Enabled = false;
                 }
                 else
                 {
+                    txtPaqueteID.Enabled = false;
                     txtPaqueteID.Text = dsTablas.Tables["Paquete"].Rows[0]["paqueteid"].ToString();
                     txtNombre.Text = dsTablas.Tables["Paquete"].Rows[0]["nombre"].ToString();
                     txtDescripcion.Text = dsTablas.Tables["Paquete"].Rows[0]["descripcion"].ToString();
@@ -109,7 +110,7 @@ namespace Proyecto_DB2
                 }
 
                 dgPaqueteDetalle.DataSource = dsTablas.Tables["PaqueteDetalle"];
-                dgPaqueteDetalle.Columns["paqueteid"].Visible = false;
+                dgPaqueteDetalle.Columns["paqueteid"].Visible = true;
 
             }
             catch (Exception ex)
@@ -264,18 +265,15 @@ namespace Proyecto_DB2
                     {
                         if (MessageBox.Show("Desea guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
+
                             // Comprobar si es una inserción o actualización
-                            if (string.IsNullOrEmpty(txtPaqueteID.Text))  // Es una inserción si el campo está vacío
+                           /* if (string.IsNullOrEmpty(txtPaqueteID.Text))  // Es una inserción si el campo está vacío
                             {
-                                dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = 0;  // Se maneja en el SP con un incremento automático
                             }
-                            else  // Actualización
-                            {
-                                dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = int.Parse(txtPaqueteID.Text);
-                            }
+                            // Actualiza el DataSet con el nuevo PaqueteID*/
+                            
 
-
-                            //dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = int.Parse(txtPaqueteID.Text);
+                            dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = txtPaqueteID.Text;
                             dsTablas.Tables["Paquete"].Rows[0]["nombre"] = txtNombre.Text;
                             dsTablas.Tables["Paquete"].Rows[0]["descripcion"] = txtDescripcion.Text;
                             dsTablas.Tables["Paquete"].Rows[0]["preciomensual"] = txtPrecioMensual.Text;
@@ -285,8 +283,8 @@ namespace Proyecto_DB2
 
                             prmPaqueteDetalle.Value = txtPaqueteID.Text;
 
-                            adpPaquete.Update(dsTablas.Tables["Paquete"]);
-                            adpPaqueteDetalle.Update(dsTablas.Tables["PaqueteDetalle"]);
+                           adpPaquete.Update(dsTablas.Tables["Paquete"]);
+                           adpPaqueteDetalle.Update(dsTablas.Tables["PaqueteDetalle"]);
 
                             Close();
 
