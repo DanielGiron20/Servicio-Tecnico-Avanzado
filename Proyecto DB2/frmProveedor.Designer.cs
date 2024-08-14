@@ -56,7 +56,7 @@
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(89, 33);
             this.btnInsertar.TabIndex = 0;
-            this.btnInsertar.Text = "Agregar";
+            this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = false;
             this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
@@ -68,7 +68,7 @@
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 33);
             this.btnActualizar.TabIndex = 1;
-            this.btnActualizar.Text = "Editar";
+            this.btnActualizar.Text = "Modificar";
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
