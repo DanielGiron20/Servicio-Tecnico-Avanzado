@@ -85,7 +85,11 @@
             this.Controls.Add(this.txtTexto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbCampo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmPaqueteVerServicios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPaqueteVerServicios";
             this.Load += new System.EventHandler(this.frmPaqueteVerServicios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

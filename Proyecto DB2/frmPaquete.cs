@@ -14,6 +14,7 @@ namespace Proyecto_DB2
 {
     public partial class frmPaquete : Form
     {
+        
         SqlConnection con;
         SqlParameter prmPaqueteDetalle;
         SqlDataAdapter adpPaquete;
@@ -80,6 +81,7 @@ namespace Proyecto_DB2
         {
             try
             {
+                
                 dgPaqueteDetalle.AllowUserToAddRows = false;
                 dgPaqueteDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 txtPaqueteID.Enabled = true;
@@ -95,6 +97,7 @@ namespace Proyecto_DB2
                 {
                     dsTablas.Tables["Paquete"].Rows.Add();
                     cmdEliminar.Enabled = false;
+                    txtPaqueteID.Enabled = false;
                 }
                 else
                 {
@@ -110,7 +113,7 @@ namespace Proyecto_DB2
                 }
 
                 dgPaqueteDetalle.DataSource = dsTablas.Tables["PaqueteDetalle"];
-                dgPaqueteDetalle.Columns["paqueteid"].Visible = true;
+                dgPaqueteDetalle.Columns["paqueteid"].Visible = false;
 
             }
             catch (Exception ex)
@@ -265,15 +268,31 @@ namespace Proyecto_DB2
                     {
                         if (MessageBox.Show("Desea guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
+                            int paqueteId;
 
-                            // Comprobar si es una inserción o actualización
-                           /* if (string.IsNullOrEmpty(txtPaqueteID.Text))  // Es una inserción si el campo está vacío
+                            if (string.IsNullOrEmpty(txtPaqueteID.Text)) // Inserción
                             {
+                                // Insertar el paquete y obtener el nuevo PaqueteID
+                                paqueteId = InsertarPaquete();
+                                txtPaqueteID.Text = paqueteId.ToString();
                             }
-                            // Actualiza el DataSet con el nuevo PaqueteID*/
-                            
+                            else // Actualización
+                            {
+                                paqueteId = int.Parse(txtPaqueteID.Text);
 
-                            dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = txtPaqueteID.Text;
+                                // Actualizar el paquete en el DataSet
+                                dsTablas.Tables["Paquete"].Rows[0]["nombre"] = txtNombre.Text;
+                                dsTablas.Tables["Paquete"].Rows[0]["descripcion"] = txtDescripcion.Text;
+                                dsTablas.Tables["Paquete"].Rows[0]["preciomensual"] = txtPrecioMensual.Text;
+                                dsTablas.Tables["Paquete"].Rows[0]["cantidadhoras"] = txtCantidadHoras.Text;
+                                dsTablas.Tables["Paquete"].Rows[0]["tarifahoraextra"] = txtTarifaHoraExtra.Text;
+                                dsTablas.Tables["Paquete"].Rows[0]["activo"] = chkActivo.Checked;
+
+                                adpPaquete.Update(dsTablas.Tables["Paquete"]);
+                            }
+
+
+                            //dsTablas.Tables["Paquete"].Rows[0]["paqueteid"] = txtPaqueteID.Text;
                             dsTablas.Tables["Paquete"].Rows[0]["nombre"] = txtNombre.Text;
                             dsTablas.Tables["Paquete"].Rows[0]["descripcion"] = txtDescripcion.Text;
                             dsTablas.Tables["Paquete"].Rows[0]["preciomensual"] = txtPrecioMensual.Text;
@@ -281,10 +300,11 @@ namespace Proyecto_DB2
                             dsTablas.Tables["Paquete"].Rows[0]["tarifahoraextra"] = txtTarifaHoraExtra.Text;
                             dsTablas.Tables["Paquete"].Rows[0]["activo"] = chkActivo.Checked;
 
-                            prmPaqueteDetalle.Value = txtPaqueteID.Text;
 
-                           adpPaquete.Update(dsTablas.Tables["Paquete"]);
-                           adpPaqueteDetalle.Update(dsTablas.Tables["PaqueteDetalle"]);
+
+                            //adpPaquete.Update(dsTablas.Tables["Paquete"]);
+                            prmPaqueteDetalle.Value = txtPaqueteID.Text;
+                            adpPaqueteDetalle.Update(dsTablas.Tables["PaqueteDetalle"]);
 
                             Close();
 
@@ -407,5 +427,40 @@ namespace Proyecto_DB2
                 MessageBox.Show("Seleccione una fila de servicio para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private int InsertarPaquete()
+        {
+            String connectionString = "Server=3.128.144.165; DataBase=DB20212000317; User ID=evelyn.sabillon; Password=ES20212000317";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spPaqueteInsert", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetro de salida para capturar el PaqueteID
+                    SqlParameter outputIdParam = new SqlParameter("@paqueteid", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputIdParam);
+
+                    // Otros parámetros de entrada
+                    cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                    cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
+                    cmd.Parameters.AddWithValue("@preciomensual", float.Parse(txtPrecioMensual.Text));
+                    cmd.Parameters.AddWithValue("@cantidadhoras", int.Parse(txtCantidadHoras.Text));
+                    cmd.Parameters.AddWithValue("@activo", chkActivo.Checked);
+                    cmd.Parameters.AddWithValue("@tarifahoraextra", float.Parse(txtTarifaHoraExtra.Text));
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+
+                    // Obtener el valor del PaqueteID generado
+                    return (int)outputIdParam.Value;
+                }
+            }
+        }
+
     }
 }

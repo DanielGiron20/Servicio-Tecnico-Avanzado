@@ -271,7 +271,11 @@
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.cmdGuardar);
             this.Controls.Add(this.label7);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmEmpleado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEmpleado";
             this.Load += new System.EventHandler(this.frmEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
