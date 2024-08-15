@@ -75,12 +75,15 @@ namespace Proyecto_DB2
                 cmbSexo.Items.Add("Femenino");
 
                 
+
                 tabPuesto = new DataTable();
                 adpPuesto.Fill(tabPuesto);
                 
                 cmbPuesto.DataSource = tabPuesto;
                 cmbPuesto.DisplayMember = "Nombre";
                 cmbPuesto.ValueMember = "PuestoID";
+
+                cmbPuesto.SelectedIndex = -1;
 
 
                 ToolTip infoToolTipEmail = new ToolTip();
@@ -323,9 +326,20 @@ namespace Proyecto_DB2
 
         private void cmdAgregarPuesto_Click(object sender, EventArgs e)
         {
-            PuestoEmpleado frm = new PuestoEmpleado();
-            frm.ShowDialog();
+            using (PuestoEmpleado frm = new PuestoEmpleado())
+            {
+                frm.ShowDialog();
 
+                // Recargar los datos del ComboBox de Puestos
+                tabPuesto.Clear(); // Limpia la tabla actual
+                adpPuesto.Fill(tabPuesto); // Vuelve a llenar la tabla con datos actualizados
+
+                // Actualiza el DataSource del ComboBox
+                cmbPuesto.DataSource = null;
+                cmbPuesto.DataSource = tabPuesto;
+                cmbPuesto.DisplayMember = "Nombre";
+                cmbPuesto.ValueMember = "PuestoID";
+            }
 
         }
     }
