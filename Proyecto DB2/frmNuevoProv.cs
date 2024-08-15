@@ -69,6 +69,17 @@ namespace Proyecto_DB2
                     cmdInsertar.Parameters.AddWithValue("@email", txtEmail.Text);
                     cmdInsertar.Parameters.AddWithValue("@activo", chkEstado.Checked);
 
+                    //parametro para obtener el estado con respecto al correo 
+
+                    SqlParameter EstadoCorreo = new SqlParameter
+                    {
+                        ParameterName = "@estadoObtenido",
+                        SqlDbType = SqlDbType.Int, 
+                        Direction = ParameterDirection.Output
+                    };
+                    cmdInsertar.Parameters.Add(EstadoCorreo);
+
+
                     // Abrir la conexión si está cerrada
                     if (conexion.State == ConnectionState.Closed)
                     {
@@ -78,19 +89,32 @@ namespace Proyecto_DB2
                     // Ejecutar el comando para insertar el nuevo registro
                     cmdInsertar.ExecuteNonQuery();
 
-                    // se limpian dando la sensacion que se agregaron exitosamente 
-                    txtNombre.Clear();
-                    txtRtn.Clear();
-                    txtTipo.Clear();
-                    txtDireccion.Clear();
-                    txtTelefono.Clear();
-                    txtEmail.Clear();
-                    chkEstado.Checked = false;
+                    int estado = (int)cmdInsertar.Parameters["@estadoObtenido"].Value;
+
+                    if (estado == 0)
+                    {
+                       
+                 // se limpian dando la sensacion que se agregaron exitosamente 
+                      txtNombre.Clear();
+                       txtRtn.Clear();
+                      txtTipo.Clear();
+                       txtDireccion.Clear();
+                      txtTelefono.Clear();
+                      txtEmail.Clear();
+                     chkEstado.Checked = false;
 
        
 
-                    MessageBox.Show("Proveedor creado exitosamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     MessageBox.Show("Proveedor creado exitosamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    }else
+                    {
+
+                     MessageBox.Show("Correo ingresado no valido ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                   
+                    }
 
                 }
             }
@@ -106,6 +130,11 @@ namespace Proyecto_DB2
                     conexion.Close();
                 }
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

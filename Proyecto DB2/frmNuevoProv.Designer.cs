@@ -117,7 +117,8 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 21;
-            this.label3.Text = "tIPO";
+            this.label3.Text = "Tipo";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtRtn
             // 
