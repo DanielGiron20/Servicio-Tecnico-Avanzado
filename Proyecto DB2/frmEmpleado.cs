@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_DB2
 {
-    public partial class Empleados : Form
+    public partial class frmEmpleado : Form
     {
-        public Empleados()
+        public frmEmpleado()
         {
             InitializeComponent();
         }

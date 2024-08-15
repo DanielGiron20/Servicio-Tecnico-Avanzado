@@ -115,7 +115,7 @@ namespace Proyecto_DB2
 
         private void button9_Click(object sender, EventArgs e)
         {
-            openchildform(new Empleados());    
+            openchildform(new frmEmpleado());    
             ocultar();
         }
 
