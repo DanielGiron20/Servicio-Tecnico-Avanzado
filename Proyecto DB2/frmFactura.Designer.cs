@@ -32,7 +32,7 @@
             this.chkActivoFac = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFacturaID = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvFactura = new System.Windows.Forms.DataGridView();
             this.cmbClienteID = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbNombreCliente = new System.Windows.Forms.ComboBox();
@@ -68,7 +68,11 @@
             this.cmbOrdenDetID = new System.Windows.Forms.ComboBox();
             this.chkActivoFacturaDet = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txtHorasExtras = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtFacturaDetID = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturaDet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,13 +115,15 @@
             this.txtFacturaID.Size = new System.Drawing.Size(62, 20);
             this.txtFacturaID.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvFactura
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 264);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(773, 284);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFactura.Location = new System.Drawing.Point(31, 264);
+            this.dgvFactura.Name = "dgvFactura";
+            this.dgvFactura.Size = new System.Drawing.Size(773, 284);
+            this.dgvFactura.TabIndex = 4;
+            this.dgvFactura.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFactura_CellDoubleClick);
+            this.dgvFactura.SelectionChanged += new System.EventHandler(this.dgvFactura_SelectionChanged);
             // 
             // cmbClienteID
             // 
@@ -268,6 +274,7 @@
             this.btnInsertarFac.TabIndex = 21;
             this.btnInsertarFac.Text = "Insertar";
             this.btnInsertarFac.UseVisualStyleBackColor = true;
+            this.btnInsertarFac.Click += new System.EventHandler(this.btnInsertarFac_Click);
             // 
             // btnModificarFac
             // 
@@ -277,6 +284,7 @@
             this.btnModificarFac.TabIndex = 22;
             this.btnModificarFac.Text = "Modificar";
             this.btnModificarFac.UseVisualStyleBackColor = true;
+            this.btnModificarFac.Click += new System.EventHandler(this.btnModificarFac_Click);
             // 
             // btnLimpiarFac
             // 
@@ -286,6 +294,7 @@
             this.btnLimpiarFac.TabIndex = 23;
             this.btnLimpiarFac.Text = "Limpiar";
             this.btnLimpiarFac.UseVisualStyleBackColor = true;
+            this.btnLimpiarFac.Click += new System.EventHandler(this.btnLimpiarFac_Click);
             // 
             // btnLimpiar
             // 
@@ -295,6 +304,7 @@
             this.btnLimpiar.TabIndex = 27;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnModificar
             // 
@@ -304,6 +314,7 @@
             this.btnModificar.TabIndex = 26;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnInsertar
             // 
@@ -313,6 +324,7 @@
             this.btnInsertar.TabIndex = 25;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // dgvFacturaDet
             // 
@@ -321,12 +333,14 @@
             this.dgvFacturaDet.Name = "dgvFacturaDet";
             this.dgvFacturaDet.Size = new System.Drawing.Size(773, 284);
             this.dgvFacturaDet.TabIndex = 24;
+            this.dgvFacturaDet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturaDet_CellContentClick);
+            this.dgvFacturaDet.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturaDet_CellDoubleClick);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(301, 662);
+            this.label10.Location = new System.Drawing.Point(301, 643);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(199, 31);
             this.label10.TabIndex = 28;
@@ -334,7 +348,7 @@
             // 
             // txtFacturaID2
             // 
-            this.txtFacturaID2.Location = new System.Drawing.Point(113, 717);
+            this.txtFacturaID2.Location = new System.Drawing.Point(135, 741);
             this.txtFacturaID2.Name = "txtFacturaID2";
             this.txtFacturaID2.Size = new System.Drawing.Size(62, 20);
             this.txtFacturaID2.TabIndex = 30;
@@ -343,7 +357,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(38, 718);
+            this.label11.Location = new System.Drawing.Point(55, 742);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 16);
             this.label11.TabIndex = 29;
@@ -353,7 +367,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(39, 761);
+            this.label12.Location = new System.Drawing.Point(56, 785);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 16);
             this.label12.TabIndex = 32;
@@ -362,7 +376,7 @@
             // cmbArticuloID
             // 
             this.cmbArticuloID.FormattingEnabled = true;
-            this.cmbArticuloID.Location = new System.Drawing.Point(113, 760);
+            this.cmbArticuloID.Location = new System.Drawing.Point(135, 784);
             this.cmbArticuloID.Name = "cmbArticuloID";
             this.cmbArticuloID.Size = new System.Drawing.Size(62, 21);
             this.cmbArticuloID.TabIndex = 31;
@@ -370,14 +384,14 @@
             // cmbNombreArticulo
             // 
             this.cmbNombreArticulo.FormattingEnabled = true;
-            this.cmbNombreArticulo.Location = new System.Drawing.Point(190, 760);
+            this.cmbNombreArticulo.Location = new System.Drawing.Point(212, 784);
             this.cmbNombreArticulo.Name = "cmbNombreArticulo";
             this.cmbNombreArticulo.Size = new System.Drawing.Size(115, 21);
             this.cmbNombreArticulo.TabIndex = 33;
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(113, 803);
+            this.txtCantidad.Location = new System.Drawing.Point(135, 827);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(62, 20);
             this.txtCantidad.TabIndex = 35;
@@ -386,7 +400,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(42, 804);
+            this.label13.Location = new System.Drawing.Point(59, 828);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 16);
             this.label13.TabIndex = 34;
@@ -396,7 +410,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(360, 714);
+            this.label14.Location = new System.Drawing.Point(358, 697);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(111, 16);
             this.label14.TabIndex = 37;
@@ -405,7 +419,7 @@
             // cmbOrdenDetID
             // 
             this.cmbOrdenDetID.FormattingEnabled = true;
-            this.cmbOrdenDetID.Location = new System.Drawing.Point(477, 713);
+            this.cmbOrdenDetID.Location = new System.Drawing.Point(475, 696);
             this.cmbOrdenDetID.Name = "cmbOrdenDetID";
             this.cmbOrdenDetID.Size = new System.Drawing.Size(62, 21);
             this.cmbOrdenDetID.TabIndex = 36;
@@ -430,12 +444,50 @@
             this.label15.Size = new System.Drawing.Size(114, 54);
             this.label15.TabIndex = 39;
             // 
+            // txtHorasExtras
+            // 
+            this.txtHorasExtras.Location = new System.Drawing.Point(475, 743);
+            this.txtHorasExtras.Name = "txtHorasExtras";
+            this.txtHorasExtras.Size = new System.Drawing.Size(62, 20);
+            this.txtHorasExtras.TabIndex = 41;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(385, 744);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(84, 16);
+            this.label16.TabIndex = 40;
+            this.label16.Text = "Horas Extras";
+            // 
+            // txtFacturaDetID
+            // 
+            this.txtFacturaDetID.Location = new System.Drawing.Point(135, 700);
+            this.txtFacturaDetID.Name = "txtFacturaDetID";
+            this.txtFacturaDetID.Size = new System.Drawing.Size(62, 20);
+            this.txtFacturaDetID.TabIndex = 43;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(12, 701);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(108, 16);
+            this.label17.TabIndex = 42;
+            this.label17.Text = "FacturaDetalleID";
+            // 
             // frmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(828, 749);
+            this.Controls.Add(this.txtFacturaDetID);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.txtHorasExtras);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.chkActivoFacturaDet);
             this.Controls.Add(this.label14);
@@ -471,7 +523,7 @@
             this.Controls.Add(this.cmbNombreCliente);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbClienteID);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvFactura);
             this.Controls.Add(this.txtFacturaID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chkActivoFac);
@@ -479,7 +531,7 @@
             this.Name = "frmFactura";
             this.Text = "frmFactura";
             this.Load += new System.EventHandler(this.frmFactura_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturaDet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -492,7 +544,7 @@
         private System.Windows.Forms.CheckBox chkActivoFac;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFacturaID;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvFactura;
         private System.Windows.Forms.ComboBox cmbClienteID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbNombreCliente;
@@ -528,5 +580,9 @@
         private System.Windows.Forms.ComboBox cmbOrdenDetID;
         private System.Windows.Forms.CheckBox chkActivoFacturaDet;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtHorasExtras;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtFacturaDetID;
+        private System.Windows.Forms.Label label17;
     }
 }
