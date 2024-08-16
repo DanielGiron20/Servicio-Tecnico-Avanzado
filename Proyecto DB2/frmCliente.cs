@@ -182,7 +182,8 @@ namespace Proyecto_DB2
 
         private void cmdCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("Desea salir sin guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                this.Close();
         }
 
         private void cmdGuardar_Click(object sender, EventArgs e)

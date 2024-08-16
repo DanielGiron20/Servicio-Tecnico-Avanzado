@@ -29,7 +29,7 @@ namespace Proyecto_DB2
         {
             InitializeComponent();
 
-            adpCliente = new SqlDataAdapter("spClienteSelect", conexion);
+            adpCliente = new SqlDataAdapter("spClienteActivos", conexion);
             adpCliente.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             con = conexion;

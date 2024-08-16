@@ -27,7 +27,7 @@ namespace Proyecto_DB2
         {
             InitializeComponent();
 
-            adpPaquete = new SqlDataAdapter("spPaqueteSelect", conexion);
+            adpPaquete = new SqlDataAdapter("spPaqueteActivos", conexion);
             adpPaquete.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             con = conexion;

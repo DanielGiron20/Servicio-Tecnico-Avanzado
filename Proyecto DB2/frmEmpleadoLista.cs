@@ -29,7 +29,7 @@ namespace Proyecto_DB2
         {
             InitializeComponent();
 
-            adpEmpleado = new SqlDataAdapter("spEmpleadoSelect", conexion);
+            adpEmpleado = new SqlDataAdapter("spEmpleadoActivos", conexion);
             adpEmpleado.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             con = conexion;
