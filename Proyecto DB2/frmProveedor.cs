@@ -171,7 +171,7 @@ namespace Proyecto_DB2
                 // Establecer el valor seleccionado en el ComboBox
                 LlenarComboBoxTipoProveedor(tipoProveedor);
 
-                
+                //prueba
             }
         }
 
