@@ -218,6 +218,30 @@ namespace Proyecto_DB2
             openchildform(new frmClienteCredito(conexionMenu));
             ocultar();
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            openchildform(new PuestoEmpleado());
+            ocultar();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            openchildform(new AreaEmpleado());
+            ocultar();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            openchildform(new ConsultaAreasPuestos());
+            ocultar();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            openchildform(new Planilla());
+            ocultar();
+        }
     }
 
 }
