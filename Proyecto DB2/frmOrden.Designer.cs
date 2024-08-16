@@ -320,7 +320,7 @@
             // 
             // dgvOrdenDet
             // 
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.dgvOrdenDet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvOrdenDet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrdenDet.Location = new System.Drawing.Point(28, 820);
@@ -328,6 +328,7 @@
             this.dgvOrdenDet.Name = "dgvOrdenDet";
             this.dgvOrdenDet.Size = new System.Drawing.Size(761, 325);
             this.dgvOrdenDet.TabIndex = 52;
+            this.dgvOrdenDet.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrdenDet_CellDoubleClick);
             // 
             // label12
             // 
@@ -437,6 +438,7 @@
             this.button1.TabIndex = 64;
             this.button1.Text = "Insertar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -446,6 +448,7 @@
             this.button2.TabIndex = 65;
             this.button2.Text = "Modificar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // chkActivo
             // 

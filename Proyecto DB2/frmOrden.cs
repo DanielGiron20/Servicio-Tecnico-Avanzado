@@ -39,6 +39,8 @@ namespace Proyecto_DB2
         SqlDataAdapter adpServicio;
         DataTable dtServicio;
 
+        
+
         public frmOrden()
         {
             InitializeComponent();
@@ -142,9 +144,23 @@ namespace Proyecto_DB2
 
             adpOrdenDet.SelectCommand = new SqlCommand("spSelectOrdenDetalle", cnx);
             adpOrdenDet.SelectCommand.CommandType = CommandType.StoredProcedure;
-            adpOrdenDet.SelectCommand.Parameters.Add(new SqlParameter("@ordendetid", SqlDbType.Int));
+            adpOrdenDet.SelectCommand.Parameters.Add(new SqlParameter("@ordenid", SqlDbType.Int));
 
+            adpOrdenDet.InsertCommand = new SqlCommand("spInsertOrdenDetalle", cnx);
+            adpOrdenDet.InsertCommand.CommandType = CommandType.StoredProcedure;
+            adpOrdenDet.InsertCommand.Parameters.Add("@ordendetalleid", SqlDbType.Int, 4, "OrdenDetalleID");
+            adpOrdenDet.InsertCommand.Parameters.Add("@paqueteid", SqlDbType.Int, 4, "PaqueteID");
+            adpOrdenDet.InsertCommand.Parameters.Add("@servicioid", SqlDbType.Int, 4, "ServicioID");
+            adpOrdenDet.InsertCommand.Parameters.Add("@ordenid", SqlDbType.Int, 4, "OrdenID");
+            adpOrdenDet.InsertCommand.Parameters.Add("@cantidad", SqlDbType.Int, 4, "Cantidad");
+            adpOrdenDet.InsertCommand.Parameters.Add("@activo", SqlDbType.Bit, 1, "Activo");
 
+            adpOrdenDet.UpdateCommand = new SqlCommand("spUpdateOrdenDetalle", cnx);
+            adpOrdenDet.UpdateCommand.CommandType = CommandType.StoredProcedure;
+            adpOrdenDet.UpdateCommand.Parameters.Add("@ordendetid", SqlDbType.Int, 4, "OrdenDetalleID");
+            adpOrdenDet.UpdateCommand.Parameters.Add("@ordenid", SqlDbType.Int, 4, "OrdenID");
+            adpOrdenDet.UpdateCommand.Parameters.Add("@cantidad", SqlDbType.Int, 4, "Cantidad");
+            adpOrdenDet.UpdateCommand.Parameters.Add("@activo", SqlDbType.Bit, 1, "Activo");
 
             adpCliente = new SqlDataAdapter();
             dtCliente = new DataTable();
@@ -419,7 +435,7 @@ namespace Proyecto_DB2
                 txtOrdenID.Text = filaSeleccionada.Cells["OrdenID"].Value.ToString();
                 txtOrdenID2.Text = filaSeleccionada.Cells["OrdenID"].Value.ToString();
 
-                adpOrdenDet.SelectCommand.Parameters["@ordendetid"].Value = Convert.ToInt32(txtOrdenID2.Text);
+                adpOrdenDet.SelectCommand.Parameters["@ordenid"].Value = Convert.ToInt32(txtOrdenID2.Text);
 
                 try
                 {
@@ -431,6 +447,136 @@ namespace Proyecto_DB2
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataRow nuevaFila = dtOrdenDet.NewRow();
+
+            if(cmbPaqueteId.SelectedIndex == -1)
+            {
+                nuevaFila["PaqueteID"] = DBNull.Value;
+            }
+            else
+            {
+                nuevaFila["PaqueteID"] = cmbPaqueteId.Text;
+            }
+
+            if (cmbServicioID.SelectedIndex == -1)
+            {
+                nuevaFila["ServicioID"] = DBNull.Value;
+            }
+            else
+            {
+                nuevaFila["ServicioID"] = cmbServicioID.Text;
+            }
+
+            
+            nuevaFila["OrdenID"] = txtOrdenID2.Text;
+            nuevaFila["Cantidad"] = txtCantidad.Text;
+            nuevaFila["Activo"] = Convert.ToString(chkActivoOrdenDet.Checked);
+
+            dtOrdenDet.Rows.Add(nuevaFila);
+
+            try
+            {
+                adpOrdenDet.Update(dtOrdenDet);
+                dtOrdenDet.Clear();
+                adpOrdenDet.Fill(dtOrdenDet);
+                dgvOrdenDet.Refresh();
+                MessageBox.Show("Los datos se insertaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limpiarOrdenDet();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(dgvOrdenDet.SelectedRows.Count > 0)
+            {
+                dtOrdenDet.PrimaryKey = new DataColumn[] { dtOrdenDet.Columns["OrdenDetalleID"] };
+
+                DataGridViewRow filaSeleccionada = dgvOrdenDet.Rows[0];
+
+                DataRow filaDatos = dtOrdenDet.Rows.Find(filaSeleccionada.Cells["OrdenDetalleID"].Value);
+
+                if(filaDatos != null)
+                {
+                    if(cmbPaqueteId.SelectedIndex == -1)
+                    {
+                        filaDatos["PaqueteID"] = DBNull.Value;
+                    }
+                    else
+                    {
+                        filaDatos["PaqueteID"] = cmbPaqueteId.Text;
+                    }
+                    
+                    filaDatos["ServicioID"] = cmbServicioID.Text;
+                    filaDatos["OrdenID"] = txtOrdenID2.Text;
+                    filaDatos["Cantidad"] = txtCantidad.Text;
+                    filaDatos["Activo"] = chkActivoOrdenDet.Checked ? 1 : 0;
+
+                    try
+                    {
+                        adpOrdenDet.Update(dtOrdenDet);
+                        dtOrdenDet.Clear();
+                        adpOrdenDet.Fill(dtOrdenDet);
+                        dgvOrdenDet.Refresh();
+                        MessageBox.Show("Los datos se actualizaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        limpiarOrdenDet();
+                        txtOrdenID2.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la fila.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila para actualizar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvOrdenDet_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow filaSeleccionada = dgvOrdenDet.Rows[e.RowIndex];
+
+                chkActivoOrdenDet.Enabled = true;
+                txtOrdenID2.Enabled = true;
+
+                if (filaSeleccionada.Cells["PaqueteID"].Value.ToString() == "")
+                {
+                    cmbPaqueteId.Enabled = false;
+                    cmbNombrePaquete.Enabled = false;
+
+                    txtOrdenDetId.Text = filaSeleccionada.Cells["OrdenDetalleID"].Value.ToString();
+                    cmbServicioID.Text = filaSeleccionada.Cells["ServicioID"].Value.ToString();
+                    txtOrdenID2.Text = filaSeleccionada.Cells["OrdenID"].Value.ToString();
+                    txtCantidad.Text = filaSeleccionada.Cells["Cantidad"].Value.ToString();
+                    chkActivoOrdenDet.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
+                }
+                else if(filaSeleccionada.Cells["ServicioID"].Value.ToString() == "")
+                {
+                    txtCantidad.Enabled = false;
+                    cmbPaqueteId.Enabled = false;
+                    cmbNombrePaquete.Enabled = false;
+
+                    txtOrdenID2.Text = filaSeleccionada.Cells["OrdenID"].Value.ToString();
+                    
+                    chkActivoOrdenDet.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
                 }
 
             }

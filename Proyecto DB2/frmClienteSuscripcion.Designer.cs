@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmClienteSuscripcion";
             this.Text = "frmClienteSuscripciones";
+            this.Load += new System.EventHandler(this.frmClienteSuscripcion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

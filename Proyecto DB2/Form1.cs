@@ -109,13 +109,13 @@ namespace Proyecto_DB2
 
         private void button7_Click(object sender, EventArgs e)
         {
-            openchildform(new Compras());
+            openchildform(new Compras(conexionMenu));
             ocultar();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            openchildform(new Empleados());    
+            openchildform(new frmEmpleadoLista(conexionMenu));    
             ocultar();
         }
 
@@ -180,7 +180,7 @@ namespace Proyecto_DB2
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
-            openchildform(new frmFactura());
+            openchildform(new frmFactura(conexionMenu));
             ocultar();
         }
 
@@ -203,19 +203,19 @@ namespace Proyecto_DB2
 
         private void button11_Click(object sender, EventArgs e)
         {
-            openchildform(new frmPaqueteLista());
+            openchildform(new frmPaqueteLista(conexionMenu));
             ocultar();
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            openchildform(new frmClienteSuscripcion());
+            openchildform(new frmClienteSuscripcion(conexionMenu));
             ocultar();
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            openchildform(new frmClienteCredito());
+            openchildform(new frmClienteCredito(conexionMenu));
             ocultar();
         }
     }

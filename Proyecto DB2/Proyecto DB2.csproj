@@ -59,6 +59,12 @@
       <DependentUpon>AreaEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="CConexion.cs" />
+    <Compile Include="frmEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpleado.Designer.cs">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConsultaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaCompra.Designer.cs">
+      <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +148,12 @@
     </Compile>
     <Compile Include="frmPaqueteLista.Designer.cs">
       <DependentUpon>frmPaqueteLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaqueteVerServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaqueteVerServicios.Designer.cs">
+      <DependentUpon>frmPaqueteVerServicios.cs</DependentUpon>
     </Compile>
     <Compile Include="frmProveedor.cs">
       <SubType>Form</SubType>
@@ -205,14 +223,17 @@
     <Compile Include="Servicios.Designer.cs">
       <DependentUpon>Servicios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Empleados.cs">
+    <Compile Include="frmEmpleadoLista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Empleados.Designer.cs">
-      <DependentUpon>Empleados.cs</DependentUpon>
+    <Compile Include="frmEmpleadoLista.Designer.cs">
+      <DependentUpon>frmEmpleadoLista.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Agenda.resx">
       <DependentUpon>Agenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AreaEmpleado.resx">
+      <DependentUpon>AreaEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
@@ -229,8 +250,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaCompra.resx">
+      <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClienteSuscripcion.resx">
       <DependentUpon>frmClienteSuscripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpleado.resx">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFactura.resx">
       <DependentUpon>frmFactura.cs</DependentUpon>
@@ -249,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaqueteLista.resx">
       <DependentUpon>frmPaqueteLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaqueteVerServicios.resx">
+      <DependentUpon>frmPaqueteVerServicios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
@@ -284,8 +314,8 @@
     <EmbeddedResource Include="Servicios.resx">
       <DependentUpon>Servicios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Empleados.resx">
-      <DependentUpon>Empleados.cs</DependentUpon>
+    <EmbeddedResource Include="frmEmpleadoLista.resx">
+      <DependentUpon>frmEmpleadoLista.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

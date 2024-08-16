@@ -2,42 +2,41 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Proyecto_DB2
 {
-    public partial class frmClienteLista : Form
+    public partial class frmEmpleadoLista : Form
     {
 
-        SqlDataAdapter adpCliente;
-        DataTable tabCliente;
+        SqlDataAdapter adpEmpleado;
+        DataTable tabEmpleado;
         SqlConnection con;
 
-
-
-        public frmClienteLista()
+        public frmEmpleadoLista()
         {
             InitializeComponent();
+
         }
 
-        public frmClienteLista(SqlConnection conexion)
+        public frmEmpleadoLista(SqlConnection conexion)
         {
             InitializeComponent();
 
-            adpCliente = new SqlDataAdapter("spClienteActivos", conexion);
-            adpCliente.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adpEmpleado = new SqlDataAdapter("spEmpleadoActivos", conexion);
+            adpEmpleado.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             con = conexion;
 
         }
 
-
-        private void frmClienteLista_Load(object sender, EventArgs e)
+        private void frmEmpleadoLista_Load(object sender, EventArgs e)
         {
             try
             {
@@ -45,13 +44,12 @@ namespace Proyecto_DB2
                 cmbOpcion.Items.Add("Activos");
                 cmbOpcion.Items.Add("Inactivos");
 
-                tabCliente = new DataTable();
-                adpCliente.Fill(tabCliente);
-                dataGridView1.DataSource = tabCliente;
+
+                tabEmpleado = new DataTable();
+                adpEmpleado.Fill(tabEmpleado);
+                dataGridView1.DataSource = tabEmpleado;
                 dataGridView1.ReadOnly = true; //solo para leer
                 dataGridView1.Columns["Sexo"].Visible = false;
-                dataGridView1.Columns["Civil"].Visible = false;
-                dataGridView1.Columns["Tipo"].Visible = false;
 
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.AllowUserToAddRows = false;
@@ -59,19 +57,18 @@ namespace Proyecto_DB2
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
-        
         private void cmdInsertar_Click(object sender, EventArgs e)
         {
-            frmCliente frm = new frmCliente(con, -1);
+            frmEmpleado frm = new frmEmpleado(con, -1);
             frm.ShowDialog();
 
-            tabCliente.Clear();
-            adpCliente.Fill(tabCliente);
+            tabEmpleado.Clear();
+            adpEmpleado.Fill(tabEmpleado);
         }
 
         private void cmdSalir_Click(object sender, EventArgs e)
@@ -83,17 +80,17 @@ namespace Proyecto_DB2
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                int clienteid = (int) tabCliente.DefaultView[dataGridView1.CurrentRow.Index]["clienteid"];
-                frmCliente frm = new frmCliente(con, clienteid);
+                int empleadoid = (int)tabEmpleado.DefaultView[dataGridView1.CurrentRow.Index]["empleadoid"];
+                frmEmpleado frm = new frmEmpleado(con, empleadoid);
                 frm.ShowDialog();
 
-                tabCliente.Clear();
-                adpCliente.Fill(tabCliente);
+                tabEmpleado.Clear();
+                adpEmpleado.Fill(tabEmpleado);
 
-                // Buscar la fila con el mismo clienteid y seleccionarla
+                // Buscar la fila con el mismo empleado y seleccionarla
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if ((int)row.Cells["clienteid"].Value == clienteid)
+                    if ((int)row.Cells["empleadoid"].Value == empleadoid)
                     {
                         row.Selected = true;
                         dataGridView1.CurrentCell = row.Cells[0]; // Establecer la celda actual para que se muestre
@@ -107,13 +104,13 @@ namespace Proyecto_DB2
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                int clienteid = (int)tabCliente.DefaultView[dataGridView1.CurrentRow.Index]["clienteid"];
+                int empleadoid = (int)tabEmpleado.DefaultView[dataGridView1.CurrentRow.Index]["empleadoid"];
 
-                if (MessageBox.Show("Desea deshabilitar el Cliente", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Desea deshabilitar el Empleado", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    SqlCommand cmd = new SqlCommand("spClienteDesactivar", con);
+                    SqlCommand cmd = new SqlCommand("spEmpleadoDesactivar", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@clienteid", clienteid);
+                    cmd.Parameters.AddWithValue("@empleadoid", empleadoid);
 
                     try
                     {
@@ -138,13 +135,13 @@ namespace Proyecto_DB2
                         }
                     }
 
-                    tabCliente.Clear();
-                    adpCliente.Fill(tabCliente);
+                    tabEmpleado.Clear();
+                    adpEmpleado.Fill(tabEmpleado);
 
-                    // Buscar la fila con el mismo clienteid y seleccionarla
+                    // Buscar la fila con el mismo empleadoid y seleccionarla
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        if ((int)row.Cells["clienteid"].Value == clienteid)
+                        if ((int)row.Cells["empleadoid"].Value == empleadoid)
                         {
                             row.Selected = true;
                             dataGridView1.CurrentCell = row.Cells[0]; // Establecer la celda actual para que se muestre
@@ -155,47 +152,8 @@ namespace Proyecto_DB2
             }
         }
 
-        private void cmbOpcion_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string spNombre = "";
-               
-                switch (cmbOpcion.SelectedItem.ToString())
-                {
-                    case "Todos":
-
-                        spNombre = "spClienteSelect";
-                        break;
-
-                    case "Activos":
-
-                        spNombre = "spClienteActivos";
-                        break;
-
-                    case "Inactivos":
-
-                        spNombre = "spClienteInactivos";
-                        break;
-                }
-
-                if (!string.IsNullOrEmpty(spNombre))
-                {
-                    // Configura el SqlDataAdapter con el stored procedure seleccionado
-                    adpCliente = new SqlDataAdapter(spNombre, con);
-                    adpCliente.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-                    // Vuelve a llenar el DataTable y asigna los datos al DataGridView
-                    tabCliente.Clear();
-                    adpCliente.Fill(tabCliente);
-                    dataGridView1.DataSource = tabCliente;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             
         }
 
@@ -203,27 +161,70 @@ namespace Proyecto_DB2
         {
             if (txtTexto.Text.Length == 0)
             {
-                tabCliente.DefaultView.RowFilter = "";
+                tabEmpleado.DefaultView.RowFilter = "";
             }
             else
             {
-                if (tabCliente.Columns[cmbCampo.Text].DataType == typeof(string))
+                if (tabEmpleado.Columns[cmbCampo.Text].DataType == typeof(string))
                 {
-                    tabCliente.DefaultView.RowFilter = cmbCampo.Text + " like '%" + txtTexto.Text + "%'";
+                    tabEmpleado.DefaultView.RowFilter = cmbCampo.Text + " like '%" + txtTexto.Text + "%'";
                 }
                 else
                 {
                     int numero;
                     if (int.TryParse(txtTexto.Text, out numero))
                     {
-                        tabCliente.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        tabEmpleado.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
                     }
                     else
                     {
-                        tabCliente.DefaultView.RowFilter = "1 = 0"; // No coincidirá con nada si el texto no es un número válido
+                        tabEmpleado.DefaultView.RowFilter = "1 = 0"; // No coincidirá con nada si el texto no es un número válido
                     }
                 }
 
+            }
+        }
+
+        private void cmbOpcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string spNombre = "";
+
+                switch (cmbOpcion.SelectedItem.ToString())
+                {
+                    case "Todos":
+
+                        spNombre = "spEmpleadoSelect";
+                        break;
+
+                    case "Activos":
+
+                        spNombre = "spEmpleadoActivos";
+                        break;
+
+                    case "Inactivos":
+
+                        spNombre = "spEmpleadoInactivos";
+                        break;
+                }
+
+                if (!string.IsNullOrEmpty(spNombre))
+                {
+                    // Configura el SqlDataAdapter con el stored procedure seleccionado
+                    adpEmpleado = new SqlDataAdapter(spNombre, con);
+                    adpEmpleado.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                    // Vuelve a llenar el DataTable y asigna los datos al DataGridView
+                    tabEmpleado.Clear();
+                    adpEmpleado.Fill(tabEmpleado);
+                    dataGridView1.DataSource = tabEmpleado;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

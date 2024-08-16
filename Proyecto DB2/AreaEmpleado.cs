@@ -10,8 +10,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Claims;
 
-
-
 namespace Proyecto_DB2
 {
     public partial class AreaEmpleado : Form
@@ -169,8 +167,10 @@ namespace Proyecto_DB2
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            ConsultaAreasPuestos formConsulta = new ConsultaAreasPuestos();
-            formConsulta.ShowDialog();
+            using (ConsultaAreasPuestos formConsulta = new ConsultaAreasPuestos())
+            {
+                formConsulta.ShowDialog(this);
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

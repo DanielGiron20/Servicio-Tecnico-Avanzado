@@ -72,6 +72,8 @@
             this.Name = "ConsultaAreasPuestos";
             this.Text = "ConsultaAreasPuestos";
             ((System.ComponentModel.ISupportInitialize)(this.dgAreaPuestos)).EndInit();
+
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             this.ResumeLayout(false);
 
         }

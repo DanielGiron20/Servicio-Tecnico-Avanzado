@@ -19,17 +19,25 @@ namespace Proyecto_DB2
         private SqlDataAdapter adpPuestos;
         private DataTable tabAreas;
         private DataTable tabPuestos;
+        private bool isInitializing = true;
 
         public ConsultaAreasPuestos()
         {
             InitializeComponent();
             conexion = new CConexion();
             this.Load += new EventHandler(ConsultaAreasPuestos_Load);
+            cmbArea.SelectedIndexChanged += new EventHandler(cmbArea_SelectedIndexChanged);
         }
 
         private void ConsultaAreasPuestos_Load(object sender, EventArgs e)
         {
             CargarAreas();
+            isInitializing = false;
+            if (cmbArea.Items.Count > 0)
+            {
+                cmbArea.SelectedIndex = 0;
+                CargarPuestosParaAreaSeleccionada();
+            }
         }
 
         private void CargarAreas()
@@ -38,12 +46,21 @@ namespace Proyecto_DB2
             {
                 using (SqlConnection con = conexion.EstablecerConexion())
                 {
-                    adpAreas = new SqlDataAdapter("SELECT AreaID, Nombre FROM Area WHERE Activo = 1", con);
+                    string query = "SELECT AreaID, Nombre FROM Area WHERE Activo = 1";
+                    adpAreas = new SqlDataAdapter(query, con);
                     tabAreas = new DataTable();
                     adpAreas.Fill(tabAreas);
-                    cmbArea.DataSource = tabAreas;
-                    cmbArea.DisplayMember = "Nombre";
-                    cmbArea.ValueMember = "AreaID";
+
+                    if (tabAreas.Rows.Count > 0)
+                    {
+                        cmbArea.DataSource = tabAreas;
+                        cmbArea.DisplayMember = "Nombre";
+                        cmbArea.ValueMember = "AreaID";
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay áreas disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception ex)
@@ -62,7 +79,14 @@ namespace Proyecto_DB2
                     adpPuestos.SelectCommand.Parameters.AddWithValue("@AreaID", areaId);
                     tabPuestos = new DataTable();
                     adpPuestos.Fill(tabPuestos);
-                    dgAreaPuestos.DataSource = tabPuestos;  // Corregido aquí
+
+                    dgAreaPuestos.DataSource = tabPuestos;
+                    dgAreaPuestos.Refresh();
+
+                    if (tabPuestos.Rows.Count == 0)
+                    {
+                        MessageBox.Show($"No se encontraron puestos para el área seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception ex)
@@ -73,15 +97,28 @@ namespace Proyecto_DB2
 
         private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbArea.SelectedValue != null)
+            if (!isInitializing)
             {
-                int areaId = Convert.ToInt32(cmbArea.SelectedValue);
+                CargarPuestosParaAreaSeleccionada();
+            }
+        }
+
+        private void CargarPuestosParaAreaSeleccionada()
+        {
+            if (cmbArea.SelectedValue != null && int.TryParse(cmbArea.SelectedValue.ToString(), out int areaId))
+            {
                 CargarPuestos(areaId);
+            }
+            else
+            {
+                dgAreaPuestos.DataSource = null;
+                dgAreaPuestos.Refresh();
             }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }
