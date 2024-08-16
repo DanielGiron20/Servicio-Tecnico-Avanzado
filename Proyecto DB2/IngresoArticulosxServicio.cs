@@ -42,11 +42,13 @@ namespace Proyecto_DB2
             get { return Cantidad.Text; }
             set { Cantidad.Text = value; }
         }
-        public bool Activo1
+
+        public bool Activo
         {
-            get { return Activo.Checked;  }
-            set { Activo.Checked = value; }
+            get { return chActivo.Checked; }
+            set { chActivo.Checked = value; }
         }
+
 
 
         private void IngresoArticulosxServicio_Load(object sender, EventArgs e)
@@ -66,7 +68,7 @@ namespace Proyecto_DB2
                 cmd.Parameters.AddWithValue("@ServicioID", servicioID);
                 cmd.Parameters.AddWithValue("@ArticuloID", articuloID);
                 cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                cmd.Parameters.AddWithValue("@Activo", activo);
+                cmd.Parameters.AddWithValue("@Activo", activo ? 1 : 0);
 
                
                 cmd.ExecuteNonQuery();
@@ -90,7 +92,7 @@ namespace Proyecto_DB2
                 cmd.Parameters.AddWithValue("@ServicioID", servicioID);
                 cmd.Parameters.AddWithValue("@ArticuloID", articuloID);
                 cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                cmd.Parameters.AddWithValue("@Activo", activo);
+                cmd.Parameters.AddWithValue("@Activo", activo ? 1 : 0);
 
 
                 cmd.ExecuteNonQuery();
@@ -123,7 +125,8 @@ namespace Proyecto_DB2
             int servicioID = int.Parse(AServicioID.Text);
             int articuloID = int.Parse(ArticuloID.Text);
             int cantidad = int.Parse(Cantidad.Text);
-            bool activo = Activo.Checked;
+            bool activo = chActivo.Checked;
+
 
             CConexion conexion = new CConexion();
                 SqlConnection con = conexion.EstablecerConexion();
@@ -159,6 +162,16 @@ namespace Proyecto_DB2
                         MessageBox.Show("Error al guardar el detalle del servicio: " + ex.Message);
                     }
                 }
+        }
+
+        private void cmbActivo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

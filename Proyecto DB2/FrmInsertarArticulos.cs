@@ -11,25 +11,23 @@ using System.Windows.Forms;
 
 namespace Proyecto_DB2
 {
-    public partial class IngresarServicios : Form
+    public partial class FrmInsertarArticulos : Form
     {
 
-       
-
-        private Servicios _servicios;
-        public IngresarServicios(Servicios servicios)
+        private Inventario _inventario;
+        public FrmInsertarArticulos(Inventario inventario)
         {
             InitializeComponent();
-            _servicios = servicios;
+            _inventario = inventario;
             CargarProximoID();
         }
 
-
         public bool EsActualizacion { get; set; }
-        public string ServicioID
+
+        public string ArticuloID
         {
-            get { return txtServicioID.Text; }
-            set { txtServicioID.Text = value; }
+            get { return txtArticuloID.Text; }
+            set { txtArticuloID.Text = value; }
         }
 
         public string Nombre
@@ -38,10 +36,10 @@ namespace Proyecto_DB2
             set { txtNombre.Text = value; }
         }
 
-        public string Descripcion
+        public string Barra
         {
-            get { return txtDescripcion.Text; }
-            set { txtDescripcion.Text = value; }
+            get { return txtBarra.Text; }
+            set { txtBarra.Text = value; }
         }
 
         public string Precio
@@ -49,27 +47,16 @@ namespace Proyecto_DB2
             get { return txtPrecio.Text; }
             set { txtPrecio.Text = value; }
         }
-        public string tarifa
-        {
-            get { return Tarifa.Text; }
-            set { Tarifa.Text = value; }
-        }
-        public string descuento
-        {
-            get { return Descuento.Text; }
-            set { Descuento.Text = value; }
-        }
 
         public string TasaIVA
         {
             get { return cmbTasa.SelectedItem.ToString(); }
             set { cmbTasa.SelectedItem = value; }
         }
-
-        public string Duracion
+        public string Existencia
         {
-            get { return txtDuracion.Text; }
-            set { txtDuracion.Text = value; }
+            get { return txtExistencia.Text; }
+            set { txtExistencia.Text = value; }
         }
 
         public bool Activo
@@ -78,28 +65,21 @@ namespace Proyecto_DB2
             set { chActivo.Checked = value; }
         }
 
-
-        public void SetServicioID(int servicioID)
-        {
-            txtServicioID.Text = servicioID.ToString();
-           
-        }
-
         private void CargarProximoID()
         {
             try
             {
-               
+
                 CConexion conexion = new CConexion();
                 SqlConnection con = conexion.EstablecerConexion();
 
-               
+
                 SqlCommand cmd = new SqlCommand("sp_ObtenerProximoID", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Tabla", "Servicio");
-                cmd.Parameters.AddWithValue("@ColumnaID", "ServicioID");
+                cmd.Parameters.AddWithValue("@Tabla", "Articulo");
+                cmd.Parameters.AddWithValue("@ColumnaID", "ArticuloID");
 
-               
+
                 SqlParameter parametroID = new SqlParameter("@ProximoID", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output
@@ -109,7 +89,7 @@ namespace Proyecto_DB2
                 cmd.ExecuteNonQuery();
 
                 int proximoID = (int)parametroID.Value;
-                txtServicioID.Text = proximoID.ToString();
+                txtArticuloID.Text = proximoID.ToString();
             }
             catch (Exception ex)
             {
@@ -122,19 +102,24 @@ namespace Proyecto_DB2
             this.Close();
         }
 
+        private void FrmInsertarArticulos_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            int servicioID;
-            if (int.TryParse(txtServicioID.Text, out servicioID))
+            int Articulo;
+            if (int.TryParse(txtArticuloID.Text, out Articulo))
             {
+                
                 string nombre = txtNombre.Text;
-                string descripcion = txtDescripcion.Text;
+                string barra = txtBarra.Text;
                 decimal precio = decimal.Parse(txtPrecio.Text);
                 float tasaIVA = float.Parse(cmbTasa.SelectedItem.ToString());
-                int duracion = int.Parse(txtDuracion.Text);
+                int Existencia = int.Parse(txtExistencia.Text);
                 bool activo = chActivo.Checked;
-                float TarifaHE = float.Parse(Tarifa.Text);
-                float descuen = float.Parse(Descuento.Text);
+
 
 
                 CConexion conexion = new CConexion();
@@ -146,44 +131,41 @@ namespace Proyecto_DB2
 
                     if (EsActualizacion)
                     {
-                        cmd = new SqlCommand("spActualizarServicio", con)
+                        cmd = new SqlCommand("sp_ModificarArticulo", con)
                         {
                             CommandType = CommandType.StoredProcedure
                         };
-                        cmd.Parameters.AddWithValue("@ServicioID", servicioID);
+                        cmd.Parameters.AddWithValue("@ArticuloID", Articulo);
                         cmd.Parameters.AddWithValue("@Nombre", nombre);
-                        cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                        cmd.Parameters.AddWithValue("@Barra", barra);
                         cmd.Parameters.AddWithValue("@Precio", precio);
-                        cmd.Parameters.AddWithValue("@TasaIVA", tasaIVA);
-                        cmd.Parameters.AddWithValue("@Duracion", duracion);
-                        cmd.Parameters.AddWithValue("@Activo", activo ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@TarifaHoraExtra", TarifaHE);
-                        cmd.Parameters.AddWithValue("@TasaDescuento", descuen);
+                        cmd.Parameters.AddWithValue("@TasaISV", tasaIVA);
+                        cmd.Parameters.AddWithValue("@Existencia", Existencia);
+                        cmd.Parameters.AddWithValue("@Activo", activo);
 
                     }
                     else
                     {
-                        cmd = new SqlCommand("sp_InsertarServicios2", con)
+                        cmd = new SqlCommand("sp_InsertarArticulo", con)
                         {
                             CommandType = CommandType.StoredProcedure
                         };
+                        
                         cmd.Parameters.AddWithValue("@Nombre", nombre);
-                        cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                        cmd.Parameters.AddWithValue("@Barra", barra);
                         cmd.Parameters.AddWithValue("@Precio", precio);
-                        cmd.Parameters.AddWithValue("@TasaIVA", tasaIVA);
-                        cmd.Parameters.AddWithValue("@Duracion", duracion);
-                        cmd.Parameters.AddWithValue("@Activo", activo ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@TarifaHoraExtra", TarifaHE);
-                        cmd.Parameters.AddWithValue("@TasaDescuento", descuen);
+                        cmd.Parameters.AddWithValue("@TasaISV", tasaIVA);
+                        cmd.Parameters.AddWithValue("@Existencia", Existencia);
+                        cmd.Parameters.AddWithValue("@Activo", activo);
                     }
 
                     cmd.ExecuteNonQuery();
-                    _servicios.ActualizarDataGridView();
-                    
+                    _inventario.cargarProductos(null);
+
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al guardar el servicio: {ex.Message}");
+                    MessageBox.Show($"Error al guardar el articulo: {ex.Message}");
                 }
                 finally
                 {
@@ -196,13 +178,8 @@ namespace Proyecto_DB2
             }
             else
             {
-                MessageBox.Show("ID de servicio inválido.");
+                MessageBox.Show("ID de Articulo inválido.");
             }
-        }
-
-        private void IngresarServicios_Load(object sender, EventArgs e)
-        {
-           
         }
     }
 }

@@ -36,9 +36,9 @@
             this.ArticuloID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Cantidad = new System.Windows.Forms.TextBox();
-            this.Activo = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.chActivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -112,18 +112,6 @@
             this.Cantidad.Size = new System.Drawing.Size(113, 26);
             this.Cantidad.TabIndex = 6;
             // 
-            // Activo
-            // 
-            this.Activo.AutoSize = true;
-            this.Activo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Activo.Location = new System.Drawing.Point(352, 122);
-            this.Activo.Name = "Activo";
-            this.Activo.Size = new System.Drawing.Size(83, 24);
-            this.Activo.TabIndex = 8;
-            this.Activo.TabStop = true;
-            this.Activo.Text = "Activo";
-            this.Activo.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
@@ -149,14 +137,26 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // chActivo
+            // 
+            this.chActivo.AutoSize = true;
+            this.chActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chActivo.Location = new System.Drawing.Point(352, 124);
+            this.chActivo.Name = "chActivo";
+            this.chActivo.Size = new System.Drawing.Size(84, 24);
+            this.chActivo.TabIndex = 11;
+            this.chActivo.Text = "Activo";
+            this.chActivo.UseVisualStyleBackColor = true;
+            this.chActivo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // IngresoArticulosxServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 346);
+            this.Controls.Add(this.chActivo);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.Activo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Cantidad);
             this.Controls.Add(this.label3);
@@ -187,8 +187,8 @@
         private System.Windows.Forms.TextBox ArticuloID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Cantidad;
-        private System.Windows.Forms.RadioButton Activo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox chActivo;
     }
 }

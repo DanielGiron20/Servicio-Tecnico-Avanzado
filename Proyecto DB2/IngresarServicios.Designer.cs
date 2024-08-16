@@ -33,7 +33,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,7 +43,11 @@
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtDuracion = new System.Windows.Forms.TextBox();
             this.cmbTasa = new System.Windows.Forms.ComboBox();
-            this.cmbActivo = new System.Windows.Forms.ComboBox();
+            this.Tarifa = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Descuento = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chActivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -93,15 +96,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Precio";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(582, 301);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 20);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Activo";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -125,7 +119,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumSlateBlue;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(321, 505);
+            this.button1.Location = new System.Drawing.Point(321, 531);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 72);
             this.button1.TabIndex = 8;
@@ -138,7 +132,7 @@
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumSlateBlue;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSlateBlue;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(542, 505);
+            this.button2.Location = new System.Drawing.Point(542, 531);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 72);
             this.button2.TabIndex = 9;
@@ -196,23 +190,58 @@
             this.cmbTasa.Size = new System.Drawing.Size(89, 28);
             this.cmbTasa.TabIndex = 16;
             // 
-            // cmbActivo
+            // Tarifa
             // 
-            this.cmbActivo.FormattingEnabled = true;
-            this.cmbActivo.Items.AddRange(new object[] {
-            "Si",
-            "No"});
-            this.cmbActivo.Location = new System.Drawing.Point(663, 295);
-            this.cmbActivo.Name = "cmbActivo";
-            this.cmbActivo.Size = new System.Drawing.Size(103, 28);
-            this.cmbActivo.TabIndex = 17;
+            this.Tarifa.Location = new System.Drawing.Point(726, 291);
+            this.Tarifa.Name = "Tarifa";
+            this.Tarifa.Size = new System.Drawing.Size(209, 26);
+            this.Tarifa.TabIndex = 19;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(561, 297);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(159, 20);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Tarifa por hora extras";
+            // 
+            // Descuento
+            // 
+            this.Descuento.Location = new System.Drawing.Point(726, 359);
+            this.Descuento.Name = "Descuento";
+            this.Descuento.Size = new System.Drawing.Size(209, 26);
+            this.Descuento.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(561, 365);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(145, 20);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Tasa de descuento";
+            // 
+            // chActivo
+            // 
+            this.chActivo.AutoSize = true;
+            this.chActivo.Location = new System.Drawing.Point(565, 423);
+            this.chActivo.Name = "chActivo";
+            this.chActivo.Size = new System.Drawing.Size(78, 24);
+            this.chActivo.TabIndex = 22;
+            this.chActivo.Text = "Activo";
+            this.chActivo.UseVisualStyleBackColor = true;
             // 
             // IngresarServicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 628);
-            this.Controls.Add(this.cmbActivo);
+            this.Controls.Add(this.chActivo);
+            this.Controls.Add(this.Descuento);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.Tarifa);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbTasa);
             this.Controls.Add(this.txtDuracion);
             this.Controls.Add(this.txtPrecio);
@@ -221,7 +250,6 @@
             this.Controls.Add(this.txtServicioID);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
@@ -247,7 +275,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
@@ -258,6 +285,10 @@
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.TextBox txtDuracion;
         private System.Windows.Forms.ComboBox cmbTasa;
-        private System.Windows.Forms.ComboBox cmbActivo;
+        private System.Windows.Forms.TextBox Tarifa;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox Descuento;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chActivo;
     }
 }

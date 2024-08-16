@@ -135,10 +135,18 @@ namespace Proyecto_DB2
                     Precio = filaSeleccionada.Cells["Precio"].Value.ToString(),
                     TasaIVA = filaSeleccionada.Cells["TasaIVA"].Value.ToString(),
                     Duracion = filaSeleccionada.Cells["Duracion"].Value.ToString(),
-                    Activo = filaSeleccionada.Cells["Activo"].Value.ToString() == "1" ? "Sí" : "No"
+                   
+                    Activo = (filaSeleccionada.Cells["Activo"].Value.ToString() == "True"),
+
+                tarifa = filaSeleccionada.Cells["TarifaHoraExtra"].Value.ToString(),
+                    descuento = filaSeleccionada.Cells["TasaDescuento"].Value.ToString(),
+
+
                 };
 
                 formularioIngreso.ShowDialog();
+               
+
                 ActualizarDataGridView();
             }
             else

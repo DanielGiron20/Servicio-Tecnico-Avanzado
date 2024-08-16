@@ -28,33 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lo = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lo
+            // monthCalendar1
             // 
-            this.lo.AutoSize = true;
-            this.lo.Location = new System.Drawing.Point(385, 261);
-            this.lo.Name = "lo";
-            this.lo.Size = new System.Drawing.Size(65, 20);
-            this.lo.TabIndex = 0;
-            this.lo.Text = "Agenda";
+            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(3, 1);
+            this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.monthCalendar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCalendar1.Location = new System.Drawing.Point(0, 0);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar1.TitleBackColor = System.Drawing.Color.MediumPurple;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 283);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(1035, 404);
+            this.dataGridView1.TabIndex = 1;
             // 
             // Agenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 653);
-            this.Controls.Add(this.lo);
+            this.ClientSize = new System.Drawing.Size(1087, 716);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.monthCalendar1);
             this.Name = "Agenda";
             this.Text = "Agenda";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lo;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

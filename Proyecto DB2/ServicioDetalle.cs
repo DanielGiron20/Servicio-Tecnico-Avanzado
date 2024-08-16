@@ -73,7 +73,8 @@ namespace Proyecto_DB2
                     ServicioID = servicioID.ToString(),
                     ArriculoID1 = filaSeleccionada.Cells["ArticuloID"].Value.ToString(),
                     Cantidad1 = filaSeleccionada.Cells["Cantidad"].Value.ToString(),
-                    Activo1 = (bool)filaSeleccionada.Cells["Activo"].Value
+                    Activo = (filaSeleccionada.Cells["Activo"].Value.ToString() == "True")
+
             };
 
                 formularioIngreso.ShowDialog();
@@ -83,7 +84,8 @@ namespace Proyecto_DB2
             else
             {
                 MessageBox.Show("Por favor, seleccione una fila para modificar.");
-            }
+            
+    }
         }
 
         private void button4_Click(object sender, EventArgs e)
