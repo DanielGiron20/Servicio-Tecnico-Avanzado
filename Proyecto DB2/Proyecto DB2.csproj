@@ -59,6 +59,12 @@
       <DependentUpon>AreaEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="CConexion.cs" />
+    <Compile Include="frmCuentaBancaria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuentaBancaria.Designer.cs">
+      <DependentUpon>frmCuentaBancaria.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClienteFacturaID.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmClienteSuscripcion.resx">
       <DependentUpon>frmClienteSuscripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCuentaBancaria.resx">
+      <DependentUpon>frmCuentaBancaria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleado.resx">
       <DependentUpon>frmEmpleado.cs</DependentUpon>

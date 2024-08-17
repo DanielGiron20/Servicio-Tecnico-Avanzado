@@ -42,6 +42,10 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -61,10 +65,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
+            this.btnCuentaBancaria = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlverproveedor.SuspendLayout();
             this.pnlSubMenuGestionVentas.SuspendLayout();
@@ -108,7 +109,7 @@
             // 
             this.pnlverproveedor.Controls.Add(this.verProveedor);
             this.pnlverproveedor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlverproveedor.Location = new System.Drawing.Point(0, 1215);
+            this.pnlverproveedor.Location = new System.Drawing.Point(0, 1260);
             this.pnlverproveedor.Name = "pnlverproveedor";
             this.pnlverproveedor.Size = new System.Drawing.Size(194, 54);
             this.pnlverproveedor.TabIndex = 13;
@@ -144,7 +145,7 @@
             this.btnProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProveedor.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnProveedor.Location = new System.Drawing.Point(0, 1170);
+            this.btnProveedor.Location = new System.Drawing.Point(0, 1215);
             this.btnProveedor.Name = "btnProveedor";
             this.btnProveedor.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnProveedor.Size = new System.Drawing.Size(194, 45);
@@ -161,7 +162,7 @@
             this.pnlSubMenuGestionVentas.Controls.Add(this.btnFactura);
             this.pnlSubMenuGestionVentas.Controls.Add(this.btnOrdenMD);
             this.pnlSubMenuGestionVentas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSubMenuGestionVentas.Location = new System.Drawing.Point(0, 1010);
+            this.pnlSubMenuGestionVentas.Location = new System.Drawing.Point(0, 1055);
             this.pnlSubMenuGestionVentas.Name = "pnlSubMenuGestionVentas";
             this.pnlSubMenuGestionVentas.Size = new System.Drawing.Size(194, 160);
             this.pnlSubMenuGestionVentas.TabIndex = 11;
@@ -258,7 +259,7 @@
             this.btnGestionVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGestionVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestionVentas.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnGestionVentas.Location = new System.Drawing.Point(0, 965);
+            this.btnGestionVentas.Location = new System.Drawing.Point(0, 1010);
             this.btnGestionVentas.Name = "btnGestionVentas";
             this.btnGestionVentas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnGestionVentas.Size = new System.Drawing.Size(194, 45);
@@ -273,7 +274,7 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.panel7.Controls.Add(this.button10);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 920);
+            this.panel7.Location = new System.Drawing.Point(0, 965);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(194, 45);
             this.panel7.TabIndex = 10;
@@ -308,7 +309,7 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.LightGray;
-            this.button12.Location = new System.Drawing.Point(0, 875);
+            this.button12.Location = new System.Drawing.Point(0, 920);
             this.button12.Name = "button12";
             this.button12.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button12.Size = new System.Drawing.Size(194, 45);
@@ -321,6 +322,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panel6.Controls.Add(this.btnCuentaBancaria);
             this.panel6.Controls.Add(this.button18);
             this.panel6.Controls.Add(this.button17);
             this.panel6.Controls.Add(this.button16);
@@ -330,8 +332,88 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 603);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(194, 272);
+            this.panel6.Size = new System.Drawing.Size(194, 317);
             this.panel6.TabIndex = 8;
+            // 
+            // button18
+            // 
+            this.button18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button18.ForeColor = System.Drawing.Color.LightGray;
+            this.button18.Location = new System.Drawing.Point(0, 225);
+            this.button18.Name = "button18";
+            this.button18.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button18.Size = new System.Drawing.Size(194, 43);
+            this.button18.TabIndex = 5;
+            this.button18.Text = "Ver Planilla";
+            this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button17
+            // 
+            this.button17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.ForeColor = System.Drawing.Color.LightGray;
+            this.button17.Location = new System.Drawing.Point(0, 180);
+            this.button17.Name = "button17";
+            this.button17.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button17.Size = new System.Drawing.Size(194, 45);
+            this.button17.TabIndex = 4;
+            this.button17.Text = "Area/Puestos";
+            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button16
+            // 
+            this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.ForeColor = System.Drawing.Color.LightGray;
+            this.button16.Location = new System.Drawing.Point(0, 135);
+            this.button16.Name = "button16";
+            this.button16.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button16.Size = new System.Drawing.Size(194, 45);
+            this.button16.TabIndex = 3;
+            this.button16.Text = "Ver Puestos";
+            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button15
+            // 
+            this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.ForeColor = System.Drawing.Color.LightGray;
+            this.button15.Location = new System.Drawing.Point(0, 90);
+            this.button15.Name = "button15";
+            this.button15.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button15.Size = new System.Drawing.Size(194, 45);
+            this.button15.TabIndex = 2;
+            this.button15.Text = "Ver Areas";
+            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button9
             // 
@@ -649,85 +731,25 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // button15
+            // btnCuentaBancaria
             // 
-            this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.ForeColor = System.Drawing.Color.LightGray;
-            this.button15.Location = new System.Drawing.Point(0, 90);
-            this.button15.Name = "button15";
-            this.button15.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button15.Size = new System.Drawing.Size(194, 45);
-            this.button15.TabIndex = 2;
-            this.button15.Text = "Ver Areas";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button16
-            // 
-            this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.ForeColor = System.Drawing.Color.LightGray;
-            this.button16.Location = new System.Drawing.Point(0, 135);
-            this.button16.Name = "button16";
-            this.button16.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button16.Size = new System.Drawing.Size(194, 45);
-            this.button16.TabIndex = 3;
-            this.button16.Text = "Ver Puestos";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button17
-            // 
-            this.button17.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.Color.LightGray;
-            this.button17.Location = new System.Drawing.Point(0, 180);
-            this.button17.Name = "button17";
-            this.button17.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button17.Size = new System.Drawing.Size(194, 45);
-            this.button17.TabIndex = 4;
-            this.button17.Text = "Area/Puestos";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button18
-            // 
-            this.button18.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.ForeColor = System.Drawing.Color.LightGray;
-            this.button18.Location = new System.Drawing.Point(0, 225);
-            this.button18.Name = "button18";
-            this.button18.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button18.Size = new System.Drawing.Size(194, 45);
-            this.button18.TabIndex = 5;
-            this.button18.Text = "Ver Planilla";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.btnCuentaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCuentaBancaria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCuentaBancaria.FlatAppearance.BorderSize = 0;
+            this.btnCuentaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnCuentaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnCuentaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuentaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuentaBancaria.ForeColor = System.Drawing.Color.LightGray;
+            this.btnCuentaBancaria.Location = new System.Drawing.Point(0, 268);
+            this.btnCuentaBancaria.Name = "btnCuentaBancaria";
+            this.btnCuentaBancaria.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnCuentaBancaria.Size = new System.Drawing.Size(194, 49);
+            this.btnCuentaBancaria.TabIndex = 6;
+            this.btnCuentaBancaria.Text = "Cuenta Bancaria";
+            this.btnCuentaBancaria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuentaBancaria.UseVisualStyleBackColor = true;
+            this.btnCuentaBancaria.Click += new System.EventHandler(this.btnCuentaBancaria_Click);
             // 
             // Form1
             // 
@@ -797,5 +819,6 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button btnCuentaBancaria;
     }
 }
