@@ -326,6 +326,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="PuestoEmpleado.resx">
+      <DependentUpon>PuestoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeleccionArticulos.resx">
       <DependentUpon>SeleccionArticulos.cs</DependentUpon>
     </EmbeddedResource>

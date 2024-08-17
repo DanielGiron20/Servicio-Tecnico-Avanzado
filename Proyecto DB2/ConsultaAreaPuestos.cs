@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Proyecto_DB2
 {
@@ -27,6 +26,9 @@ namespace Proyecto_DB2
             conexion = new CConexion();
             this.Load += new EventHandler(ConsultaAreasPuestos_Load);
             cmbArea.SelectedIndexChanged += new EventHandler(cmbArea_SelectedIndexChanged);
+
+            // Centrar la pantalla
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void ConsultaAreasPuestos_Load(object sender, EventArgs e)
