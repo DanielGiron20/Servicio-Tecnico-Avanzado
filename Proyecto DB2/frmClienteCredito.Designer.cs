@@ -273,9 +273,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(272, 192);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.Size = new System.Drawing.Size(76, 13);
             this.label7.TabIndex = 30;
-            this.label7.Text = "Monto a Pagar";
+            this.label7.Text = "Monto a pagar";
             // 
             // label8
             // 
