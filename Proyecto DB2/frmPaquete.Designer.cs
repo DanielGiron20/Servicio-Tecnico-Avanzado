@@ -49,6 +49,7 @@
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.cmdEliminar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgPaqueteDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 160);
+            this.label3.Location = new System.Drawing.Point(30, 164);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 12;
@@ -112,7 +113,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(266, 160);
+            this.label6.Location = new System.Drawing.Point(266, 164);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 13);
             this.label6.TabIndex = 15;
@@ -160,7 +161,7 @@
             // 
             // txtCantidadHoras
             // 
-            this.txtCantidadHoras.Location = new System.Drawing.Point(126, 157);
+            this.txtCantidadHoras.Location = new System.Drawing.Point(126, 161);
             this.txtCantidadHoras.Name = "txtCantidadHoras";
             this.txtCantidadHoras.Size = new System.Drawing.Size(100, 20);
             this.txtCantidadHoras.TabIndex = 4;
@@ -196,7 +197,7 @@
             // 
             // txtTarifaHoraExtra
             // 
-            this.txtTarifaHoraExtra.Location = new System.Drawing.Point(359, 157);
+            this.txtTarifaHoraExtra.Location = new System.Drawing.Point(359, 161);
             this.txtTarifaHoraExtra.Name = "txtTarifaHoraExtra";
             this.txtTarifaHoraExtra.Size = new System.Drawing.Size(100, 20);
             this.txtTarifaHoraExtra.TabIndex = 5;
@@ -225,11 +226,21 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(40, 133);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "label8";
+            // 
             // frmPaquete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 450);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.cmdEliminar);
             this.Controls.Add(this.chkActivo);
             this.Controls.Add(this.txtTarifaHoraExtra);
@@ -285,5 +296,6 @@
         private System.Windows.Forms.CheckBox chkActivo;
         private System.Windows.Forms.Button cmdEliminar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label8;
     }
 }
