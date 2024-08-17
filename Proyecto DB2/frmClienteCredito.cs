@@ -13,6 +13,8 @@ namespace Proyecto_DB2
 {
     public partial class frmClienteCredito : Form
     {
+        SqlConnection con;
+
         public frmClienteCredito()
         {
             InitializeComponent();
@@ -21,11 +23,24 @@ namespace Proyecto_DB2
         public frmClienteCredito(SqlConnection conexion)
         {
             InitializeComponent();
+
+            con = conexion;
         }
 
         private void frmClienteCredito_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmdVerID_Click(object sender, EventArgs e)
+        {
+            frmClienteFacturaID frm = new frmClienteFacturaID(con);
+            frm.ShowDialog();
         }
     }
 }
