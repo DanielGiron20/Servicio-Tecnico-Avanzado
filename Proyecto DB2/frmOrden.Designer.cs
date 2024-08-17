@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,8 +79,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.cmbNombrePaquete = new System.Windows.Forms.ComboBox();
             this.cmbNombreServicio = new System.Windows.Forms.ComboBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenDet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -102,6 +107,7 @@
             this.dgvOrden.Name = "dgvOrden";
             this.dgvOrden.Size = new System.Drawing.Size(761, 279);
             this.dgvOrden.TabIndex = 27;
+            this.dgvOrden.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrden_CellClick);
             this.dgvOrden.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrden_CellDoubleClick);
             this.dgvOrden.SelectionChanged += new System.EventHandler(this.dgvOrden_SelectionChanged);
             // 
@@ -310,6 +316,7 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.Enabled = false;
             this.btnModificar.Location = new System.Drawing.Point(152, 516);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(104, 37);
@@ -429,6 +436,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(48, 20);
             this.txtCantidad.TabIndex = 62;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // button1
             // 
@@ -535,6 +543,14 @@
             this.cmbNombreServicio.Size = new System.Drawing.Size(152, 21);
             this.cmbNombreServicio.TabIndex = 75;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // frmOrden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -594,6 +610,8 @@
             this.Load += new System.EventHandler(this.frmOrden_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrden)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenDet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -649,5 +667,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cmbNombrePaquete;
         private System.Windows.Forms.ComboBox cmbNombreServicio;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }
