@@ -227,7 +227,7 @@
             this.txtDNI.Location = new System.Drawing.Point(262, 82);
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(201, 20);
-            this.txtDNI.TabIndex = 1;
+            this.txtDNI.TabIndex = 20;
             this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             this.txtDNI.Leave += new System.EventHandler(this.txtDNI_Leave);
             // 

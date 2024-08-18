@@ -56,7 +56,7 @@ namespace Proyecto_DB2
         private void cmdSalir_Click(object sender, EventArgs e)
         {
 
-            this.Close();
+            this.Dispose();
         }
 
         private void txtTexto_TextChanged(object sender, EventArgs e)

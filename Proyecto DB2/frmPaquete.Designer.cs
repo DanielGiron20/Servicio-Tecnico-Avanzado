@@ -50,6 +50,7 @@
             this.cmdEliminar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label8 = new System.Windows.Forms.Label();
+            this.cmdBorrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPaqueteDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -235,11 +236,22 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "label8";
             // 
+            // cmdBorrar
+            // 
+            this.cmdBorrar.Location = new System.Drawing.Point(636, 338);
+            this.cmdBorrar.Name = "cmdBorrar";
+            this.cmdBorrar.Size = new System.Drawing.Size(141, 47);
+            this.cmdBorrar.TabIndex = 19;
+            this.cmdBorrar.Text = "Quitar Fila";
+            this.cmdBorrar.UseVisualStyleBackColor = true;
+            this.cmdBorrar.Click += new System.EventHandler(this.cmdBorrar_Click);
+            // 
             // frmPaquete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 450);
+            this.Controls.Add(this.cmdBorrar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmdEliminar);
             this.Controls.Add(this.chkActivo);
@@ -297,5 +309,6 @@
         private System.Windows.Forms.Button cmdEliminar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button cmdBorrar;
     }
 }

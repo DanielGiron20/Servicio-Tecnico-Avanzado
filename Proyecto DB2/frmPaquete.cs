@@ -364,7 +364,7 @@ namespace Proyecto_DB2
         private void cmdCancelar_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Desea salir sin guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                this.Close();
+                this.Dispose();
         }
 
         private void cmdVerServicios_Click(object sender, EventArgs e)
@@ -418,10 +418,9 @@ namespace Proyecto_DB2
                                 con.Open(); // Abre la conexión si está cerrada
                             }
 
-                            SqlCommand cmd = new SqlCommand("spPaqueteDetalleDelete", con);
+                            SqlCommand cmd = new SqlCommand("spPaqueteDetalleDesactivar", con);
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("@paqueteid", paqueteid);
-                            cmd.Parameters.AddWithValue("@servicioid", servicioid);
 
                             
                             cmd.ExecuteNonQuery();
@@ -431,7 +430,6 @@ namespace Proyecto_DB2
                             dsTablas.Tables["PaqueteDetalle"].Clear();
                             adpPaqueteDetalle.Fill(dsTablas.Tables["PaqueteDetalle"]);
 
-                            OnActualizarPrecioTotalEstimado?.Invoke(int.Parse(txtPaqueteID.Text));
                         }
                         catch (SqlException ex)
                         {
@@ -511,5 +509,28 @@ namespace Proyecto_DB2
             }
         }
 
+        private void cmdBorrar_Click(object sender, EventArgs e)
+        {
+            cmdGuardar.Enabled = false;
+            if (dgPaqueteDetalle.SelectedRows.Count > 0)
+            {
+                // Mostrar un mensaje de confirmación
+                DialogResult result = MessageBox.Show("¿Está seguro que desea quitar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                // Si el usuario selecciona 'Sí', eliminar la fila
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgPaqueteDetalle.SelectedRows)
+                    {
+                        dgPaqueteDetalle.Rows.Remove(row);
+                    }
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una fila para eliminar.", "Eliminar Fila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

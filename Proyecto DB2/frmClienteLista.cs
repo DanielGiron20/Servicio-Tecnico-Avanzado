@@ -53,8 +53,11 @@ namespace Proyecto_DB2
                 dataGridView1.Columns["Civil"].Visible = false;
                 dataGridView1.Columns["Tipo"].Visible = false;
 
+                dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.AllowUserToAddRows = false;
+                dataGridView1.AllowUserToDeleteRows = false;
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
             catch (Exception ex)
@@ -76,7 +79,7 @@ namespace Proyecto_DB2
 
         private void cmdSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void cmdModificar_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,7 +37,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.chkCerrada = new System.Windows.Forms.CheckBox();
-            this.cmdDesactivar = new System.Windows.Forms.Button();
             this.cmdSalir = new System.Windows.Forms.Button();
             this.cmdModificar = new System.Windows.Forms.Button();
             this.cmdInsertar = new System.Windows.Forms.Button();
@@ -54,7 +54,12 @@
             this.txtTotalFactura = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtFechaFactura = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmdCalcularTotal = new System.Windows.Forms.Button();
+            this.cmdBorrar = new System.Windows.Forms.Button();
+            this.cmdCambiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -64,6 +69,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(749, 245);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // label1
             // 
@@ -129,28 +135,13 @@
             this.chkCerrada.Text = "Cerrada";
             this.chkCerrada.UseVisualStyleBackColor = true;
             // 
-            // cmdDesactivar
-            // 
-            this.cmdDesactivar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdDesactivar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
-            this.cmdDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
-            this.cmdDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdDesactivar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmdDesactivar.Location = new System.Drawing.Point(567, 88);
-            this.cmdDesactivar.Margin = new System.Windows.Forms.Padding(2);
-            this.cmdDesactivar.Name = "cmdDesactivar";
-            this.cmdDesactivar.Size = new System.Drawing.Size(88, 42);
-            this.cmdDesactivar.TabIndex = 17;
-            this.cmdDesactivar.Text = "Cambiar Estado ";
-            this.cmdDesactivar.UseVisualStyleBackColor = true;
-            // 
             // cmdSalir
             // 
             this.cmdSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdSalir.Location = new System.Drawing.Point(673, 193);
+            this.cmdSalir.Location = new System.Drawing.Point(673, 178);
             this.cmdSalir.Margin = new System.Windows.Forms.Padding(2);
             this.cmdSalir.Name = "cmdSalir";
             this.cmdSalir.Size = new System.Drawing.Size(88, 32);
@@ -164,13 +155,14 @@
             this.cmdModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
             this.cmdModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
             this.cmdModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdModificar.Location = new System.Drawing.Point(673, 93);
+            this.cmdModificar.Location = new System.Drawing.Point(673, 65);
             this.cmdModificar.Margin = new System.Windows.Forms.Padding(2);
             this.cmdModificar.Name = "cmdModificar";
             this.cmdModificar.Size = new System.Drawing.Size(88, 32);
             this.cmdModificar.TabIndex = 15;
             this.cmdModificar.Text = "Modificar";
             this.cmdModificar.UseVisualStyleBackColor = true;
+            this.cmdModificar.Click += new System.EventHandler(this.cmdModificar_Click);
             // 
             // cmdInsertar
             // 
@@ -184,6 +176,7 @@
             this.cmdInsertar.TabIndex = 14;
             this.cmdInsertar.Text = "Insertar";
             this.cmdInsertar.UseVisualStyleBackColor = true;
+            this.cmdInsertar.Click += new System.EventHandler(this.cmdInsertar_Click);
             // 
             // txtClienteID
             // 
@@ -229,6 +222,7 @@
             this.cmdCalcular.TabIndex = 23;
             this.cmdCalcular.Text = "Calcular";
             this.cmdCalcular.UseVisualStyleBackColor = true;
+            this.cmdCalcular.Click += new System.EventHandler(this.cmdCalcular_Click);
             // 
             // cmdVerID
             // 
@@ -237,10 +231,10 @@
             this.cmdVerID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
             this.cmdVerID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdVerID.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmdVerID.Location = new System.Drawing.Point(27, 188);
+            this.cmdVerID.Location = new System.Drawing.Point(95, 141);
             this.cmdVerID.Margin = new System.Windows.Forms.Padding(2);
             this.cmdVerID.Name = "cmdVerID";
-            this.cmdVerID.Size = new System.Drawing.Size(189, 37);
+            this.cmdVerID.Size = new System.Drawing.Size(121, 37);
             this.cmdVerID.TabIndex = 24;
             this.cmdVerID.Text = "Ver Datos Factura";
             this.cmdVerID.UseVisualStyleBackColor = true;
@@ -263,15 +257,15 @@
             // 
             // txtPago
             // 
-            this.txtPago.Location = new System.Drawing.Point(369, 185);
+            this.txtPago.Location = new System.Drawing.Point(448, 182);
             this.txtPago.Name = "txtPago";
-            this.txtPago.Size = new System.Drawing.Size(172, 20);
+            this.txtPago.Size = new System.Drawing.Size(207, 20);
             this.txtPago.TabIndex = 29;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(272, 192);
+            this.label7.Location = new System.Drawing.Point(366, 185);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 13);
             this.label7.TabIndex = 30;
@@ -280,7 +274,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(33, 141);
+            this.label8.Location = new System.Drawing.Point(24, 203);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 13);
             this.label8.TabIndex = 31;
@@ -289,7 +283,7 @@
             // txtTotalFactura
             // 
             this.txtTotalFactura.Enabled = false;
-            this.txtTotalFactura.Location = new System.Drawing.Point(116, 138);
+            this.txtTotalFactura.Location = new System.Drawing.Point(97, 200);
             this.txtTotalFactura.Name = "txtTotalFactura";
             this.txtTotalFactura.Size = new System.Drawing.Size(100, 20);
             this.txtTotalFactura.TabIndex = 32;
@@ -311,11 +305,63 @@
             this.txtFechaFactura.Size = new System.Drawing.Size(100, 20);
             this.txtFechaFactura.TabIndex = 34;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // cmdCalcularTotal
+            // 
+            this.cmdCalcularTotal.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCalcularTotal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdCalcularTotal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdCalcularTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCalcularTotal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmdCalcularTotal.Location = new System.Drawing.Point(211, 200);
+            this.cmdCalcularTotal.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdCalcularTotal.Name = "cmdCalcularTotal";
+            this.cmdCalcularTotal.Size = new System.Drawing.Size(88, 25);
+            this.cmdCalcularTotal.TabIndex = 35;
+            this.cmdCalcularTotal.Text = "Obtener";
+            this.cmdCalcularTotal.UseVisualStyleBackColor = true;
+            this.cmdCalcularTotal.Click += new System.EventHandler(this.cmdCalcularTotal_Click);
+            // 
+            // cmdBorrar
+            // 
+            this.cmdBorrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.cmdBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdBorrar.Location = new System.Drawing.Point(673, 103);
+            this.cmdBorrar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdBorrar.Name = "cmdBorrar";
+            this.cmdBorrar.Size = new System.Drawing.Size(88, 32);
+            this.cmdBorrar.TabIndex = 36;
+            this.cmdBorrar.Text = "Quitar Fila";
+            this.cmdBorrar.UseVisualStyleBackColor = true;
+            this.cmdBorrar.Click += new System.EventHandler(this.cmdBorrar_Click);
+            // 
+            // cmdCambiar
+            // 
+            this.cmdCambiar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCambiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.cmdCambiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.cmdCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCambiar.Location = new System.Drawing.Point(567, 89);
+            this.cmdCambiar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdCambiar.Name = "cmdCambiar";
+            this.cmdCambiar.Size = new System.Drawing.Size(88, 46);
+            this.cmdCambiar.TabIndex = 37;
+            this.cmdCambiar.Text = "Cambiar Estado";
+            this.cmdCambiar.UseVisualStyleBackColor = true;
+            this.cmdCambiar.Click += new System.EventHandler(this.cmdCambiar_Click);
+            // 
             // frmClienteCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 498);
+            this.Controls.Add(this.cmdCambiar);
+            this.Controls.Add(this.cmdBorrar);
+            this.Controls.Add(this.cmdCalcularTotal);
             this.Controls.Add(this.txtFechaFactura);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtTotalFactura);
@@ -330,7 +376,6 @@
             this.Controls.Add(this.txtTermino);
             this.Controls.Add(this.txtFacturaID);
             this.Controls.Add(this.txtClienteID);
-            this.Controls.Add(this.cmdDesactivar);
             this.Controls.Add(this.cmdSalir);
             this.Controls.Add(this.cmdModificar);
             this.Controls.Add(this.cmdInsertar);
@@ -347,6 +392,7 @@
             this.Text = "frmClienteCredito";
             this.Load += new System.EventHandler(this.frmClienteCredito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,7 +408,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkCerrada;
-        private System.Windows.Forms.Button cmdDesactivar;
         private System.Windows.Forms.Button cmdSalir;
         private System.Windows.Forms.Button cmdModificar;
         private System.Windows.Forms.Button cmdInsertar;
@@ -380,5 +425,9 @@
         private System.Windows.Forms.TextBox txtTotalFactura;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtFechaFactura;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button cmdCalcularTotal;
+        private System.Windows.Forms.Button cmdBorrar;
+        private System.Windows.Forms.Button cmdCambiar;
     }
 }

@@ -51,8 +51,10 @@ namespace Proyecto_DB2
                 dataGridView1.ReadOnly = true; //solo para leer
                 dataGridView1.Columns["Sexo"].Visible = false;
 
+                dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.AllowUserToAddRows = false;
+                dataGridView1.AllowUserToDeleteRows = false;
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
             catch (Exception ex)
@@ -73,7 +75,7 @@ namespace Proyecto_DB2
 
         private void cmdSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void cmdModificar_Click(object sender, EventArgs e)

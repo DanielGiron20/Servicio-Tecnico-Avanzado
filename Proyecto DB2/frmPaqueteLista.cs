@@ -36,7 +36,7 @@ namespace Proyecto_DB2
 
         private void cmdSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void frmPaqueteLista_Load(object sender, EventArgs e)
@@ -52,9 +52,12 @@ namespace Proyecto_DB2
                 dataGridView1.DataSource = tabPaquete;
                 dataGridView1.ReadOnly = true; //solo para leer
 
+                dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.AllowUserToAddRows = false;
+                dataGridView1.AllowUserToDeleteRows = false;
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -201,30 +204,39 @@ namespace Proyecto_DB2
 
         private void txtTexto_TextChanged(object sender, EventArgs e)
         {
-            if (txtTexto.Text.Length == 0)
+            try
             {
-                tabPaquete.DefaultView.RowFilter = "";
-            }
-            else
-            {
-                if (tabPaquete.Columns[cmbCampo.Text].DataType == typeof(string))
+                if (txtTexto.Text.Length == 0)
                 {
-                    tabPaquete.DefaultView.RowFilter = cmbCampo.Text + " like '%" + txtTexto.Text + "%'";
+                    tabPaquete.DefaultView.RowFilter = "";
                 }
                 else
                 {
-                    int numero;
-                    if (int.TryParse(txtTexto.Text, out numero))
+                    if (tabPaquete.Columns[cmbCampo.Text].DataType == typeof(string))
                     {
-                        tabPaquete.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        tabPaquete.DefaultView.RowFilter = cmbCampo.Text + " like '%" + txtTexto.Text + "%'";
                     }
                     else
                     {
-                        tabPaquete.DefaultView.RowFilter = "1 = 0"; // No coincidirá con nada si el texto no es un número válido
+                        int numero;
+                        if (int.TryParse(txtTexto.Text, out numero))
+                        {
+                            tabPaquete.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        }
+                        else
+                        {
+                            tabPaquete.DefaultView.RowFilter = "1 = 0"; // No coincidirá con nada si el texto no es un número válido
+                        }
                     }
-                }
 
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
     }
 }
