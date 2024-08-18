@@ -58,6 +58,7 @@ namespace Proyecto_DB2
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al configurar el DataAdapter: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -129,7 +130,7 @@ namespace Proyecto_DB2
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            using (frmEditarPuesto formNuevo = new frmEditarPuesto(0, "", 0, true))
+            using (frmEditarPuesto formNuevo = new frmEditarPuesto(conexion, 0, "", 0, true))
             {
                 if (formNuevo.ShowDialog() == DialogResult.OK)
                 {
@@ -155,7 +156,6 @@ namespace Proyecto_DB2
                     adp.InsertCommand.Connection = con;
                     adp.UpdateCommand.Connection = con;
                     adp.DeleteCommand.Connection = con;
-
                     using (SqlTransaction transaction = con.BeginTransaction())
                     {
                         try
@@ -164,14 +164,6 @@ namespace Proyecto_DB2
                             adp.UpdateCommand.Transaction = transaction;
                             adp.DeleteCommand.Transaction = transaction;
 
-                            dgPuestoEmpleado.EndEdit();
-
-                            tabPuesto.AcceptChanges();
-                            foreach (DataRow row in tabPuesto.Rows)
-                            {
-                                row.SetModified();
-                            }
-
                             int result = adp.Update(tabPuesto);
                             transaction.Commit();
 
@@ -179,6 +171,7 @@ namespace Proyecto_DB2
                             {
                                 MessageBox.Show($"{result} registro(s) guardado(s) con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 CargarPuestos(cmbVerPuestos.SelectedItem.ToString());
+
                             }
                             else
                             {
@@ -207,20 +200,14 @@ namespace Proyecto_DB2
                 string nombre = dgPuestoEmpleado.CurrentRow.Cells["Nombre"].Value.ToString();
                 int areaId = Convert.ToInt32(dgPuestoEmpleado.CurrentRow.Cells["AreaID"].Value);
                 bool activo = Convert.ToBoolean(dgPuestoEmpleado.CurrentRow.Cells["Activo"].Value);
-
-                using (frmEditarPuesto formEditar = new frmEditarPuesto(puestoId, nombre, areaId, activo))
+                using (frmEditarPuesto formEditar = new frmEditarPuesto(conexion, puestoId, nombre, areaId, activo))
                 {
                     if (formEditar.ShowDialog() == DialogResult.OK)
                     {
-                        DataRow[] rows = tabPuesto.Select($"PuestoID = {puestoId}");
-                        if (rows.Length > 0)
-                        {
-                            rows[0]["Nombre"] = formEditar.NombrePuesto;
-                            rows[0]["AreaID"] = formEditar.AreaID;
-                            rows[0]["AreaNombre"] = formEditar.AreaNombre;
-                            rows[0]["Activo"] = formEditar.Activo;
-                            tabPuesto.AcceptChanges();
-                        }
+                        dgPuestoEmpleado.CurrentRow.Cells["Nombre"].Value = formEditar.NombrePuesto;
+                        dgPuestoEmpleado.CurrentRow.Cells["AreaID"].Value = formEditar.AreaID;
+                        dgPuestoEmpleado.CurrentRow.Cells["AreaNombre"].Value = formEditar.AreaNombre;
+                        dgPuestoEmpleado.CurrentRow.Cells["Activo"].Value = formEditar.Activo;
                         dgPuestoEmpleado.Refresh();
                     }
                 }
@@ -261,8 +248,9 @@ namespace Proyecto_DB2
         }
     }
 
-    public class frmEditarPuesto : Form
+    internal class frmEditarPuesto : Form
     {
+        private CConexion conexion;
         private int puestoId;
         private TextBox txtNombre;
         private ComboBox cmbArea;
@@ -277,8 +265,9 @@ namespace Proyecto_DB2
         public string AreaNombre { get; private set; }
         public bool Activo { get; private set; }
 
-        public frmEditarPuesto(int puestoId, string nombre, int areaId, bool activo)
+        public frmEditarPuesto(CConexion conexion, int puestoId, string nombre, int areaId, bool activo)
         {
+            this.conexion = conexion;
             this.puestoId = puestoId;
             InitializeComponent();
             CargarAreas();
@@ -311,6 +300,7 @@ namespace Proyecto_DB2
             this.lblArea.Location = new Point(12, 45);
             this.lblArea.Name = "lblArea";
             this.lblArea.Size = new Size(32, 13);
+
             this.lblArea.Text = "Área:";
 
             this.cmbArea.Location = new Point(70, 42);
@@ -328,6 +318,7 @@ namespace Proyecto_DB2
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new Size(100, 23);
             this.btnGuardar.Text = "Guardar";
+
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new EventHandler(btnGuardar_Click);
 
@@ -338,6 +329,7 @@ namespace Proyecto_DB2
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new EventHandler(btnCancelar_Click);
 
+            this.ClientSize = new Size(340, 140);
             this.ClientSize = new Size(340, 140);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);
@@ -355,12 +347,10 @@ namespace Proyecto_DB2
             this.AcceptButton = this.btnGuardar;
             this.CancelButton = this.btnCancelar;
         }
-
         private void CargarAreas()
         {
             try
             {
-                CConexion conexion = new CConexion();
                 using (SqlConnection con = conexion.EstablecerConexion())
                 {
                     using (SqlCommand cmd = new SqlCommand("SELECT AreaID, Nombre FROM Area WHERE Activo = 1", con))
@@ -408,7 +398,7 @@ namespace Proyecto_DB2
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            this.Close();   
+            this.Close();
         }
     }
 }
