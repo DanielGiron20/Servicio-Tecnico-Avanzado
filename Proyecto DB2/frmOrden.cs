@@ -393,6 +393,7 @@ namespace Proyecto_DB2
                 cmbTipoOrdenNombre.Enabled = false;
                 btnInsertar.Enabled = false;
                 btnModificar.Enabled = true;
+                button4.Enabled = false;
 
                 txtOrdenID.Text = filaSeleccionada.Cells["OrdenID"].Value.ToString();
                 cmbClienteID.SelectedValue = filaSeleccionada.Cells["ClienteID"].Value.ToString();
@@ -462,6 +463,7 @@ namespace Proyecto_DB2
                         cmbTipoOrdenNombre.Enabled = true;
                         btnInsertar.Enabled = true;
                         btnModificar.Enabled = false;
+                        button4.Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -492,6 +494,37 @@ namespace Proyecto_DB2
         private void button1_Click(object sender, EventArgs e)
         {
             DataRow nuevaFila = dtOrdenDet.NewRow();
+
+            bool hayerror = false;
+
+            errorProvider2.Clear();
+
+            if (cmbServicioID.SelectedItem == null)
+            {
+                errorProvider2.SetError(cmbServicioID, "Falta el ID del servicio.");
+                hayerror = true;
+            }
+            else if(cmbNombreServicio.SelectedItem == null)
+            {
+                errorProvider2.SetError(cmbNombreServicio,"Falta el ID del servicio");
+                hayerror = true;
+            }
+            else if(txtCantidad.Text == "")
+            {
+                errorProvider2.SetError(txtCantidad, "Falta la Cantidad.");
+                hayerror = true;
+            }
+
+            if(hayerror)
+            {
+                return;
+            }
+
+            if (txtOrdenID2.Text == "")
+            {
+                MessageBox.Show("De clic en la orden a la que quiere insertar el detalle.");
+                return;
+            }
 
             if(cmbPaqueteId.SelectedIndex == -1)
             {
@@ -527,9 +560,11 @@ namespace Proyecto_DB2
                 dtOrden.Clear();
                 adpOrden.Fill(dtOrden);
                 dgvOrden.Refresh();
-
+                txtCantidad.Clear();
+                cmbServicioID.SelectedIndex = -1;
+                cmbNombreServicio.SelectedIndex = -1;
                 MessageBox.Show("Los datos se insertaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiarOrdenDet();
+                
             }
             catch (Exception ex)
             {
@@ -590,6 +625,8 @@ namespace Proyecto_DB2
                         cmbPaqueteId.Enabled = false;
                         cmbNombrePaquete.Enabled = false;
                         txtCantidad.Enabled = false;
+                        button1.Enabled = true;
+                        btnLimpiarOrdenDet.Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -615,6 +652,12 @@ namespace Proyecto_DB2
 
                 chkActivoOrdenDet.Enabled = true;
                 button2.Enabled = true;
+                button1.Enabled = false;
+                txtCantidad.Enabled = false;
+                btnLimpiarOrdenDet.Enabled = false;
+                cmbServicioID.Enabled = false;
+                cmbNombreServicio.Enabled = false;
+
 
                 if (filaSeleccionada.Cells["PaqueteID"].Value.ToString() == "")
                 {
@@ -675,6 +718,7 @@ namespace Proyecto_DB2
                 }
                 else if(filaSeleccionada.Cells["TipoOrden"].Value.ToString() == "N")
                 {
+                    txtCantidad.Clear();
                     cmbPaqueteId.Enabled=false;
                     cmbNombrePaquete.Enabled=false;
 
