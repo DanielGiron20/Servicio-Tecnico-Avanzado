@@ -83,6 +83,7 @@
             this.btnModificarCompra.TabIndex = 5;
             this.btnModificarCompra.Text = "Modificar";
             this.btnModificarCompra.UseVisualStyleBackColor = true;
+            this.btnModificarCompra.Click += new System.EventHandler(this.btnModificarCompra_Click);
             // 
             // btnDesactivarCompra
             // 
@@ -92,6 +93,7 @@
             this.btnDesactivarCompra.TabIndex = 6;
             this.btnDesactivarCompra.Text = "Desactivar";
             this.btnDesactivarCompra.UseVisualStyleBackColor = true;
+            this.btnDesactivarCompra.Click += new System.EventHandler(this.btnDesactivarCompra_Click);
             // 
             // btnIsertarExistente
             // 

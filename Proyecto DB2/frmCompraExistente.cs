@@ -17,20 +17,25 @@ namespace Proyecto_DB2
         SqlConnection conexion;
         SqlDataAdapter adpVerArticulo;
         DataTable dtverarticulo;
+        DataTable dtayudaprov;
+        SqlDataAdapter adpayudaprov;
         public frmCompraExistente()
         {
             InitializeComponent();
+            dtayudaprov = new DataTable();
             dtverarticulo = new DataTable();
             conexion = new SqlConnection(url);
             adpVerArticulo = new SqlDataAdapter("spVerArticulosCD", conexion);
             adpVerArticulo.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            adpayudaprov = new SqlDataAdapter("spAyudaProveedor", conexion);
+            adpayudaprov.SelectCommand.CommandType= CommandType.StoredProcedure;    
         }
 
         private void frmCompraExistente_Load(object sender, EventArgs e)
         {
 
-            adpVerArticulo.Fill(dtverarticulo);
-            dgVerArticuloCD.DataSource = dtverarticulo;
+            ActualizarDataGridView();
 
         }
 
@@ -42,6 +47,7 @@ namespace Proyecto_DB2
             txtNombreArticulo1.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
             txtBarraArticulo1.Text = filaSeleccionada.Cells["Barra"].Value.ToString();
             txtArticuloid.Text = filaSeleccionada.Cells["ArticuloID"].Value.ToString();
+            
 
         }
 
@@ -73,7 +79,8 @@ namespace Proyecto_DB2
                     cmdInsertarCompra.Parameters.AddWithValue("@ProveedorID", txtProveedorIDCompra1.Text);
                     cmdInsertarCompra.Parameters.AddWithValue("@Fecha", txtFechaCompra1.Text);
                     cmdInsertarCompra.Parameters.AddWithValue("@Documento", txtDocumentoArticulo1.Text);
-                    cmdInsertarCompra.Parameters.AddWithValue("@Tipo", cbxTasaArticulo1.Text);
+                    cmdInsertarCompra.Parameters.AddWithValue("@Tipo", cbxTipoCompra1.Text);
+                    cmdInsertarCompra.Parameters.AddWithValue("@EstadoCompra", cbxEstado.Text);
                     cmdInsertarCompra.Parameters.AddWithValue("@NombreArticulo", txtNombreArticulo1.Text);
                     cmdInsertarCompra.Parameters.AddWithValue("@BarraArticulo", txtBarraArticulo1.Text);
                     cmdInsertarCompra.Parameters.AddWithValue("@PrecioArticulo", txtPrecioCompra1.Text);
@@ -87,6 +94,7 @@ namespace Proyecto_DB2
 
                     MessageBox.Show("Compra registrada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conexion.Close();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -99,6 +107,54 @@ namespace Proyecto_DB2
         {
             if (MessageBox.Show("Desea salir sin guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Close();
+        }
+
+        private void btnVerProceedorCompra_Click(object sender, EventArgs e)
+        {
+            pnlBtnAyuda.Visible = true;
+            adpayudaprov.Fill(dtayudaprov);
+            dgAyudaProveedor.DataSource = dtayudaprov;
+        }
+
+        private void dgAyudaProveedor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+            
+        {
+
+            try
+            {
+                 DataGridViewRow filaSeleccionadaAyuda = dgAyudaProveedor.Rows[e.RowIndex];
+                            txtProveedorIDCompra1.Text = filaSeleccionadaAyuda.Cells["ProveedorID"].Value.ToString();
+                            pnlBtnAyuda.Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Filas Ordenadas, seleccione un proveedor" , "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+           
+        }
+
+        private void ActualizarDataGridView()
+        {
+            try
+            {
+                // Llenar el DataTable con datos actuales
+                dtverarticulo.Clear();
+                adpVerArticulo.Fill(dtverarticulo);
+                dgVerArticuloCD.DataSource = dtverarticulo;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void pnlBtnAyuda_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

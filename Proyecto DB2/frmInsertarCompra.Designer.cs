@@ -51,6 +51,12 @@
             this.cbxTasaArticulo = new System.Windows.Forms.ComboBox();
             this.txtCantidadCD = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.pnlAyudaNuevo = new System.Windows.Forms.Panel();
+            this.dgAayudaNuevo = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.CbxInsertarEstado = new System.Windows.Forms.ComboBox();
+            this.pnlAyudaNuevo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAayudaNuevo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInsertarCompra
@@ -133,6 +139,7 @@
             this.btnVerProceedorCompra.TabIndex = 14;
             this.btnVerProceedorCompra.Text = "Ayuda";
             this.btnVerProceedorCompra.UseVisualStyleBackColor = true;
+            this.btnVerProceedorCompra.Click += new System.EventHandler(this.btnVerProceedorCompra_Click);
             // 
             // txtFechaCompra
             // 
@@ -250,11 +257,54 @@
             this.label10.TabIndex = 28;
             this.label10.Text = "Cantidad";
             // 
+            // pnlAyudaNuevo
+            // 
+            this.pnlAyudaNuevo.Controls.Add(this.dgAayudaNuevo);
+            this.pnlAyudaNuevo.Location = new System.Drawing.Point(438, 96);
+            this.pnlAyudaNuevo.Name = "pnlAyudaNuevo";
+            this.pnlAyudaNuevo.Size = new System.Drawing.Size(308, 110);
+            this.pnlAyudaNuevo.TabIndex = 30;
+            this.pnlAyudaNuevo.Visible = false;
+            // 
+            // dgAayudaNuevo
+            // 
+            this.dgAayudaNuevo.AllowUserToOrderColumns = true;
+            this.dgAayudaNuevo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgAayudaNuevo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAayudaNuevo.Location = new System.Drawing.Point(0, 0);
+            this.dgAayudaNuevo.Name = "dgAayudaNuevo";
+            this.dgAayudaNuevo.Size = new System.Drawing.Size(308, 110);
+            this.dgAayudaNuevo.TabIndex = 0;
+            this.dgAayudaNuevo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAayudaNuevo_CellContentClick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(268, 225);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Estado";
+            // 
+            // CbxInsertarEstado
+            // 
+            this.CbxInsertarEstado.FormattingEnabled = true;
+            this.CbxInsertarEstado.Items.AddRange(new object[] {
+            "C",
+            "P"});
+            this.CbxInsertarEstado.Location = new System.Drawing.Point(314, 222);
+            this.CbxInsertarEstado.Name = "CbxInsertarEstado";
+            this.CbxInsertarEstado.Size = new System.Drawing.Size(121, 21);
+            this.CbxInsertarEstado.TabIndex = 31;
+            // 
             // frmInsertarCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.CbxInsertarEstado);
+            this.Controls.Add(this.pnlAyudaNuevo);
             this.Controls.Add(this.txtCantidadCD);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cbxTasaArticulo);
@@ -285,6 +335,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInsertarCompra";
             this.Load += new System.EventHandler(this.frmInsertarCompra_Load);
+            this.pnlAyudaNuevo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgAayudaNuevo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +367,9 @@
         private System.Windows.Forms.ComboBox cbxTasaArticulo;
         private System.Windows.Forms.TextBox txtCantidadCD;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel pnlAyudaNuevo;
+        private System.Windows.Forms.DataGridView dgAayudaNuevo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox CbxInsertarEstado;
     }
 }
