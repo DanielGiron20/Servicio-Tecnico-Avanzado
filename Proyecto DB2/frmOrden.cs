@@ -71,6 +71,7 @@ namespace Proyecto_DB2
             cmbServicioID.SelectedIndex = -1;
             cmbNombrePaquete.SelectedIndex = -1;
             cmbNombreServicio.SelectedIndex = -1;
+            txtOrdenDetId.Clear();
             txtOrdenID2.Clear();
             txtCantidad.Clear();
             button2.Enabled = false;
@@ -499,17 +500,7 @@ namespace Proyecto_DB2
 
             errorProvider2.Clear();
 
-            if (cmbServicioID.SelectedItem == null)
-            {
-                errorProvider2.SetError(cmbServicioID, "Falta el ID del servicio.");
-                hayerror = true;
-            }
-            else if(cmbNombreServicio.SelectedItem == null)
-            {
-                errorProvider2.SetError(cmbNombreServicio,"Falta el ID del servicio");
-                hayerror = true;
-            }
-            else if(txtCantidad.Text == "")
+            if(txtCantidad.Text == "")
             {
                 errorProvider2.SetError(txtCantidad, "Falta la Cantidad.");
                 hayerror = true;
@@ -700,8 +691,25 @@ namespace Proyecto_DB2
                 cmbNombrePaquete.Enabled = true;
                 txtCantidad.Enabled = true;
 
-                if (filaSeleccionada.Cells["TipoOrden"].Value.ToString() == "P" && filaSeleccionada.Cells["ValorTotal"].Value.ToString() != "")
+                if (filaSeleccionada.Cells["TipoOrden"].Value.ToString() == "P" && filaSeleccionada.Cells["ValorTotal"].Value.ToString() == "0")
                 {
+                    cmbServicioID.Enabled = false;
+                    cmbNombreServicio.Enabled = false;
+                    cmbPaqueteId.Enabled = true;
+                    cmbNombrePaquete.Enabled = true;
+                    cmbPaqueteId.SelectedIndex = 0;
+                    cmbNombrePaquete.SelectedIndex = 0;
+                    cmbServicioID.SelectedIndex = -1;
+                    cmbNombreServicio.SelectedIndex = -1;
+                    txtCantidad.Enabled = false;
+                    txtCantidad.Text = "1";
+
+                    
+                }
+                else if(filaSeleccionada.Cells["TipoOrden"].Value.ToString() == "P" && filaSeleccionada.Cells["ValorTotal"].Value.ToString() != "")
+                {
+                    cmbServicioID.SelectedIndex = -1;
+                    cmbNombreServicio.SelectedIndex = -1;
                     cmbServicioID.Enabled = false;
                     cmbNombreServicio.Enabled = false;
                     cmbPaqueteId.Enabled = false;
@@ -709,18 +717,22 @@ namespace Proyecto_DB2
                     txtCantidad.Enabled = false;
                     txtCantidad.Text = "1";
                 }
-                else if(filaSeleccionada.Cells["TipoOrden"].Value.ToString() == "P" && filaSeleccionada.Cells["ValorTotal"].Value.ToString() == "")
-                {
-                    cmbServicioID.Enabled = false;
-                    cmbNombreServicio.Enabled = false;
-                    txtCantidad.Enabled = false;
-                    txtCantidad.Text = "1";
-                }
+                //else if(filaSeleccionada.Cells["TipoOrden"].Value.ToString() == "P" && filaSeleccionada.Cells["ValorTotal"].Value.ToString() == "")
+                //{
+                //    cmbServicioID.Enabled = false;
+                //    cmbNombreServicio.Enabled = false;
+                //    txtCantidad.Enabled = false;
+                //    txtCantidad.Text = "1";
+                //}
                 else if(filaSeleccionada.Cells["TipoOrden"].Value.ToString() == "N")
                 {
                     txtCantidad.Clear();
+                    cmbPaqueteId.SelectedIndex=-1;
+                    cmbNombrePaquete.SelectedIndex = -1;
                     cmbPaqueteId.Enabled=false;
                     cmbNombrePaquete.Enabled=false;
+                    cmbServicioID.SelectedIndex = 0;
+                    cmbNombreServicio.SelectedIndex = 0;
 
                 }
 
