@@ -61,5 +61,17 @@ namespace Proyecto_DB2
             Form frmconsulta = new frmConsultaCompra();
             frmconsulta.Show();
         }
+
+        private void btrnInsertarCompra_Click(object sender, EventArgs e)
+        {
+            Form frmInsertarCompra = new frmInsertarCompra();
+            frmInsertarCompra.Show();
+        }
+
+        private void btnIsertarExistente_Click(object sender, EventArgs e)
+        {
+            Form frmCompraExistente = new frmCompraExistente();
+            frmCompraExistente.Show();
+        }
     }
 }

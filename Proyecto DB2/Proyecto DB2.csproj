@@ -59,6 +59,12 @@
       <DependentUpon>AreaEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="CConexion.cs" />
+    <Compile Include="frmCompraExistente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompraExistente.Designer.cs">
+      <DependentUpon>frmCompraExistente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCuentaBancaria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,12 @@
     </Compile>
     <Compile Include="FrmInsertarArticulos.Designer.cs">
       <DependentUpon>FrmInsertarArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInsertarCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInsertarCompra.Designer.cs">
+      <DependentUpon>frmInsertarCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNuevoProv.cs">
       <SubType>Form</SubType>
@@ -268,6 +280,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCompraExistente.resx">
+      <DependentUpon>frmCompraExistente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaCompra.resx">
       <DependentUpon>frmConsultaCompra.cs</DependentUpon>
     </EmbeddedResource>
@@ -285,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInsertarArticulos.resx">
       <DependentUpon>FrmInsertarArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInsertarCompra.resx">
+      <DependentUpon>frmInsertarCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoProv.resx">
       <DependentUpon>frmNuevoProv.cs</DependentUpon>
