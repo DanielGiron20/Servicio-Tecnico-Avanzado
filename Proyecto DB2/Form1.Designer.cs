@@ -42,6 +42,7 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnCuentaBancaria = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCuentaBancaria = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlverproveedor.SuspendLayout();
             this.pnlSubMenuGestionVentas.SuspendLayout();
@@ -206,6 +206,7 @@
             this.btnOrdenPorCliente.Text = "Orden/Cliente";
             this.btnOrdenPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOrdenPorCliente.UseVisualStyleBackColor = false;
+            this.btnOrdenPorCliente.Click += new System.EventHandler(this.btnOrdenPorCliente_Click);
             // 
             // btnFactura
             // 
@@ -334,6 +335,26 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(194, 317);
             this.panel6.TabIndex = 8;
+            // 
+            // btnCuentaBancaria
+            // 
+            this.btnCuentaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCuentaBancaria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCuentaBancaria.FlatAppearance.BorderSize = 0;
+            this.btnCuentaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnCuentaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
+            this.btnCuentaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuentaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuentaBancaria.ForeColor = System.Drawing.Color.LightGray;
+            this.btnCuentaBancaria.Location = new System.Drawing.Point(0, 268);
+            this.btnCuentaBancaria.Name = "btnCuentaBancaria";
+            this.btnCuentaBancaria.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnCuentaBancaria.Size = new System.Drawing.Size(194, 49);
+            this.btnCuentaBancaria.TabIndex = 6;
+            this.btnCuentaBancaria.Text = "Cuenta Bancaria";
+            this.btnCuentaBancaria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuentaBancaria.UseVisualStyleBackColor = true;
+            this.btnCuentaBancaria.Click += new System.EventHandler(this.btnCuentaBancaria_Click);
             // 
             // button18
             // 
@@ -730,26 +751,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // btnCuentaBancaria
-            // 
-            this.btnCuentaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCuentaBancaria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCuentaBancaria.FlatAppearance.BorderSize = 0;
-            this.btnCuentaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnCuentaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(14)))), ((int)(((byte)(178)))));
-            this.btnCuentaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCuentaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCuentaBancaria.ForeColor = System.Drawing.Color.LightGray;
-            this.btnCuentaBancaria.Location = new System.Drawing.Point(0, 268);
-            this.btnCuentaBancaria.Name = "btnCuentaBancaria";
-            this.btnCuentaBancaria.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnCuentaBancaria.Size = new System.Drawing.Size(194, 49);
-            this.btnCuentaBancaria.TabIndex = 6;
-            this.btnCuentaBancaria.Text = "Cuenta Bancaria";
-            this.btnCuentaBancaria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCuentaBancaria.UseVisualStyleBackColor = true;
-            this.btnCuentaBancaria.Click += new System.EventHandler(this.btnCuentaBancaria_Click);
             // 
             // Form1
             // 

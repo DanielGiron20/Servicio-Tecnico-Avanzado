@@ -259,6 +259,12 @@
     <Compile Include="frmEmpleadoLista.Designer.cs">
       <DependentUpon>frmEmpleadoLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaOrdenCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaOrdenCliente.Designer.cs">
+      <DependentUpon>VistaOrdenCliente.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Agenda.resx">
       <DependentUpon>Agenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -367,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleadoLista.resx">
       <DependentUpon>frmEmpleadoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaOrdenCliente.resx">
+      <DependentUpon>VistaOrdenCliente.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

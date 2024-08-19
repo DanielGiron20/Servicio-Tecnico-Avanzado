@@ -39,7 +39,8 @@ namespace Proyecto_DB2
         SqlDataAdapter adpServicio;
         DataTable dtServicio;
 
-        
+        SqlDataAdapter adpOrdenCliente;
+        DataTable dtOrdenCliente;
 
         public frmOrden()
         {
@@ -214,6 +215,8 @@ namespace Proyecto_DB2
             cmbEstadoNombre.DataSource = dtEstado;
             cmbEstadoNombre.DisplayMember = "NombreEstado";
             cmbEstadoNombre.ValueMember = "Estado";
+
+            
 
             adpTipoOrden = new SqlDataAdapter();
             dtTipoOrden = new DataTable();
@@ -557,7 +560,7 @@ namespace Proyecto_DB2
                 MessageBox.Show("Los datos se insertaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

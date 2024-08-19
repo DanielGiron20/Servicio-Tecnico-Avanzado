@@ -248,6 +248,12 @@ namespace Proyecto_DB2
             openchildform(new frmCuentaBancaria(conexionMenu));
             ocultar();
         }
+
+        private void btnOrdenPorCliente_Click(object sender, EventArgs e)
+        {
+            openchildform(new VistaOrdenCliente(conexionMenu));
+            ocultar();
+        }
     }
 
 }
