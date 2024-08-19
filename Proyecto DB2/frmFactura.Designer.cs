@@ -529,7 +529,7 @@
             this.cmdSalir.Location = new System.Drawing.Point(725, 11);
             this.cmdSalir.Margin = new System.Windows.Forms.Padding(2);
             this.cmdSalir.Name = "cmdSalir";
-            this.cmdSalir.Size = new System.Drawing.Size(62, 44);
+            this.cmdSalir.Size = new System.Drawing.Size(45, 44);
             this.cmdSalir.TabIndex = 46;
             this.cmdSalir.Text = "Salir";
             this.cmdSalir.UseVisualStyleBackColor = true;

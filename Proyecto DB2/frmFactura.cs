@@ -524,9 +524,15 @@ namespace Proyecto_DB2
             try
             {
                 adpFacturaDet.Update(dtFacturaDet);
-                
+
+
+                dtFacturaDet.Clear();
                 adpFacturaDet.Fill(dtFacturaDet);
                 dgvFacturaDet.Refresh();
+
+                dtFactura.Clear(); 
+                adpFactura.Fill(dtFactura);
+                dgvFactura.Refresh();
                 MessageBox.Show("Los datos se insertaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtFacturaDetID.Clear();
                 cmbArticuloID.SelectedIndex = -1;
