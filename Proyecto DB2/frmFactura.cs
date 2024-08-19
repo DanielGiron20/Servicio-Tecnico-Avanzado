@@ -141,7 +141,7 @@ namespace Proyecto_DB2
             adpFacturaDet.UpdateCommand.Parameters.Add("@horasextras", SqlDbType.Int, 4, "HorasExtras");
             adpFacturaDet.UpdateCommand.Parameters.Add("@activo", SqlDbType.Bit, 1, "Activo");
 
-
+            adpFacturaDet.UpdateCommand.UpdatedRowSource = UpdateRowSource.None;
 
             adpCliente = new SqlDataAdapter();
             dtCliente = new DataTable();
@@ -345,6 +345,12 @@ namespace Proyecto_DB2
         {
             limpiarFactura();
             btnInsertarFac.Enabled = true;
+
+            cmbTipoFactura.Enabled = true;
+            cmbNombreTipoFac.Enabled = true;
+            cmbEstadoFactura.Enabled = true;
+            cmbNombreEstadoFac.Enabled = true;
+
         }
 
         private void dgvFactura_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -382,7 +388,11 @@ namespace Proyecto_DB2
         private void btnModificarFac_Click(object sender, EventArgs e)
         {
             cmdBorrar.Enabled = false;
-            
+            cmbTipoFactura.Enabled = true;
+            cmbNombreTipoFac.Enabled = true;
+            cmbEstadoFactura.Enabled = true;
+            cmbNombreEstadoFac.Enabled = true;
+
             try
             {
                 if (dgvFactura.SelectedRows.Count >= 0)
@@ -547,36 +557,25 @@ namespace Proyecto_DB2
 
                 if (filaDatos != null)
                 {
-                    if(cmbArticuloID.SelectedIndex == -1)
-                    {
-                        filaDatos["ArticuloID"] = DBNull.Value;
-                    }
-                    else
-                    {
-                        filaDatos["ArticuloID"] = cmbArticuloID.Text;
-                    }
 
-                    if(cmbOrdenDetID.SelectedIndex == -1)
-                    {
-                        filaDatos["OrdenDetalleID"] = DBNull.Value;
-                    }
-                    else
-                    {
-                        filaDatos["OrdenDetalleID"] = cmbOrdenDetID.Text;
-                    }
 
-                    filaDatos["HorasExtras"] = txtHorasExtras.Text;
-                    filaDatos["Cantidad"] = txtCantidad.Text;
-                    filaDatos["Activo"] = chkActivoFacturaDet.Checked ? 1: 0;
+                    filaDatos["ArticuloID"] = cmbArticuloID.SelectedIndex == -1 ? DBNull.Value : (object)cmbArticuloID.Text;
+                    filaDatos["OrdenDetalleID"] = cmbOrdenDetID.SelectedIndex == -1 ? DBNull.Value : (object)cmbOrdenDetID.Text;
+                    filaDatos["HorasExtras"] = string.IsNullOrWhiteSpace(txtHorasExtras.Text) ? 0 : Convert.ToInt32(txtHorasExtras.Text);
+                    filaDatos["Cantidad"] = Convert.ToInt32(txtCantidad.Text);
+                    filaDatos["Activo"] = chkActivoFacturaDet.Checked ? 1 : 0;
 
                     try
                     {
                         adpFacturaDet.Update(dtFacturaDet);
                         dtFacturaDet.Clear();
+                        CargarFacturaDetallePorFacturaID(Convert.ToInt32(txtFacturaID2.Text));
                         adpFacturaDet.Fill(dtFacturaDet);
+
                         dgvFacturaDet.Refresh();
                         MessageBox.Show("Los datos se actualizaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpiarFacturaDet();
+
                         txtFacturaID2.Enabled = false;
                     }
                     catch (Exception ex)
@@ -780,5 +779,10 @@ namespace Proyecto_DB2
             }
         }
 
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Esta seguro de salir del formulario?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                this.Dispose();
+        }
     }
 }

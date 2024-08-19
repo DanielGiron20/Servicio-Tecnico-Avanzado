@@ -77,6 +77,7 @@
             this.dtpFechaFac = new System.Windows.Forms.DateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmdSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturaDet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -259,7 +260,7 @@
             this.chkActivoFacturaDet.AutoSize = true;
             this.chkActivoFacturaDet.Checked = true;
             this.chkActivoFacturaDet.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActivoFacturaDet.Location = new System.Drawing.Point(743, 676);
+            this.chkActivoFacturaDet.Location = new System.Drawing.Point(413, 788);
             this.chkActivoFacturaDet.Name = "chkActivoFacturaDet";
             this.chkActivoFacturaDet.Size = new System.Drawing.Size(56, 17);
             this.chkActivoFacturaDet.TabIndex = 38;
@@ -280,6 +281,7 @@
             this.txtHorasExtras.Name = "txtHorasExtras";
             this.txtHorasExtras.Size = new System.Drawing.Size(62, 20);
             this.txtHorasExtras.TabIndex = 5;
+            this.txtHorasExtras.Text = "0";
             // 
             // label16
             // 
@@ -343,7 +345,7 @@
             this.chkActivoFac.AutoSize = true;
             this.chkActivoFac.Checked = true;
             this.chkActivoFac.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActivoFac.Location = new System.Drawing.Point(743, 51);
+            this.chkActivoFac.Location = new System.Drawing.Point(525, 202);
             this.chkActivoFac.Name = "chkActivoFac";
             this.chkActivoFac.Size = new System.Drawing.Size(56, 17);
             this.chkActivoFac.TabIndex = 9;
@@ -516,12 +518,30 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // cmdSalir
+            // 
+            this.cmdSalir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.cmdSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.cmdSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdSalir.Location = new System.Drawing.Point(725, 11);
+            this.cmdSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdSalir.Name = "cmdSalir";
+            this.cmdSalir.Size = new System.Drawing.Size(64, 44);
+            this.cmdSalir.TabIndex = 46;
+            this.cmdSalir.Text = "Salir";
+            this.cmdSalir.UseVisualStyleBackColor = true;
+            this.cmdSalir.Click += new System.EventHandler(this.cmdSalir_Click);
+            // 
             // frmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(828, 749);
+            this.Controls.Add(this.cmdSalir);
             this.Controls.Add(this.cmdBorrarDet);
             this.Controls.Add(this.cmdBorrar);
             this.Controls.Add(this.txtFacturaDetID);
@@ -629,5 +649,6 @@
         private System.Windows.Forms.DateTimePicker dtpFechaFac;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.Button cmdSalir;
     }
 }
