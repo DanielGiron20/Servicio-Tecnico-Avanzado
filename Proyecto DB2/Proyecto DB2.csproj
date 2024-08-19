@@ -241,6 +241,12 @@
     <Compile Include="SeleccionArticulos.Designer.cs">
       <DependentUpon>SeleccionArticulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeleccionEmpleadoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionEmpleadoForm.Designer.cs">
+      <DependentUpon>SeleccionEmpleadoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServicioDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
