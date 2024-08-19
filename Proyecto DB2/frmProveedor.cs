@@ -150,7 +150,7 @@ namespace Proyecto_DB2
         private void dgcrudProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //al dar doble click se vayan los datos a los campoas
-            LlenarComboBoxTipoProveedor();
+            
 
             if (e.RowIndex >= 0)
             {
@@ -160,18 +160,23 @@ namespace Proyecto_DB2
                 
                 txtNombre.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
                 txtRtn.Text = filaSeleccionada.Cells["Rtn"].Value.ToString();
-                cmbTipo.SelectedValue = filaSeleccionada.Cells["Tipo"].Value.ToString();
+                //cmbTipo.SelectedValue = filaSeleccionada.Cells["Tipo"].Value.ToString();
                 txtDireccion.Text = filaSeleccionada.Cells["Direccion"].Value.ToString();
                 txtTelefono.Text = filaSeleccionada.Cells["Telefono"].Value.ToString();
                 txtEmail.Text = filaSeleccionada.Cells["Email"].Value.ToString();
                 chkEstado.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
 
+                string tipoProveedor = filaSeleccionada.Cells["Tipo"].Value.ToString();
+
+                // Establecer el valor seleccionado en el ComboBox
+                LlenarComboBoxTipoProveedor(tipoProveedor);
+
+                //prueba
             }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            LlenarComboBoxTipoProveedor();
+        { 
 
 
             //btn actualizar o modificar 
@@ -194,7 +199,13 @@ namespace Proyecto_DB2
 
             try
             {
+
                 int proveedorId = Convert.ToInt32(dgcrudProv.CurrentRow.Cells["Proveedorid"].Value);
+                string tipoActual = cmbTipo.SelectedValue.ToString();
+
+                // Llenar el ComboBox con el valor actual seleccionado
+                LlenarComboBoxTipoProveedor(tipoActual);
+
 
                 using (SqlCommand cmdActualizar = new SqlCommand("SpUpdate", conexion))
                 {
@@ -206,7 +217,7 @@ namespace Proyecto_DB2
                     cmdActualizar.Parameters.AddWithValue("@proveedorid", proveedorId);
                     cmdActualizar.Parameters.AddWithValue("@nombre", txtNombre.Text);
                     cmdActualizar.Parameters.AddWithValue("@rtn", txtRtn.Text);
-                    cmdActualizar.Parameters.AddWithValue("@tipo", cmbTipo.SelectedValue);
+                    cmdActualizar.Parameters.AddWithValue("@tipo", tipoActual);
                     cmdActualizar.Parameters.AddWithValue("@direccion", txtDireccion.Text);
                     cmdActualizar.Parameters.AddWithValue("@telefono", txtTelefono.Text);
                     cmdActualizar.Parameters.AddWithValue("@email", txtEmail.Text);
@@ -226,15 +237,7 @@ namespace Proyecto_DB2
                     // Volver a cargar los datos en el DataGridView
                     CargarDatosProveedor(); // Método para recargar los datos
 
-
-                    txtNombre.Clear();
-                    txtRtn.Clear();
-                    cmbTipo.SelectedIndex = -1;
-                    txtDireccion.Clear();
-                    txtTelefono.Clear();
-                    txtEmail.Clear();
-                    chkEstado.Checked = false;
-
+                    LimpiarCampos();
                 }
             }
             catch (Exception ex)
@@ -249,6 +252,17 @@ namespace Proyecto_DB2
                     conexion.Close();
                 }
             }
+        }
+
+        private void LimpiarCampos()
+        {
+            txtNombre.Clear();
+            txtRtn.Clear();
+            cmbTipo.SelectedIndex = -1;
+            txtDireccion.Clear();
+            txtTelefono.Clear();
+            txtEmail.Clear();
+            chkEstado.Checked = false;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -381,13 +395,22 @@ namespace Proyecto_DB2
             return dtTipos;
         }
 
-        private void LlenarComboBoxTipoProveedor()
+        private void LlenarComboBoxTipoProveedor(string tipoSeleccionado = null)
         {
             DataTable dtTipos = ObtenerTiposDeProveedores();
 
             cmbTipo.DataSource = dtTipos;            // Establece el DataSource del ComboBox
             cmbTipo.DisplayMember = "Nombre";        // Configura el miembro a mostrar (Nombre completo)
             cmbTipo.ValueMember = "Valor";           // Configura el valor a almacenar (L o E)
+
+            if (tipoSeleccionado != null)
+            {
+                cmbTipo.SelectedValue = tipoSeleccionado; // Establece el valor seleccionado después de llenar el ComboBox
+            }
+            else
+            {
+                cmbTipo.SelectedIndex = -1; // Si no se proporciona un valor, no selecciona nada
+            }
         }
 
         private void txtTexto_TextChanged(object sender, EventArgs e)

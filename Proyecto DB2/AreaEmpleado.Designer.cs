@@ -31,26 +31,33 @@
             this.dgAreaEmpleado = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.lblVerAreas = new System.Windows.Forms.Label();
+            this.cmbVerAreas = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgAreaEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
             // dgAreaEmpleado
             // 
             this.dgAreaEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAreaEmpleado.Location = new System.Drawing.Point(12, 12);
+            this.dgAreaEmpleado.Location = new System.Drawing.Point(16, 15);
+            this.dgAreaEmpleado.Margin = new System.Windows.Forms.Padding(4);
             this.dgAreaEmpleado.Name = "dgAreaEmpleado";
-            this.dgAreaEmpleado.Size = new System.Drawing.Size(776, 337);
+            this.dgAreaEmpleado.RowHeadersWidth = 51;
+            this.dgAreaEmpleado.Size = new System.Drawing.Size(882, 415);
             this.dgAreaEmpleado.TabIndex = 0;
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(12, 355);
+            this.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Location = new System.Drawing.Point(16, 475);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.Size = new System.Drawing.Size(122, 48);
             this.btnNuevo.TabIndex = 1;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
@@ -58,70 +65,98 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(93, 355);
+            this.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(167, 475);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(122, 48);
             this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnEditar
+            // btnModificar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(174, 355);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 3;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Location = new System.Drawing.Point(311, 475);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(122, 48);
+            this.btnModificar.TabIndex = 3;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(255, 355);
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Location = new System.Drawing.Point(457, 475);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(122, 48);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Location = new System.Drawing.Point(336, 355);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
-            this.btnConsultar.TabIndex = 5;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(713, 355);
+            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Location = new System.Drawing.Point(776, 475);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.Size = new System.Drawing.Size(122, 48);
             this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // lblVerAreas
+            // 
+            this.lblVerAreas.AutoSize = true;
+            this.lblVerAreas.Location = new System.Drawing.Point(16, 440);
+            this.lblVerAreas.Name = "lblVerAreas";
+            this.lblVerAreas.Size = new System.Drawing.Size(70, 16);
+            this.lblVerAreas.TabIndex = 7;
+            this.lblVerAreas.Text = "Ver Áreas:";
+            // 
+            // cmbVerAreas
+            // 
+            this.cmbVerAreas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVerAreas.FormattingEnabled = true;
+            this.cmbVerAreas.Location = new System.Drawing.Point(91, 437);
+            this.cmbVerAreas.Name = "cmbVerAreas";
+            this.cmbVerAreas.Size = new System.Drawing.Size(121, 24);
+            this.cmbVerAreas.TabIndex = 8;
+            this.cmbVerAreas.SelectedIndexChanged += new System.EventHandler(this.cmbVerAreas_SelectedIndexChanged);
+            // 
             // AreaEmpleado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 390);
+            this.ClientSize = new System.Drawing.Size(911, 540);
+            this.Controls.Add(this.cmbVerAreas);
+            this.Controls.Add(this.lblVerAreas);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgAreaEmpleado);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AreaEmpleado";
             this.Text = "Área de Empleado";
             ((System.ComponentModel.ISupportInitialize)(this.dgAreaEmpleado)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -130,9 +165,10 @@
         private System.Windows.Forms.DataGridView dgAreaEmpleado;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblVerAreas;
+        private System.Windows.Forms.ComboBox cmbVerAreas;
     }
 }

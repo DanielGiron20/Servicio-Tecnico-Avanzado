@@ -31,6 +31,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnConsultarCompra = new System.Windows.Forms.Button();
             this.dgCompra = new System.Windows.Forms.DataGridView();
+            this.btrnInsertarCompra = new System.Windows.Forms.Button();
+            this.btnModificarCompra = new System.Windows.Forms.Button();
+            this.btnDesactivarCompra = new System.Windows.Forms.Button();
+            this.btnIsertarExistente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompra)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,9 +48,9 @@
             // 
             // btnConsultarCompra
             // 
-            this.btnConsultarCompra.Location = new System.Drawing.Point(506, 299);
+            this.btnConsultarCompra.Location = new System.Drawing.Point(497, 299);
             this.btnConsultarCompra.Name = "btnConsultarCompra";
-            this.btnConsultarCompra.Size = new System.Drawing.Size(75, 35);
+            this.btnConsultarCompra.Size = new System.Drawing.Size(84, 35);
             this.btnConsultarCompra.TabIndex = 2;
             this.btnConsultarCompra.Text = "Consultar";
             this.btnConsultarCompra.UseVisualStyleBackColor = true;
@@ -61,11 +65,55 @@
             this.dgCompra.TabIndex = 3;
             this.dgCompra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProveedor_CellContentClick);
             // 
+            // btrnInsertarCompra
+            // 
+            this.btrnInsertarCompra.Location = new System.Drawing.Point(38, 299);
+            this.btrnInsertarCompra.Name = "btrnInsertarCompra";
+            this.btrnInsertarCompra.Size = new System.Drawing.Size(87, 35);
+            this.btrnInsertarCompra.TabIndex = 4;
+            this.btrnInsertarCompra.Text = "Insertar";
+            this.btrnInsertarCompra.UseVisualStyleBackColor = true;
+            this.btrnInsertarCompra.Click += new System.EventHandler(this.btrnInsertarCompra_Click);
+            // 
+            // btnModificarCompra
+            // 
+            this.btnModificarCompra.Location = new System.Drawing.Point(307, 299);
+            this.btnModificarCompra.Name = "btnModificarCompra";
+            this.btnModificarCompra.Size = new System.Drawing.Size(75, 35);
+            this.btnModificarCompra.TabIndex = 5;
+            this.btnModificarCompra.Text = "Modificar";
+            this.btnModificarCompra.UseVisualStyleBackColor = true;
+            this.btnModificarCompra.Click += new System.EventHandler(this.btnModificarCompra_Click);
+            // 
+            // btnDesactivarCompra
+            // 
+            this.btnDesactivarCompra.Location = new System.Drawing.Point(400, 299);
+            this.btnDesactivarCompra.Name = "btnDesactivarCompra";
+            this.btnDesactivarCompra.Size = new System.Drawing.Size(78, 35);
+            this.btnDesactivarCompra.TabIndex = 6;
+            this.btnDesactivarCompra.Text = "Desactivar";
+            this.btnDesactivarCompra.UseVisualStyleBackColor = true;
+            this.btnDesactivarCompra.Click += new System.EventHandler(this.btnDesactivarCompra_Click);
+            // 
+            // btnIsertarExistente
+            // 
+            this.btnIsertarExistente.Location = new System.Drawing.Point(38, 340);
+            this.btnIsertarExistente.Name = "btnIsertarExistente";
+            this.btnIsertarExistente.Size = new System.Drawing.Size(87, 46);
+            this.btnIsertarExistente.TabIndex = 7;
+            this.btnIsertarExistente.Text = "Compra Existente";
+            this.btnIsertarExistente.UseVisualStyleBackColor = true;
+            this.btnIsertarExistente.Click += new System.EventHandler(this.btnIsertarExistente_Click);
+            // 
             // Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 424);
+            this.Controls.Add(this.btnIsertarExistente);
+            this.Controls.Add(this.btnDesactivarCompra);
+            this.Controls.Add(this.btnModificarCompra);
+            this.Controls.Add(this.btrnInsertarCompra);
             this.Controls.Add(this.dgCompra);
             this.Controls.Add(this.btnConsultarCompra);
             this.Controls.Add(this.label2);
@@ -84,5 +132,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnConsultarCompra;
         private System.Windows.Forms.DataGridView dgCompra;
+        private System.Windows.Forms.Button btrnInsertarCompra;
+        private System.Windows.Forms.Button btnModificarCompra;
+        private System.Windows.Forms.Button btnDesactivarCompra;
+        private System.Windows.Forms.Button btnIsertarExistente;
     }
 }

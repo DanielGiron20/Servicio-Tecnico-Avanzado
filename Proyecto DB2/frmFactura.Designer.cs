@@ -28,27 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkActivoFac = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtFacturaID = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
             this.dgvFactura = new System.Windows.Forms.DataGridView();
-            this.cmbClienteID = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbNombreCliente = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbNombreEmpleado = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbEmpleadoID = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbTipoFactura = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbEstadoFactura = new System.Windows.Forms.ComboBox();
-            this.cmbNombreTipoFac = new System.Windows.Forms.ComboBox();
-            this.cmbNombreEstadoFac = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dtpFechaFac = new System.Windows.Forms.DateTimePicker();
             this.btnInsertarFac = new System.Windows.Forms.Button();
             this.btnModificarFac = new System.Windows.Forms.Button();
             this.btnLimpiarFac = new System.Windows.Forms.Button();
@@ -72,48 +53,36 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtFacturaDetID = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.cmdBorrar = new System.Windows.Forms.Button();
+            this.cmdBorrarDet = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkActivoFac = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFacturaID = new System.Windows.Forms.TextBox();
+            this.cmbClienteID = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbNombreCliente = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbEmpleadoID = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbNombreEmpleado = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbTipoFactura = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbEstadoFactura = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbNombreTipoFac = new System.Windows.Forms.ComboBox();
+            this.cmbNombreEstadoFac = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpFechaFac = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmdSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturaDet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(356, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Factura";
-            // 
-            // chkActivoFac
-            // 
-            this.chkActivoFac.AutoSize = true;
-            this.chkActivoFac.Checked = true;
-            this.chkActivoFac.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActivoFac.Location = new System.Drawing.Point(743, 51);
-            this.chkActivoFac.Name = "chkActivoFac";
-            this.chkActivoFac.Size = new System.Drawing.Size(56, 17);
-            this.chkActivoFac.TabIndex = 1;
-            this.chkActivoFac.Text = "Activo";
-            this.chkActivoFac.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "FacturaID";
-            // 
-            // txtFacturaID
-            // 
-            this.txtFacturaID.Location = new System.Drawing.Point(114, 77);
-            this.txtFacturaID.Name = "txtFacturaID";
-            this.txtFacturaID.Size = new System.Drawing.Size(62, 20);
-            this.txtFacturaID.TabIndex = 3;
             // 
             // dgvFactura
             // 
@@ -122,149 +91,9 @@
             this.dgvFactura.Name = "dgvFactura";
             this.dgvFactura.Size = new System.Drawing.Size(773, 284);
             this.dgvFactura.TabIndex = 4;
+            this.dgvFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFactura_CellContentClick);
             this.dgvFactura.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFactura_CellDoubleClick);
             this.dgvFactura.SelectionChanged += new System.EventHandler(this.dgvFactura_SelectionChanged);
-            // 
-            // cmbClienteID
-            // 
-            this.cmbClienteID.FormattingEnabled = true;
-            this.cmbClienteID.Location = new System.Drawing.Point(114, 114);
-            this.cmbClienteID.Name = "cmbClienteID";
-            this.cmbClienteID.Size = new System.Drawing.Size(62, 21);
-            this.cmbClienteID.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 115);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "ClienteID";
-            // 
-            // cmbNombreCliente
-            // 
-            this.cmbNombreCliente.FormattingEnabled = true;
-            this.cmbNombreCliente.Location = new System.Drawing.Point(260, 114);
-            this.cmbNombreCliente.Name = "cmbNombreCliente";
-            this.cmbNombreCliente.Size = new System.Drawing.Size(117, 21);
-            this.cmbNombreCliente.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(193, 115);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Nombre";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(193, 156);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Nombre";
-            // 
-            // cmbNombreEmpleado
-            // 
-            this.cmbNombreEmpleado.FormattingEnabled = true;
-            this.cmbNombreEmpleado.Location = new System.Drawing.Point(260, 155);
-            this.cmbNombreEmpleado.Name = "cmbNombreEmpleado";
-            this.cmbNombreEmpleado.Size = new System.Drawing.Size(117, 21);
-            this.cmbNombreEmpleado.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(28, 156);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 16);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "VendedorID";
-            // 
-            // cmbEmpleadoID
-            // 
-            this.cmbEmpleadoID.FormattingEnabled = true;
-            this.cmbEmpleadoID.Location = new System.Drawing.Point(114, 155);
-            this.cmbEmpleadoID.Name = "cmbEmpleadoID";
-            this.cmbEmpleadoID.Size = new System.Drawing.Size(62, 21);
-            this.cmbEmpleadoID.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(426, 115);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 16);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Tipo";
-            // 
-            // cmbTipoFactura
-            // 
-            this.cmbTipoFactura.FormattingEnabled = true;
-            this.cmbTipoFactura.Location = new System.Drawing.Point(478, 114);
-            this.cmbTipoFactura.Name = "cmbTipoFactura";
-            this.cmbTipoFactura.Size = new System.Drawing.Size(62, 21);
-            this.cmbTipoFactura.TabIndex = 13;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(411, 156);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 16);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Estado";
-            // 
-            // cmbEstadoFactura
-            // 
-            this.cmbEstadoFactura.FormattingEnabled = true;
-            this.cmbEstadoFactura.Location = new System.Drawing.Point(478, 155);
-            this.cmbEstadoFactura.Name = "cmbEstadoFactura";
-            this.cmbEstadoFactura.Size = new System.Drawing.Size(62, 21);
-            this.cmbEstadoFactura.TabIndex = 15;
-            // 
-            // cmbNombreTipoFac
-            // 
-            this.cmbNombreTipoFac.FormattingEnabled = true;
-            this.cmbNombreTipoFac.Location = new System.Drawing.Point(546, 114);
-            this.cmbNombreTipoFac.Name = "cmbNombreTipoFac";
-            this.cmbNombreTipoFac.Size = new System.Drawing.Size(117, 21);
-            this.cmbNombreTipoFac.TabIndex = 17;
-            // 
-            // cmbNombreEstadoFac
-            // 
-            this.cmbNombreEstadoFac.FormattingEnabled = true;
-            this.cmbNombreEstadoFac.Location = new System.Drawing.Point(546, 155);
-            this.cmbNombreEstadoFac.Name = "cmbNombreEstadoFac";
-            this.cmbNombreEstadoFac.Size = new System.Drawing.Size(117, 21);
-            this.cmbNombreEstadoFac.TabIndex = 18;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(63, 203);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 16);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Fecha";
-            // 
-            // dtpFechaFac
-            // 
-            this.dtpFechaFac.Location = new System.Drawing.Point(114, 203);
-            this.dtpFechaFac.Name = "dtpFechaFac";
-            this.dtpFechaFac.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaFac.TabIndex = 20;
             // 
             // btnInsertarFac
             // 
@@ -351,7 +180,7 @@
             this.txtFacturaID2.Location = new System.Drawing.Point(135, 741);
             this.txtFacturaID2.Name = "txtFacturaID2";
             this.txtFacturaID2.Size = new System.Drawing.Size(62, 20);
-            this.txtFacturaID2.TabIndex = 30;
+            this.txtFacturaID2.TabIndex = 1;
             // 
             // label11
             // 
@@ -379,7 +208,8 @@
             this.cmbArticuloID.Location = new System.Drawing.Point(135, 784);
             this.cmbArticuloID.Name = "cmbArticuloID";
             this.cmbArticuloID.Size = new System.Drawing.Size(62, 21);
-            this.cmbArticuloID.TabIndex = 31;
+            this.cmbArticuloID.TabIndex = 2;
+            this.cmbArticuloID.Click += new System.EventHandler(this.cmbArticuloID_Click);
             // 
             // cmbNombreArticulo
             // 
@@ -394,7 +224,7 @@
             this.txtCantidad.Location = new System.Drawing.Point(135, 827);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(62, 20);
-            this.txtCantidad.TabIndex = 35;
+            this.txtCantidad.TabIndex = 4;
             // 
             // label13
             // 
@@ -422,14 +252,15 @@
             this.cmbOrdenDetID.Location = new System.Drawing.Point(475, 696);
             this.cmbOrdenDetID.Name = "cmbOrdenDetID";
             this.cmbOrdenDetID.Size = new System.Drawing.Size(62, 21);
-            this.cmbOrdenDetID.TabIndex = 36;
+            this.cmbOrdenDetID.TabIndex = 3;
+            this.cmbOrdenDetID.Click += new System.EventHandler(this.cmbOrdenDetID_Click);
             // 
             // chkActivoFacturaDet
             // 
             this.chkActivoFacturaDet.AutoSize = true;
             this.chkActivoFacturaDet.Checked = true;
             this.chkActivoFacturaDet.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActivoFacturaDet.Location = new System.Drawing.Point(743, 676);
+            this.chkActivoFacturaDet.Location = new System.Drawing.Point(413, 788);
             this.chkActivoFacturaDet.Name = "chkActivoFacturaDet";
             this.chkActivoFacturaDet.Size = new System.Drawing.Size(56, 17);
             this.chkActivoFacturaDet.TabIndex = 38;
@@ -449,7 +280,8 @@
             this.txtHorasExtras.Location = new System.Drawing.Point(475, 743);
             this.txtHorasExtras.Name = "txtHorasExtras";
             this.txtHorasExtras.Size = new System.Drawing.Size(62, 20);
-            this.txtHorasExtras.TabIndex = 41;
+            this.txtHorasExtras.TabIndex = 5;
+            this.txtHorasExtras.Text = "0";
             // 
             // label16
             // 
@@ -466,7 +298,7 @@
             this.txtFacturaDetID.Location = new System.Drawing.Point(135, 700);
             this.txtFacturaDetID.Name = "txtFacturaDetID";
             this.txtFacturaDetID.Size = new System.Drawing.Size(62, 20);
-            this.txtFacturaDetID.TabIndex = 43;
+            this.txtFacturaDetID.TabIndex = 0;
             // 
             // label17
             // 
@@ -478,12 +310,240 @@
             this.label17.TabIndex = 42;
             this.label17.Text = "FacturaDetalleID";
             // 
+            // cmdBorrar
+            // 
+            this.cmdBorrar.Location = new System.Drawing.Point(684, 554);
+            this.cmdBorrar.Name = "cmdBorrar";
+            this.cmdBorrar.Size = new System.Drawing.Size(120, 43);
+            this.cmdBorrar.TabIndex = 44;
+            this.cmdBorrar.Text = "Quitar fila";
+            this.cmdBorrar.UseVisualStyleBackColor = true;
+            this.cmdBorrar.Click += new System.EventHandler(this.cmdBorrar_Click);
+            // 
+            // cmdBorrarDet
+            // 
+            this.cmdBorrarDet.Location = new System.Drawing.Point(684, 1156);
+            this.cmdBorrarDet.Name = "cmdBorrarDet";
+            this.cmdBorrarDet.Size = new System.Drawing.Size(120, 43);
+            this.cmdBorrarDet.TabIndex = 45;
+            this.cmdBorrarDet.Text = "Quitar fila";
+            this.cmdBorrarDet.UseVisualStyleBackColor = true;
+            this.cmdBorrarDet.Click += new System.EventHandler(this.cmdBorrarDet_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(356, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Factura";
+            // 
+            // chkActivoFac
+            // 
+            this.chkActivoFac.AutoSize = true;
+            this.chkActivoFac.Checked = true;
+            this.chkActivoFac.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkActivoFac.Location = new System.Drawing.Point(525, 202);
+            this.chkActivoFac.Name = "chkActivoFac";
+            this.chkActivoFac.Size = new System.Drawing.Size(56, 17);
+            this.chkActivoFac.TabIndex = 9;
+            this.chkActivoFac.Text = "Activo";
+            this.chkActivoFac.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(43, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "FacturaID";
+            // 
+            // txtFacturaID
+            // 
+            this.txtFacturaID.Location = new System.Drawing.Point(114, 77);
+            this.txtFacturaID.Name = "txtFacturaID";
+            this.txtFacturaID.Size = new System.Drawing.Size(62, 20);
+            this.txtFacturaID.TabIndex = 0;
+            // 
+            // cmbClienteID
+            // 
+            this.cmbClienteID.FormattingEnabled = true;
+            this.cmbClienteID.Location = new System.Drawing.Point(114, 114);
+            this.cmbClienteID.Name = "cmbClienteID";
+            this.cmbClienteID.Size = new System.Drawing.Size(62, 21);
+            this.cmbClienteID.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(47, 115);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "ClienteID";
+            // 
+            // cmbNombreCliente
+            // 
+            this.cmbNombreCliente.FormattingEnabled = true;
+            this.cmbNombreCliente.Location = new System.Drawing.Point(260, 114);
+            this.cmbNombreCliente.Name = "cmbNombreCliente";
+            this.cmbNombreCliente.Size = new System.Drawing.Size(117, 21);
+            this.cmbNombreCliente.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(193, 115);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 16);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Nombre";
+            // 
+            // cmbEmpleadoID
+            // 
+            this.cmbEmpleadoID.FormattingEnabled = true;
+            this.cmbEmpleadoID.Location = new System.Drawing.Point(114, 155);
+            this.cmbEmpleadoID.Name = "cmbEmpleadoID";
+            this.cmbEmpleadoID.Size = new System.Drawing.Size(62, 21);
+            this.cmbEmpleadoID.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(28, 156);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 16);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "VendedorID";
+            // 
+            // cmbNombreEmpleado
+            // 
+            this.cmbNombreEmpleado.FormattingEnabled = true;
+            this.cmbNombreEmpleado.Location = new System.Drawing.Point(260, 155);
+            this.cmbNombreEmpleado.Name = "cmbNombreEmpleado";
+            this.cmbNombreEmpleado.Size = new System.Drawing.Size(117, 21);
+            this.cmbNombreEmpleado.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(193, 156);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Nombre";
+            // 
+            // cmbTipoFactura
+            // 
+            this.cmbTipoFactura.FormattingEnabled = true;
+            this.cmbTipoFactura.Location = new System.Drawing.Point(478, 114);
+            this.cmbTipoFactura.Name = "cmbTipoFactura";
+            this.cmbTipoFactura.Size = new System.Drawing.Size(62, 21);
+            this.cmbTipoFactura.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(426, 115);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 16);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Tipo";
+            // 
+            // cmbEstadoFactura
+            // 
+            this.cmbEstadoFactura.FormattingEnabled = true;
+            this.cmbEstadoFactura.Location = new System.Drawing.Point(478, 155);
+            this.cmbEstadoFactura.Name = "cmbEstadoFactura";
+            this.cmbEstadoFactura.Size = new System.Drawing.Size(62, 21);
+            this.cmbEstadoFactura.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(411, 156);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Estado";
+            // 
+            // cmbNombreTipoFac
+            // 
+            this.cmbNombreTipoFac.FormattingEnabled = true;
+            this.cmbNombreTipoFac.Location = new System.Drawing.Point(546, 114);
+            this.cmbNombreTipoFac.Name = "cmbNombreTipoFac";
+            this.cmbNombreTipoFac.Size = new System.Drawing.Size(117, 21);
+            this.cmbNombreTipoFac.TabIndex = 17;
+            // 
+            // cmbNombreEstadoFac
+            // 
+            this.cmbNombreEstadoFac.FormattingEnabled = true;
+            this.cmbNombreEstadoFac.Location = new System.Drawing.Point(546, 155);
+            this.cmbNombreEstadoFac.Name = "cmbNombreEstadoFac";
+            this.cmbNombreEstadoFac.Size = new System.Drawing.Size(117, 21);
+            this.cmbNombreEstadoFac.TabIndex = 18;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(63, 203);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 16);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Fecha";
+            // 
+            // dtpFechaFac
+            // 
+            this.dtpFechaFac.Location = new System.Drawing.Point(114, 203);
+            this.dtpFechaFac.Name = "dtpFechaFac";
+            this.dtpFechaFac.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaFac.TabIndex = 6;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // cmdSalir
+            // 
+            this.cmdSalir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.cmdSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.cmdSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdSalir.Location = new System.Drawing.Point(725, 11);
+            this.cmdSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdSalir.Name = "cmdSalir";
+            this.cmdSalir.Size = new System.Drawing.Size(45, 44);
+            this.cmdSalir.TabIndex = 46;
+            this.cmdSalir.Text = "Salir";
+            this.cmdSalir.UseVisualStyleBackColor = true;
+            this.cmdSalir.Click += new System.EventHandler(this.cmdSalir_Click);
+            // 
             // frmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(828, 749);
+            this.Controls.Add(this.cmdSalir);
+            this.Controls.Add(this.cmdBorrarDet);
+            this.Controls.Add(this.cmdBorrar);
             this.Controls.Add(this.txtFacturaDetID);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtHorasExtras);
@@ -533,34 +593,15 @@
             this.Load += new System.EventHandler(this.frmFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturaDet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkActivoFac;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtFacturaID;
         private System.Windows.Forms.DataGridView dgvFactura;
-        private System.Windows.Forms.ComboBox cmbClienteID;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbNombreCliente;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbNombreEmpleado;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cmbEmpleadoID;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cmbTipoFactura;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cmbEstadoFactura;
-        private System.Windows.Forms.ComboBox cmbNombreTipoFac;
-        private System.Windows.Forms.ComboBox cmbNombreEstadoFac;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dtpFechaFac;
         private System.Windows.Forms.Button btnInsertarFac;
         private System.Windows.Forms.Button btnModificarFac;
         private System.Windows.Forms.Button btnLimpiarFac;
@@ -584,5 +625,30 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtFacturaDetID;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button cmdBorrar;
+        private System.Windows.Forms.Button cmdBorrarDet;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkActivoFac;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtFacturaID;
+        private System.Windows.Forms.ComboBox cmbClienteID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbNombreCliente;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbEmpleadoID;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbNombreEmpleado;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbTipoFactura;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbEstadoFactura;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbNombreTipoFac;
+        private System.Windows.Forms.ComboBox cmbNombreEstadoFac;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dtpFechaFac;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.Button cmdSalir;
     }
 }

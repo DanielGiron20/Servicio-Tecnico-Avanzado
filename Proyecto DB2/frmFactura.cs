@@ -13,6 +13,7 @@ namespace Proyecto_DB2
 {
     public partial class frmFactura : Form
     {
+
         SqlDataAdapter adpFactura;
         DataTable dtFactura;
 
@@ -117,9 +118,8 @@ namespace Proyecto_DB2
             adpFacturaDet = new SqlDataAdapter();
             dtFacturaDet = new DataTable();
 
-            adpFacturaDet.SelectCommand = new SqlCommand("spSelectFacturaDetalle", cnx);
+            adpFacturaDet.SelectCommand = new SqlCommand("spSelectFacturaDetalleMostrarTodas", cnx);
             adpFacturaDet.SelectCommand.CommandType = CommandType.StoredProcedure;
-            adpFacturaDet.SelectCommand.Parameters.Add(new SqlParameter("@facturadetid", SqlDbType.Int));
 
             adpFacturaDet.InsertCommand = new SqlCommand("sqlInsertFacturaDetalle", cnx);
             adpFacturaDet.InsertCommand.CommandType = CommandType.StoredProcedure;
@@ -141,7 +141,7 @@ namespace Proyecto_DB2
             adpFacturaDet.UpdateCommand.Parameters.Add("@horasextras", SqlDbType.Int, 4, "HorasExtras");
             adpFacturaDet.UpdateCommand.Parameters.Add("@activo", SqlDbType.Bit, 1, "Activo");
 
-
+            adpFacturaDet.UpdateCommand.UpdatedRowSource = UpdateRowSource.None;
 
             adpCliente = new SqlDataAdapter();
             dtCliente = new DataTable();
@@ -168,6 +168,7 @@ namespace Proyecto_DB2
             cmbEmpleadoID.DataSource = dtEmpleado;
             cmbEmpleadoID.DisplayMember = "EmpleadoID";
             cmbEmpleadoID.ValueMember = "EmpleadoID";
+            
 
             cmbNombreEmpleado.DataSource = dtEmpleado;
             cmbNombreEmpleado.ValueMember = "EmpleadoID";
@@ -232,6 +233,17 @@ namespace Proyecto_DB2
 
         private void frmFactura_Load(object sender, EventArgs e)
         {
+            txtFacturaID.Enabled = false;
+            txtFacturaDetID.Enabled = false;
+
+            cmbEstadoFactura.Enabled =  true;
+            cmbNombreEstadoFac.Enabled = true;
+
+            cmbTipoFactura.Enabled = true;
+            cmbNombreTipoFac.Enabled = true;
+
+            cmdBorrarDet.Enabled = false;
+            cmdBorrar.Enabled = false;
 
             limpiarFactura();
             limpiarFacturaDet();
@@ -240,6 +252,10 @@ namespace Proyecto_DB2
                 dtFactura = new DataTable();
                 adpFactura.Fill(dtFactura);
                 dgvFactura.DataSource = dtFactura;
+
+                dtFacturaDet = new DataTable();
+                adpFacturaDet.Fill(dtFacturaDet);
+                dgvFacturaDet.DataSource = dtFacturaDet;    
             }
             catch (Exception ex)
             {
@@ -249,6 +265,44 @@ namespace Proyecto_DB2
 
         private void btnInsertarFac_Click(object sender, EventArgs e)
         {
+            
+            bool hayerror = false;
+
+            errorProvider1.Clear();
+
+            if (cmbClienteID.SelectedItem == null)
+            {
+                errorProvider1.SetError(cmbClienteID, "Falta el ID del cliente");
+                hayerror = true;
+            }
+            else if (cmbEmpleadoID.SelectedItem == null)
+            {
+                errorProvider1.SetError(cmbEmpleadoID, "Falta el ID del empleado");
+                hayerror = true;
+            }
+            else if (dtpFechaFac.Value < DateTime.Now.Date)
+            {
+                errorProvider1.SetError(dtpFechaFac, "La fecha de la factura no puede ser menor a la fecha actual");
+                hayerror = true;
+            }
+            else if (cmbEstadoFactura.SelectedItem == null)
+            {
+                errorProvider1.SetError(cmbEstadoFactura, "Falta establecer el estado de la factura");
+                hayerror = true;
+            }
+            else if (cmbTipoFactura.SelectedItem == null)
+            {
+                errorProvider1.SetError(cmbTipoFactura, "Falta establecer el tipo de factura");
+                hayerror = true;
+            }
+
+
+            if (hayerror)
+            {
+                return;
+            }
+
+
             DataRow nuevaFila = dtFactura.NewRow();
 
             nuevaFila["ClienteID"] = cmbClienteID.Text;
@@ -268,19 +322,44 @@ namespace Proyecto_DB2
                 dgvFactura.Refresh();
                 MessageBox.Show("Los datos se insertaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+
+                    if (ex.Errors[i].Number == 2627)
+                    {
+                        MessageBox.Show("Los combinacion de Tipo Normal y Estado Pendiente no es valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Errors[i].Message, ex.Errors[i].Number.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
+
+            cmdBorrar.Enabled = true;
         }
 
         private void btnLimpiarFac_Click(object sender, EventArgs e)
         {
             limpiarFactura();
+            btnInsertarFac.Enabled = true;
+
+            cmbTipoFactura.Enabled = true;
+            cmbNombreTipoFac.Enabled = true;
+            cmbEstadoFactura.Enabled = true;
+            cmbNombreEstadoFac.Enabled = true;
+
         }
 
         private void dgvFactura_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            cmbEstadoFactura.Enabled = false;
+            cmbNombreEstadoFac.Enabled = false;
+
+            cmbTipoFactura.Enabled = false;
+            cmbNombreTipoFac.Enabled = false;
             if(e.RowIndex >= 0)
             {
                 DataGridViewRow filaSeleccionada = dgvFactura.Rows[e.RowIndex];
@@ -289,87 +368,116 @@ namespace Proyecto_DB2
                 btnInsertarFac.Enabled = false;
 
                 txtFacturaID.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
+                txtFacturaID2.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
                 cmbClienteID.SelectedValue = filaSeleccionada.Cells["ClienteID"].Value.ToString();
                 cmbEmpleadoID.SelectedValue = filaSeleccionada.Cells["EmpleadoID"].Value.ToString();
                 cmbTipoFactura.SelectedValue = filaSeleccionada.Cells["Tipo"].Value.ToString();
                 cmbEstadoFactura.SelectedValue = filaSeleccionada.Cells["Estado"].Value.ToString();
                 dtpFechaFac.Value = Convert.ToDateTime(filaSeleccionada.Cells["Fecha"].Value.ToString());
                 chkActivoFac.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
+
+                // Obtener el FacturaID de la fila seleccionada
+                int facturaID = Convert.ToInt32(dgvFactura.Rows[e.RowIndex].Cells["FacturaID"].Value);
+
+                // Llamar al método para cargar los detalles de la factura
+                CargarFacturaDetallePorFacturaID(facturaID);
+
             }
         }
 
         private void btnModificarFac_Click(object sender, EventArgs e)
         {
-            if(dgvFactura.SelectedRows.Count >= 0)
+            cmdBorrar.Enabled = false;
+            cmbTipoFactura.Enabled = true;
+            cmbNombreTipoFac.Enabled = true;
+            cmbEstadoFactura.Enabled = true;
+            cmbNombreEstadoFac.Enabled = true;
+
+            try
             {
-                dtFactura.PrimaryKey = new DataColumn[] { dtFactura.Columns["FacturaID"] };
-
-                DataGridViewRow filaSeleccionada = dgvFactura.SelectedRows[0];
-
-                DataRow filaDatos = dtFactura.Rows.Find(filaSeleccionada.Cells["FacturaID"].Value);
-
-                if(filaDatos != null)
+                if (dgvFactura.SelectedRows.Count >= 0)
                 {
-                    filaDatos["ClienteID"] = cmbClienteID.Text;
-                    filaDatos["EmpleadoID"] = cmbEmpleadoID.Text;
-                    filaDatos["Tipo"] = cmbTipoFactura.Text;
-                    filaDatos["Estado"] = cmbEstadoFactura.Text;
-                    filaDatos["Fecha"] = dtpFechaFac.Value;
-                    filaDatos["Activo"] = chkActivoFac.Checked ? 1 : 0;
+                    dtFactura.PrimaryKey = new DataColumn[] { dtFactura.Columns["FacturaID"] };
 
-                    try
+                    DataGridViewRow filaSeleccionada = dgvFactura.SelectedRows[0];
+
+                    DataRow filaDatos = dtFactura.Rows.Find(filaSeleccionada.Cells["FacturaID"].Value);
+
+                    if (filaDatos != null)
                     {
-                        adpFactura.Update(dtFactura);
-                        dtFactura.Clear();
-                        adpFactura.Fill(dtFactura);
-                        dgvFactura.Refresh();
-                        MessageBox.Show("Los datos se actualizaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpiarFactura();
-                        chkActivoFac.Enabled = false;
-                        btnInsertarFac.Enabled = true;
+                        filaDatos["ClienteID"] = cmbClienteID.Text;
+                        filaDatos["EmpleadoID"] = cmbEmpleadoID.Text;
+                        filaDatos["Tipo"] = cmbTipoFactura.SelectedValue;
+                        filaDatos["Estado"] = cmbEstadoFactura.SelectedValue;
+                        filaDatos["Fecha"] = dtpFechaFac.Value;
+                        filaDatos["Activo"] = chkActivoFac.Checked ? 1 : 0;
+
+                        try
+                        {
+                            adpFactura.Update(dtFactura);
+                            dtFactura.Clear();
+                            adpFactura.Fill(dtFactura);
+                            dgvFactura.Refresh();
+                            MessageBox.Show("Los datos se actualizaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpiarFactura();
+                            chkActivoFac.Enabled = false;
+                            btnInsertarFac.Enabled = true;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se encontró la fila.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró la fila.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Seleccione una fila para actualizar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else
+            catch(Exception )
             {
-                MessageBox.Show("Seleccione una fila para actualizar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se encontró la fila.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void dgvFactura_SelectionChanged(object sender, EventArgs e)
         {
-            if(dgvFactura.SelectedRows.Count > 0)
-            {
-                var filaSeleccionada = dgvFactura.SelectedRows[0];
-
-                txtFacturaID.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
-                txtFacturaID2.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
-
-                adpFacturaDet.SelectCommand.Parameters["@facturadetid"].Value = Convert.ToInt32(txtFacturaID2.Text);
-
-                try
-                {
-                    dtFacturaDet.Clear();
-                    adpFacturaDet.Fill(dtFacturaDet);
-                    dgvFacturaDet.DataSource = dtFacturaDet;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
+           
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
+            bool hayerror = false;
+
+            errorProvider2.Clear();
+
+            if (txtFacturaID2.Text.Length == 0)
+            {
+                errorProvider2.SetError(txtFacturaID2, "Falta el ID de la Factura");
+                hayerror = true;
+            }
+            else if ( cmbArticuloID.Enabled == true && cmbArticuloID.SelectedIndex == -1  && cmbOrdenDetID.Enabled == false  && txtHorasExtras.Enabled==false)
+            {
+                errorProvider2.SetError(cmbArticuloID, "Ingrese el ID del articulo");
+                hayerror = true;
+            }
+            else if (cmbArticuloID.Enabled == false && txtCantidad.Enabled == false && cmbOrdenDetID.SelectedIndex == -1 && cmbOrdenDetID.Enabled == true)
+            {
+                errorProvider2.SetError(dtpFechaFac, "Ingrese el ID de la orden");
+                hayerror = true;
+            }
+
+
+            if (hayerror)
+            {
+                return;
+            }
+
             DataRow nuevaFila = dtFacturaDet.NewRow();
 
             if(cmbArticuloID.SelectedIndex == -1)
@@ -387,12 +495,28 @@ namespace Proyecto_DB2
             }
             else
             {
-                nuevaFila["OrdenDetalleID"] = cmbOrdenDetID.Text;
+                nuevaFila["OrdenDetalleID"] = cmbOrdenDetID.SelectedValue;
+            }
+
+            if (txtCantidad.Text.Length == 0 )
+            {
+                nuevaFila["Cantidad"] = DBNull.Value;
+            }
+            else
+            {
+                nuevaFila["Cantidad"] = txtCantidad.Text;
+            }
+
+            if (txtHorasExtras.Text.Length == 0)
+            {
+                nuevaFila["HorasExtras"] = DBNull.Value;
+            }
+            else
+            {
+                nuevaFila["HorasExtras"] = txtHorasExtras.Text;
             }
 
             nuevaFila["FacturaID"] = txtFacturaID2.Text;
-            nuevaFila["Cantidad"] = txtCantidad.Text;
-            nuevaFila["HorasExtras"] = txtHorasExtras.Text;
             nuevaFila["Activo"] = Convert.ToString(chkActivoFacturaDet.Checked);
 
             dtFacturaDet.Rows.Add(nuevaFila);
@@ -400,9 +524,15 @@ namespace Proyecto_DB2
             try
             {
                 adpFacturaDet.Update(dtFacturaDet);
+
+
                 dtFacturaDet.Clear();
                 adpFacturaDet.Fill(dtFacturaDet);
                 dgvFacturaDet.Refresh();
+
+                dtFactura.Clear(); 
+                adpFactura.Fill(dtFactura);
+                dgvFactura.Refresh();
                 MessageBox.Show("Los datos se insertaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtFacturaDetID.Clear();
                 cmbArticuloID.SelectedIndex = -1;
@@ -416,50 +546,41 @@ namespace Proyecto_DB2
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            cmdBorrarDet.Enabled = true;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if(dgvFacturaDet.SelectedRows.Count > 0)
+            cmdBorrarDet.Enabled = false;
+            if (dgvFacturaDet.SelectedRows.Count > 0)
             {
-                dtFacturaDet.PrimaryKey = new DataColumn[]{ dtFacturaDet.Columns["FacturaDetalleID"] };
+                dtFacturaDet.PrimaryKey = new DataColumn[] { dtFacturaDet.Columns["FacturaDetalleID"] };
 
-                DataGridViewRow filaSeleccionada = dgvFacturaDet.Rows[0];
-
+                DataGridViewRow filaSeleccionada = dgvFacturaDet.SelectedRows[0];
                 DataRow filaDatos = dtFacturaDet.Rows.Find(filaSeleccionada.Cells["FacturaDetalleID"].Value);
+
 
                 if (filaDatos != null)
                 {
-                    if(cmbArticuloID.SelectedIndex == -1)
-                    {
-                        filaDatos["ArticuloID"] = DBNull.Value;
-                    }
-                    else
-                    {
-                        filaDatos["ArticuloID"] = cmbArticuloID.Text;
-                    }
 
-                    if(cmbOrdenDetID.SelectedIndex == -1)
-                    {
-                        filaDatos["OrdenDetalleID"] = DBNull.Value;
-                    }
-                    else
-                    {
-                        filaDatos["OrdenDetalleID"] = cmbOrdenDetID.Text;
-                    }
-
-                    filaDatos["HorasExtras"] = txtHorasExtras.Text;
-                    filaDatos["Cantidad"] = txtCantidad.Text;
-                    filaDatos["Activo"] = chkActivoFacturaDet.Checked ? 1: 0;
+                    filaDatos["ArticuloID"] = cmbArticuloID.SelectedIndex == -1 ? DBNull.Value : (object)cmbArticuloID.Text;
+                    filaDatos["OrdenDetalleID"] = cmbOrdenDetID.SelectedIndex == -1 ? DBNull.Value : (object)cmbOrdenDetID.Text;
+                    filaDatos["HorasExtras"] = string.IsNullOrWhiteSpace(txtHorasExtras.Text) ? 0 : Convert.ToInt32(txtHorasExtras.Text);
+                    filaDatos["Cantidad"] = Convert.ToInt32(txtCantidad.Text);
+                    filaDatos["Activo"] = chkActivoFacturaDet.Checked ? 1 : 0;
 
                     try
                     {
                         adpFacturaDet.Update(dtFacturaDet);
                         dtFacturaDet.Clear();
+                        CargarFacturaDetallePorFacturaID(Convert.ToInt32(txtFacturaID2.Text));
                         adpFacturaDet.Fill(dtFacturaDet);
+
                         dgvFacturaDet.Refresh();
                         MessageBox.Show("Los datos se actualizaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpiarFacturaDet();
+
                         txtFacturaID2.Enabled = false;
                     }
                     catch (Exception ex)
@@ -485,6 +606,7 @@ namespace Proyecto_DB2
 
         private void dgvFacturaDet_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtCantidad.Enabled = false;
             if(e.RowIndex >= 0)
             {
                 DataGridViewRow filaSeleccionada = dgvFacturaDet.Rows[e.RowIndex];
@@ -500,14 +622,16 @@ namespace Proyecto_DB2
                     txtFacturaDetID.Text = filaSeleccionada.Cells["FacturaDetalleID"].Value.ToString();
                     txtFacturaID2.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
                     cmbOrdenDetID.Text = filaSeleccionada.Cells["OrdenDetalleID"].Value.ToString();
+                    cmbArticuloID.Text = "";
+                    cmbNombreArticulo.Text = "";
                     txtCantidad.Text = "1";
                     txtHorasExtras.Text = filaSeleccionada.Cells["HorasExtras"].Value.ToString();
                     chkActivoFacturaDet.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
                 }
-                else if (filaSeleccionada.Cells["OrdenDetalleID"].Value.ToString() == "")
+                
+                if (filaSeleccionada.Cells["OrdenDetalleID"].Value.ToString() == "")
                 {
                     cmbOrdenDetID.Enabled = false;
-
                     txtFacturaDetID.Text = filaSeleccionada.Cells["FacturaDetalleID"].Value.ToString();
                     txtFacturaID2.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
                     cmbArticuloID.Text = filaSeleccionada.Cells["ArticuloID"].Value.ToString();
@@ -517,11 +641,153 @@ namespace Proyecto_DB2
                     
                 }
             }
+
+            
+
+
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             limpiarFacturaDet();
+            cmbOrdenDetID.Enabled = true;
+            cmbArticuloID.Enabled = true;
+            cmbNombreArticulo.Enabled = true;
+            txtCantidad.Enabled = true;
+            txtHorasExtras.Enabled = true;
+        }
+
+        private void cmdBorrar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay una fila seleccionada en el DataGridView
+            if (dgvFactura.SelectedRows.Count > 0)
+            {
+                // Mostrar un mensaje de confirmación
+                DialogResult result = MessageBox.Show("¿Está seguro que desea quitar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                // Si el usuario selecciona 'Sí', eliminar la fila
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvFactura.SelectedRows)
+                    {
+                        dgvFactura.Rows.Remove(row);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una fila para quitar.", "Eliminar Fila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cmdBorrarDet_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay una fila seleccionada en el DataGridView
+            if (dgvFacturaDet.SelectedRows.Count > 0)
+            {
+                // Mostrar un mensaje de confirmación
+                DialogResult result = MessageBox.Show("¿Está seguro que desea quitar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                // Si el usuario selecciona 'Sí', eliminar la fila
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgvFacturaDet.SelectedRows)
+                    {
+                        dgvFacturaDet.Rows.Remove(row);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una fila para quitar.", "Eliminar Fila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void cmbArticuloID_Click(object sender, EventArgs e)
+        {
+            cmbOrdenDetID.Enabled = false;
+            txtHorasExtras.Enabled = false;
+        }
+
+        private void cmbOrdenDetID_Click(object sender, EventArgs e)
+        {
+            cmbArticuloID.Enabled = false;
+            cmbNombreArticulo.Enabled = false;
+            txtCantidad.Enabled = false;
+        }
+
+        private void dgvFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                if (dgvFactura.SelectedRows.Count > 0)
+                {
+                    var filaSeleccionada = dgvFactura.SelectedRows[0];
+
+                    txtFacturaID.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
+                    txtFacturaID2.Text = filaSeleccionada.Cells["FacturaID"].Value.ToString();
+
+                    adpFacturaDet.SelectCommand.Parameters["@facturadetid"].Value = Convert.ToInt32(txtFacturaID2.Text);
+
+                    try
+                    {
+                        dtFacturaDet.Clear();
+                        adpFacturaDet.Fill(dtFacturaDet);
+                        dgvFacturaDet.DataSource = dtFacturaDet;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void CargarFacturaDetallePorFacturaID(int facturaID)
+        {
+            try
+            {    // Crear instancia de CConexion
+                CConexion conexion = new CConexion();
+
+                // Obtener la conexión
+                using (SqlConnection con = conexion.EstablecerConexion())
+                {
+
+                    using (SqlCommand command = new SqlCommand("spSelectFacturaDetalle", con))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@facturaid", facturaID);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable facturaDetalleTable = new DataTable();
+                            adapter.Fill(facturaDetalleTable);
+
+                            dgvFacturaDet.DataSource = facturaDetalleTable;
+                        }
+                    }
+                }
+            }
+            catch 
+            {
+                MessageBox.Show("Esta factura no contiene detalles", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Esta seguro de salir del formulario?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                this.Dispose();
         }
     }
 }

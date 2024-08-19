@@ -14,10 +14,11 @@ namespace Proyecto_DB2
 {
     public partial class frmPaquete : Form
     {
-        
+        public event Action<int> OnActualizarPrecioTotalEstimado;
         SqlConnection con;
         SqlParameter prmPaqueteDetalle;
         SqlDataAdapter adpPaquete;
+        SqlDataAdapter adpLabel;
         SqlDataAdapter adpPaqueteDetalle;
 
         DataSet dsTablas;
@@ -25,11 +26,16 @@ namespace Proyecto_DB2
         public frmPaquete()
         {
             InitializeComponent();
+            
         }
 
         public frmPaquete(SqlConnection conexion, int paqueteid)
         {
             InitializeComponent();
+
+            adpLabel = new SqlDataAdapter("spObtenerPrecioTotalEstimado", conexion);
+            adpLabel.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adpLabel.SelectCommand.Parameters.AddWithValue("@paqueteid", paqueteid);
 
             prmPaqueteDetalle = new SqlParameter();
             prmPaqueteDetalle.ParameterName = "@paqueteid";
@@ -58,7 +64,11 @@ namespace Proyecto_DB2
             adpPaqueteDetalle.UpdateCommand.Parameters.Add("@servicioid", SqlDbType.Int, 4, "ServicioID");
             adpPaqueteDetalle.UpdateCommand.Parameters.Add("@activo", SqlDbType.Bit, 1, "Activo");
 
+
             con = conexion;
+
+            CargarPrecioTotalEstimado(paqueteid);
+            OnActualizarPrecioTotalEstimado += CargarPrecioTotalEstimado;
         }
 
         private SqlCommand comando(String sql, SqlConnection cnx)
@@ -81,7 +91,7 @@ namespace Proyecto_DB2
         {
             try
             {
-                
+                dgPaqueteDetalle.ReadOnly = true;
                 dgPaqueteDetalle.AllowUserToAddRows = false;
                 dgPaqueteDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 txtPaqueteID.Enabled = true;
@@ -125,41 +135,48 @@ namespace Proyecto_DB2
 
         private void dgPaqueteDetalle_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            String col = dgPaqueteDetalle.Columns[e.ColumnIndex].Name.ToLower();
+            try 
+            { 
+                String col = dgPaqueteDetalle.Columns[e.ColumnIndex].Name.ToLower();
 
-            if (col == "servicioid")
-            {
-                if (e.FormattedValue.ToString().Length > 0) //esta propiedad es el texto que se acaba de insertar o editar
+                if (col == "servicioid")
                 {
-                    SqlDataAdapter adpServicio = new SqlDataAdapter("spPaquetesServiciosActivosSelect " + e.FormattedValue, con);   //Concatenando la sentencia con
-                    DataTable tabServicio = new DataTable();
-                    adpServicio.Fill(tabServicio);
-
-                    if (tabServicio.Rows.Count == 0) //El servicio viene vacio
+                    if (e.FormattedValue.ToString().Length > 0) //esta propiedad es el texto que se acaba de insertar o editar
                     {
-                        MessageBox.Show("El servicio no existe o no esta activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        e.Cancel = true;  //Esto hace que no permita ingresar el dato y no pueda salir de la celda hasta que se cambie.
-                    }
-                    else
-                    {
-                        dsTablas.Tables["PaqueteDetalle"].DefaultView[e.RowIndex]["Nombre"] = tabServicio.Rows[0]["Nombre"].ToString();
-                        dgPaqueteDetalle.Refresh();
-                    }
+                        SqlDataAdapter adpServicio = new SqlDataAdapter("spPaquetesServiciosActivosSelect " + e.FormattedValue, con);   //Concatenando la sentencia con
+                        DataTable tabServicio = new DataTable();
+                        adpServicio.Fill(tabServicio);
 
+                        if (tabServicio.Rows.Count == 0) //El servicio viene vacio
+                        {
+                            MessageBox.Show("El servicio no existe o no esta activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;  //Esto hace que no permita ingresar el dato y no pueda salir de la celda hasta que se cambie.
+                        }
+                        else
+                        {
+                            //dsTablas.Tables["PaqueteDetalle"].DefaultView[e.RowIndex]["Nombre"] = tabServicio.Rows[0]["Nombre"].ToString();
+                            dgPaqueteDetalle.Refresh();
+                        }
+
+                    }
                 }
+
+                if (col == "activo")
+                {
+                    if (e.FormattedValue.ToString().Length > 0)
+                    {
+                        bool activo = Boolean.Parse(e.FormattedValue.ToString());
+                        if (activo == false)
+                        {
+                            MessageBox.Show("Marque la casilla de Activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                        }
+                    }
+                }   
             }
-
-            if (col == "activo")
+            catch(Exception ex)
             {
-                if (e.FormattedValue.ToString().Length > 0)
-                {
-                    bool activo = Boolean.Parse(e.FormattedValue.ToString());
-                    if (activo == false )
-                    {
-                        MessageBox.Show("Marque la casilla de Activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        e.Cancel = true;
-                    }
-                }
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -347,7 +364,7 @@ namespace Proyecto_DB2
         private void cmdCancelar_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Desea salir sin guardar los cambios?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                this.Close();
+                this.Dispose();
         }
 
         private void cmdVerServicios_Click(object sender, EventArgs e)
@@ -358,6 +375,7 @@ namespace Proyecto_DB2
                 frm.ShowDialog();
                 if (frm.FilaSeleccionada != null)
                 {
+                    
                     DataRow row = dsTablas.Tables["PaqueteDetalle"].NewRow();
                     
                     row["servicioid"] = frm.FilaSeleccionada["servicioid"];
@@ -367,6 +385,7 @@ namespace Proyecto_DB2
                     dsTablas.Tables["PaqueteDetalle"].Rows.Add(row);
                     dgPaqueteDetalle.DataSource = dsTablas.Tables["PaqueteDetalle"];
                     dgPaqueteDetalle.Refresh();
+
                 }
                 else
                 {
@@ -399,10 +418,9 @@ namespace Proyecto_DB2
                                 con.Open(); // Abre la conexión si está cerrada
                             }
 
-                            SqlCommand cmd = new SqlCommand("spPaqueteDetalleDelete", con);
+                            SqlCommand cmd = new SqlCommand("spPaqueteDetalleDesactivar", con);
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("@paqueteid", paqueteid);
-                            cmd.Parameters.AddWithValue("@servicioid", servicioid);
 
                             
                             cmd.ExecuteNonQuery();
@@ -411,6 +429,7 @@ namespace Proyecto_DB2
                             // Limpia y vuelve a llenar el DataTable
                             dsTablas.Tables["PaqueteDetalle"].Clear();
                             adpPaqueteDetalle.Fill(dsTablas.Tables["PaqueteDetalle"]);
+
                         }
                         catch (SqlException ex)
                         {
@@ -463,5 +482,55 @@ namespace Proyecto_DB2
             }
         }
 
+        private void CargarPrecioTotalEstimado(int paqueteid)
+        {
+            try
+            {
+                // Crear un DataSet para almacenar el resultado
+                dsTablas = new DataSet();
+
+                // Llenar el DataSet con el resultado del procedimiento almacenado
+                adpLabel.Fill(dsTablas);
+
+                // Verificar si hay filas y asignar el valor a la etiqueta
+                if (dsTablas.Tables[0].Rows.Count > 0)
+                {
+                    var precioTotal = dsTablas.Tables[0].Rows[0][0];
+                    label8.Text = $"Precio Total Estimado: {Convert.ToDecimal(precioTotal):C}";
+                }
+                else
+                {
+                    label8.Text = "Precio Total Estimado: N/A";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener el precio total estimado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmdBorrar_Click(object sender, EventArgs e)
+        {
+            cmdGuardar.Enabled = false;
+            if (dgPaqueteDetalle.SelectedRows.Count > 0)
+            {
+                // Mostrar un mensaje de confirmación
+                DialogResult result = MessageBox.Show("¿Está seguro que desea quitar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                // Si el usuario selecciona 'Sí', eliminar la fila
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dgPaqueteDetalle.SelectedRows)
+                    {
+                        dgPaqueteDetalle.Rows.Remove(row);
+                    }
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una fila para eliminar.", "Eliminar Fila", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
