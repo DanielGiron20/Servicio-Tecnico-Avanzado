@@ -59,6 +59,12 @@
       <DependentUpon>AreaEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="CConexion.cs" />
+    <Compile Include="EditarEmpleadoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarEmpleadoForm.Designer.cs">
+      <DependentUpon>EditarEmpleadoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCompraExistente.cs">
       <SubType>Form</SubType>
     </Compile>

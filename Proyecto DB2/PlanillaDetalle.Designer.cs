@@ -16,11 +16,11 @@
         private void InitializeComponent()
         {
             this.dgPlanillaDetalle = new System.Windows.Forms.DataGridView();
+            this.btnEditarEmpleado = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregarEmpleado = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnAgregarEmpleado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPlanillaDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -34,36 +34,48 @@
             this.dgPlanillaDetalle.Size = new System.Drawing.Size(882, 380);
             this.dgPlanillaDetalle.TabIndex = 0;
             this.dgPlanillaDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgPlanillaDetalle.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPlanillaDetalle_CellValueChanged);
-            this.dgPlanillaDetalle.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgPlanillaDetalle_CellValidating);
+            // 
+            // btnEditarEmpleado
+            // 
+            this.btnEditarEmpleado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.btnEditarEmpleado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.btnEditarEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarEmpleado.Location = new System.Drawing.Point(16, 475);
+            this.btnEditarEmpleado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditarEmpleado.Name = "btnEditarEmpleado";
+            this.btnEditarEmpleado.Size = new System.Drawing.Size(122, 48);
+            this.btnEditarEmpleado.TabIndex = 1;
+            this.btnEditarEmpleado.Text = "Editar Empleado";
+            this.btnEditarEmpleado.UseVisualStyleBackColor = true;
+            this.btnEditarEmpleado.Click += new System.EventHandler(this.btnEditarEmpleado_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
             this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(16, 475);
+            this.btnGuardar.Location = new System.Drawing.Point(146, 475);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(122, 48);
-            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnCancelar
+            // btnAgregarEmpleado
             // 
-            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(167, 475);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(122, 48);
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnAgregarEmpleado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
+            this.btnAgregarEmpleado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
+            this.btnAgregarEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarEmpleado.Location = new System.Drawing.Point(276, 475);
+            this.btnAgregarEmpleado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarEmpleado.Name = "btnAgregarEmpleado";
+            this.btnAgregarEmpleado.Size = new System.Drawing.Size(122, 48);
+            this.btnAgregarEmpleado.TabIndex = 3;
+            this.btnAgregarEmpleado.Text = "Agregar Empleado";
+            this.btnAgregarEmpleado.UseVisualStyleBackColor = true;
+            this.btnAgregarEmpleado.Click += new System.EventHandler(this.btnAgregarEmpleado_Click);
             // 
             // btnCerrar
             // 
@@ -74,7 +86,7 @@
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(122, 48);
-            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.TabIndex = 4;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
@@ -87,33 +99,19 @@
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(231, 29);
-            this.lblTitulo.TabIndex = 4;
+            this.lblTitulo.TabIndex = 5;
             this.lblTitulo.Text = "Detalle de Planilla";
-            // 
-            // btnAgregarEmpleado
-            // 
-            this.btnAgregarEmpleado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
-            this.btnAgregarEmpleado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
-            this.btnAgregarEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarEmpleado.Location = new System.Drawing.Point(311, 475);
-            this.btnAgregarEmpleado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgregarEmpleado.Name = "btnAgregarEmpleado";
-            this.btnAgregarEmpleado.Size = new System.Drawing.Size(122, 48);
-            this.btnAgregarEmpleado.TabIndex = 5;
-            this.btnAgregarEmpleado.Text = "Agregar Empleado";
-            this.btnAgregarEmpleado.UseVisualStyleBackColor = true;
-            this.btnAgregarEmpleado.Click += new System.EventHandler(this.btnAgregarEmpleado_Click);
             // 
             // PlanillaDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 540);
-            this.Controls.Add(this.btnAgregarEmpleado);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAgregarEmpleado);
             this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnEditarEmpleado);
             this.Controls.Add(this.dgPlanillaDetalle);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlanillaDetalle";
@@ -125,10 +123,10 @@
         }
 
         private System.Windows.Forms.DataGridView dgPlanillaDetalle;
+        private System.Windows.Forms.Button btnEditarEmpleado;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregarEmpleado;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button btnAgregarEmpleado;
     }
 }

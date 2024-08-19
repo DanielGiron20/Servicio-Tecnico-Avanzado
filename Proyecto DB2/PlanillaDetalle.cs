@@ -52,13 +52,7 @@ namespace Proyecto_DB2
                     adapter.Fill(dt);
 
                     dgPlanillaDetalle.DataSource = dt;
-                    dgPlanillaDetalle.Columns["PlanillaID"].ReadOnly = true;
-                    dgPlanillaDetalle.Columns["EmpleadoID"].ReadOnly = true;
-                    if (dgPlanillaDetalle.Columns.Contains("NombreEmpleado"))
-                    {
-                        dgPlanillaDetalle.Columns["NombreEmpleado"].ReadOnly = true;
-                    }
-                    dgPlanillaDetalle.AllowUserToAddRows = false;
+                    ConfigurarColumnas();
                 }
                 catch (Exception ex)
                 {
@@ -67,47 +61,61 @@ namespace Proyecto_DB2
             }
         }
 
-        private void btnAgregarEmpleado_Click(object sender, EventArgs e)
+        private void ConfigurarColumnas()
         {
-            using (var form = new SeleccionarEmpleadoForm(planillaID))
+            dgPlanillaDetalle.AllowUserToAddRows = false;
+            dgPlanillaDetalle.ReadOnly = false;
+            dgPlanillaDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            if (dgPlanillaDetalle.Columns.Contains("PlanillaID"))
+                dgPlanillaDetalle.Columns["PlanillaID"].ReadOnly = true;
+            if (dgPlanillaDetalle.Columns.Contains("EmpleadoID"))
+                dgPlanillaDetalle.Columns["EmpleadoID"].ReadOnly = true;
+            if (dgPlanillaDetalle.Columns.Contains("NombreEmpleado"))
+                dgPlanillaDetalle.Columns["NombreEmpleado"].ReadOnly = true;
+            if (dgPlanillaDetalle.Columns.Contains("Activo"))
+                dgPlanillaDetalle.Columns["Activo"].ReadOnly = true;
+
+            // Configurar el formato de las columnas editables
+            if (dgPlanillaDetalle.Columns.Contains("SueldoBase"))
+                dgPlanillaDetalle.Columns["SueldoBase"].DefaultCellStyle.Format = "N2";
+            if (dgPlanillaDetalle.Columns.Contains("HorasExtras"))
+                dgPlanillaDetalle.Columns["HorasExtras"].DefaultCellStyle.Format = "N0";
+            if (dgPlanillaDetalle.Columns.Contains("TarifaHorasExtras"))
+                dgPlanillaDetalle.Columns["TarifaHorasExtras"].DefaultCellStyle.Format = "N2";
+            if (dgPlanillaDetalle.Columns.Contains("Bonos"))
+                dgPlanillaDetalle.Columns["Bonos"].DefaultCellStyle.Format = "N2";
+            if (dgPlanillaDetalle.Columns.Contains("TasaIHSS"))
+                dgPlanillaDetalle.Columns["TasaIHSS"].DefaultCellStyle.Format = "N2";
+            if (dgPlanillaDetalle.Columns.Contains("TasaRAP"))
+                dgPlanillaDetalle.Columns["TasaRAP"].DefaultCellStyle.Format = "N2";
+        }
+
+        private void btnEditarEmpleado_Click(object sender, EventArgs e)
+        {
+            if (dgPlanillaDetalle.CurrentRow != null)
             {
-                if (form.ShowDialog() == DialogResult.OK)
+                int empleadoID = Convert.ToInt32(dgPlanillaDetalle.CurrentRow.Cells["EmpleadoID"].Value);
+                using (var form = new EditarEmpleadoForm(planillaID, empleadoID))
                 {
-                    int empleadoID = form.EmpleadoSeleccionadoID;
-                    string nombreEmpleado = form.EmpleadoSeleccionadoNombre;
-
-                    using (SqlConnection con = conexion.EstablecerConexion())
+                    if (form.ShowDialog() == DialogResult.OK)
                     {
-                        try
-                        {
-                            SqlCommand cmd = new SqlCommand("spPlanillaDetalleUpsert", con);
-                            cmd.CommandType = CommandType.StoredProcedure;
-
-                            cmd.Parameters.AddWithValue("@PlanillaID", planillaID);
-                            cmd.Parameters.AddWithValue("@EmpleadoID", empleadoID);
-                            cmd.Parameters.AddWithValue("@SueldoBase", 0);
-                            cmd.Parameters.AddWithValue("@HorasExtras", 0);
-                            cmd.Parameters.AddWithValue("@TarifaHorasExtras", 0);
-                            cmd.Parameters.AddWithValue("@Bonos", 0);
-                            cmd.Parameters.AddWithValue("@TasaIHSS", 0);
-                            cmd.Parameters.AddWithValue("@TasaRAP", 0);
-                            cmd.Parameters.AddWithValue("@Activo", true);
-
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Empleado agregado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarPlanillaDetalle();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Error al agregar empleado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        CargarPlanillaDetalle();
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un empleado para editar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            GuardarCambios();
+        }
+
+        private void GuardarCambios()
         {
             using (SqlConnection con = conexion.EstablecerConexion())
             {
@@ -115,18 +123,17 @@ namespace Proyecto_DB2
                 {
                     foreach (DataGridViewRow row in dgPlanillaDetalle.Rows)
                     {
-                        SqlCommand cmd = new SqlCommand("spPlanillaDetalleUpsert", con);
+                        SqlCommand cmd = new SqlCommand("spPlanillaDetalleUpdate", con);
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.AddWithValue("@PlanillaID", planillaID);
                         cmd.Parameters.AddWithValue("@EmpleadoID", row.Cells["EmpleadoID"].Value);
-                        cmd.Parameters.AddWithValue("@SueldoBase", row.Cells["SueldoBase"].Value);
-                        cmd.Parameters.AddWithValue("@HorasExtras", row.Cells["HorasExtras"].Value);
-                        cmd.Parameters.AddWithValue("@TarifaHorasExtras", row.Cells["TarifaHorasExtras"].Value);
-                        cmd.Parameters.AddWithValue("@Bonos", row.Cells["Bonos"].Value);
-                        cmd.Parameters.AddWithValue("@TasaIHSS", row.Cells["TasaIHSS"].Value);
-                        cmd.Parameters.AddWithValue("@TasaRAP", row.Cells["TasaRAP"].Value);
-                        cmd.Parameters.AddWithValue("@Activo", row.Cells["Activo"].Value);
+                        cmd.Parameters.AddWithValue("@SueldoBase", Convert.ToDouble(row.Cells["SueldoBase"].Value));
+                        cmd.Parameters.AddWithValue("@HorasExtras", Convert.ToInt32(row.Cells["HorasExtras"].Value));
+                        cmd.Parameters.AddWithValue("@TarifaHorasExtras", Convert.ToDouble(row.Cells["TarifaHorasExtras"].Value));
+                        cmd.Parameters.AddWithValue("@Bonos", Convert.ToDouble(row.Cells["Bonos"].Value));
+                        cmd.Parameters.AddWithValue("@TasaIHSS", Convert.ToDouble(row.Cells["TasaIHSS"].Value));
+                        cmd.Parameters.AddWithValue("@TasaRAP", Convert.ToDouble(row.Cells["TasaRAP"].Value));
 
                         cmd.ExecuteNonQuery();
                     }
@@ -141,25 +148,20 @@ namespace Proyecto_DB2
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro de que desea cancelar los cambios?", "Confirmar cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            using (var form = new SeleccionarEmpleadoForm(planillaID))
             {
-                CargarPlanillaDetalle();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    CargarPlanillaDetalle();
+                }
             }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void dgPlanillaDetalle_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                dgPlanillaDetalle.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightYellow;
-            }
         }
 
         private void dgPlanillaDetalle_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -170,7 +172,7 @@ namespace Proyecto_DB2
                 e.ColumnIndex == dgPlanillaDetalle.Columns["TasaIHSS"].Index ||
                 e.ColumnIndex == dgPlanillaDetalle.Columns["TasaRAP"].Index)
             {
-                if (!float.TryParse(e.FormattedValue.ToString(), out _))
+                if (!double.TryParse(e.FormattedValue.ToString(), out _))
                 {
                     e.Cancel = true;
                     MessageBox.Show("Por favor, ingrese un valor numérico válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
