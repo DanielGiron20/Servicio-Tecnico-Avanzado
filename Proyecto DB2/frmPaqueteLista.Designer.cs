@@ -46,9 +46,11 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 57);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 88);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(650, 364);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(975, 560);
             this.dataGridView1.TabIndex = 0;
             // 
             // cmdInsertar
@@ -56,10 +58,9 @@
             this.cmdInsertar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
             this.cmdInsertar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
             this.cmdInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdInsertar.Location = new System.Drawing.Point(12, 433);
-            this.cmdInsertar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdInsertar.Location = new System.Drawing.Point(18, 666);
             this.cmdInsertar.Name = "cmdInsertar";
-            this.cmdInsertar.Size = new System.Drawing.Size(95, 44);
+            this.cmdInsertar.Size = new System.Drawing.Size(142, 68);
             this.cmdInsertar.TabIndex = 9;
             this.cmdInsertar.Text = "Insertar";
             this.cmdInsertar.UseVisualStyleBackColor = true;
@@ -70,10 +71,9 @@
             this.cmdModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumPurple;
             this.cmdModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
             this.cmdModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdModificar.Location = new System.Drawing.Point(111, 433);
-            this.cmdModificar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdModificar.Location = new System.Drawing.Point(166, 666);
             this.cmdModificar.Name = "cmdModificar";
-            this.cmdModificar.Size = new System.Drawing.Size(95, 44);
+            this.cmdModificar.Size = new System.Drawing.Size(142, 68);
             this.cmdModificar.TabIndex = 10;
             this.cmdModificar.Text = "Modificar";
             this.cmdModificar.UseVisualStyleBackColor = true;
@@ -86,10 +86,9 @@
             this.cmdDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumPurple;
             this.cmdDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdDesactivar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cmdDesactivar.Location = new System.Drawing.Point(210, 433);
-            this.cmdDesactivar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdDesactivar.Location = new System.Drawing.Point(315, 666);
             this.cmdDesactivar.Name = "cmdDesactivar";
-            this.cmdDesactivar.Size = new System.Drawing.Size(95, 44);
+            this.cmdDesactivar.Size = new System.Drawing.Size(142, 68);
             this.cmdDesactivar.TabIndex = 14;
             this.cmdDesactivar.Text = "Desactivar";
             this.cmdDesactivar.UseVisualStyleBackColor = true;
@@ -98,10 +97,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(329, 449);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(494, 691);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 15;
             this.label1.Text = "Ver paquetes";
             // 
@@ -109,10 +107,9 @@
             // 
             this.cmbOpcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOpcion.FormattingEnabled = true;
-            this.cmbOpcion.Location = new System.Drawing.Point(403, 446);
-            this.cmbOpcion.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbOpcion.Location = new System.Drawing.Point(604, 686);
             this.cmbOpcion.Name = "cmbOpcion";
-            this.cmbOpcion.Size = new System.Drawing.Size(135, 21);
+            this.cmbOpcion.Size = new System.Drawing.Size(200, 28);
             this.cmbOpcion.TabIndex = 16;
             this.cmbOpcion.SelectedIndexChanged += new System.EventHandler(this.cmbOpcion_SelectedIndexChanged);
             // 
@@ -124,10 +121,9 @@
             this.cmdSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.cmdSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdSalir.Location = new System.Drawing.Point(598, 433);
-            this.cmdSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdSalir.Location = new System.Drawing.Point(897, 666);
             this.cmdSalir.Name = "cmdSalir";
-            this.cmdSalir.Size = new System.Drawing.Size(64, 44);
+            this.cmdSalir.Size = new System.Drawing.Size(96, 68);
             this.cmdSalir.TabIndex = 17;
             this.cmdSalir.Text = "Salir";
             this.cmdSalir.UseVisualStyleBackColor = true;
@@ -142,33 +138,37 @@
             "Descripcion",
             "PrecioMensual",
             "CantidadHoras"});
-            this.cmbCampo.Location = new System.Drawing.Point(12, 18);
+            this.cmbCampo.Location = new System.Drawing.Point(18, 28);
+            this.cmbCampo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbCampo.Name = "cmbCampo";
-            this.cmbCampo.Size = new System.Drawing.Size(142, 21);
+            this.cmbCampo.Size = new System.Drawing.Size(211, 28);
             this.cmbCampo.TabIndex = 18;
+            this.cmbCampo.SelectedIndexChanged += new System.EventHandler(this.cmbCampo_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 21);
+            this.label2.Location = new System.Drawing.Point(270, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(63, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "Buscar:";
             // 
             // txtTexto
             // 
-            this.txtTexto.Location = new System.Drawing.Point(229, 18);
+            this.txtTexto.Location = new System.Drawing.Point(344, 28);
+            this.txtTexto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTexto.Name = "txtTexto";
-            this.txtTexto.Size = new System.Drawing.Size(233, 20);
+            this.txtTexto.Size = new System.Drawing.Size(348, 26);
             this.txtTexto.TabIndex = 20;
             this.txtTexto.TextChanged += new System.EventHandler(this.txtTexto_TextChanged);
             // 
             // frmPaqueteLista
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 488);
+            this.ClientSize = new System.Drawing.Size(1010, 751);
             this.Controls.Add(this.txtTexto);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbCampo);
@@ -180,6 +180,7 @@
             this.Controls.Add(this.cmdInsertar);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPaqueteLista";

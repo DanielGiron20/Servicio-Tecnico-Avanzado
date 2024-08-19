@@ -30,6 +30,9 @@ namespace Proyecto_DB2
 
         }
 
+  
+      
+
         private void cargarServicios(bool? activo)
         {
             CConexion conexion = new CConexion();
@@ -64,6 +67,11 @@ namespace Proyecto_DB2
 
                    
                     dataGridViewServicios.DataSource = dt;
+                    BindingSource bs = new BindingSource();
+                    bs.DataSource = dt;
+                    dataGridViewServicios.DataSource = bs;
+
+
                 }
             }
             catch (Exception ex)
@@ -161,7 +169,7 @@ namespace Proyecto_DB2
             {
                 int servicioID = Convert.ToInt32(dataGridViewServicios.SelectedRows[0].Cells["ServicioID"].Value);
 
-                // Crear instancia del formulario de artículos y pasar el ID del servicio
+              
                 ServicioDetalle Articulos = new ServicioDetalle(servicioID);
                 Articulos.Show();
             }
@@ -169,6 +177,32 @@ namespace Proyecto_DB2
             {
                 MessageBox.Show("Por favor, seleccione un servicio.");
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+            BindingSource bs = (BindingSource)dataGridViewServicios.DataSource;
+            string filtro = comboFiltro.SelectedItem.ToString();
+            string textoFiltro = txtTexto.Text;
+
+            if (!string.IsNullOrEmpty(textoFiltro))
+            {
+                
+                if (filtro == "ServicioID" || filtro == "Precio")
+                {
+                    bs.Filter = $"CONVERT({filtro}, 'System.String') LIKE '%{textoFiltro}%'";
+                }
+                else
+                {
+                    bs.Filter = $"{filtro} LIKE '%{textoFiltro}%'";
+                }
+            }
+            else
+            {
+                bs.RemoveFilter();
+            }
+
         }
     }
 }

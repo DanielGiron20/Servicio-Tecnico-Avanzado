@@ -226,5 +226,10 @@ namespace Proyecto_DB2
 
             }
         }
+
+        private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

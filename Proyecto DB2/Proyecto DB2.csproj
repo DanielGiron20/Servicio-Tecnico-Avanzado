@@ -339,5 +339,8 @@
   <ItemGroup>
     <None Include="Resources\Manutenção.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook-background-vo962ec6p7mb0jw4.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

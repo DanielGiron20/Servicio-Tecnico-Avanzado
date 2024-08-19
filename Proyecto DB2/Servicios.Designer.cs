@@ -35,6 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbOpcion = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.comboFiltro = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTexto = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServicios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,11 +46,11 @@
             this.dataGridViewServicios.AllowUserToAddRows = false;
             this.dataGridViewServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewServicios.Location = new System.Drawing.Point(8, 19);
+            this.dataGridViewServicios.Location = new System.Drawing.Point(8, 64);
             this.dataGridViewServicios.Name = "dataGridViewServicios";
             this.dataGridViewServicios.RowHeadersWidth = 62;
             this.dataGridViewServicios.RowTemplate.Height = 28;
-            this.dataGridViewServicios.Size = new System.Drawing.Size(999, 659);
+            this.dataGridViewServicios.Size = new System.Drawing.Size(999, 614);
             this.dataGridViewServicios.TabIndex = 0;
             this.dataGridViewServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -125,11 +128,44 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // comboFiltro
+            // 
+            this.comboFiltro.FormattingEnabled = true;
+            this.comboFiltro.Items.AddRange(new object[] {
+            "ServicioID",
+            "Nombre",
+            "Descripcion",
+            "Precio"});
+            this.comboFiltro.Location = new System.Drawing.Point(142, 21);
+            this.comboFiltro.Name = "comboFiltro";
+            this.comboFiltro.Size = new System.Drawing.Size(225, 28);
+            this.comboFiltro.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Buscar por:";
+            // 
+            // txtTexto
+            // 
+            this.txtTexto.Location = new System.Drawing.Point(393, 21);
+            this.txtTexto.Name = "txtTexto";
+            this.txtTexto.Size = new System.Drawing.Size(498, 26);
+            this.txtTexto.TabIndex = 10;
+            this.txtTexto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // Servicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 780);
+            this.Controls.Add(this.txtTexto);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboFiltro);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.cmbOpcion);
             this.Controls.Add(this.label1);
@@ -155,5 +191,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbOpcion;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboFiltro;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTexto;
     }
 }

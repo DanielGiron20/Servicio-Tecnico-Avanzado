@@ -53,6 +53,11 @@ namespace Proyecto_DB2
 
 
                     dataGridView1.DataSource = dt;
+                    BindingSource bs = new BindingSource();
+                    bs.DataSource = dt;
+                    dataGridView1.DataSource = bs;
+
+
                 }
             }
             catch (Exception ex)
@@ -122,7 +127,7 @@ namespace Proyecto_DB2
 
                 FrmInsertarArticulos formularioIngreso = new FrmInsertarArticulos(this)
                 {
-                    EsActualizacion = true, // Establecer el modo de actualización
+                    EsActualizacion = true, 
                     ArticuloID = filaSeleccionada.Cells["ArticuloID"].Value.ToString(),
                     Nombre = filaSeleccionada.Cells["Nombre"].Value.ToString(),
                     Barra = filaSeleccionada.Cells["Barra"].Value.ToString(),
@@ -142,6 +147,32 @@ namespace Proyecto_DB2
             {
                 MessageBox.Show("Por favor, seleccione una fila para modificar.");
             }
+        }
+
+        private void txtTexto_TextChanged(object sender, EventArgs e)
+        {
+            BindingSource bs = (BindingSource)dataGridView1.DataSource;
+            string filtro = comboFiltro.SelectedItem.ToString();
+            string textoFiltro = txtTexto.Text;
+
+            if (!string.IsNullOrEmpty(textoFiltro))
+            {
+
+                if (filtro == "ArticuloID" || filtro == "Precio")
+                {
+                    bs.Filter = $"CONVERT({filtro}, 'System.String') LIKE '%{textoFiltro}%'";
+                }
+                else
+                {
+                    bs.Filter = $"{filtro} LIKE '%{textoFiltro}%'";
+                }
+            }
+            else
+            {
+                bs.RemoveFilter();
+            }
+
+
         }
     }
 }

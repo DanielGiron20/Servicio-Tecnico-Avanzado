@@ -128,7 +128,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 20);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Tasa IVA:";
+            this.label5.Text = "Tasa ISV:";
             // 
             // txtPrecio
             // 
@@ -151,9 +151,9 @@
             this.cmbTasa.FormattingEnabled = true;
             this.cmbTasa.Items.AddRange(new object[] {
             "0",
-            "10",
-            "15",
-            "19"});
+            "0.1",
+            "0.15",
+            "0.19"});
             this.cmbTasa.Location = new System.Drawing.Point(375, 194);
             this.cmbTasa.Name = "cmbTasa";
             this.cmbTasa.Size = new System.Drawing.Size(139, 28);
