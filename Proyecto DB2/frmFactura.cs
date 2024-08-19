@@ -549,15 +549,14 @@ namespace Proyecto_DB2
             cmdBorrarDet.Enabled = false;
             if (dgvFacturaDet.SelectedRows.Count > 0)
             {
-                dtFacturaDet.PrimaryKey = new DataColumn[]{ dtFacturaDet.Columns["FacturaDetalleID"] };
+                dtFacturaDet.PrimaryKey = new DataColumn[] { dtFacturaDet.Columns["FacturaDetalleID"] };
 
-                DataGridViewRow filaSeleccionada = dgvFacturaDet.Rows[0];
-
+                DataGridViewRow filaSeleccionada = dgvFacturaDet.SelectedRows[0];
                 DataRow filaDatos = dtFacturaDet.Rows.Find(filaSeleccionada.Cells["FacturaDetalleID"].Value);
+
 
                 if (filaDatos != null)
                 {
-
 
                     filaDatos["ArticuloID"] = cmbArticuloID.SelectedIndex == -1 ? DBNull.Value : (object)cmbArticuloID.Text;
                     filaDatos["OrdenDetalleID"] = cmbOrdenDetID.SelectedIndex == -1 ? DBNull.Value : (object)cmbOrdenDetID.Text;
