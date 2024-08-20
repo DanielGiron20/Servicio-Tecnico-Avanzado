@@ -78,5 +78,62 @@ namespace Proyecto_DB2
         {
             CargarFechasConOrdenes();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                
+                int ordenID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["OrdenID"].Value);
+
+               
+                string query = @"
+            SELECT o.OrdenID, c.Nombre AS NombreCliente, e.Nombre AS NombreEmpleado, 
+                   o.TipoOrden, o.Estado, o.FechaInicio, o.FechaFinal, o.Activo
+            FROM Orden o
+            JOIN Cliente c ON o.ClienteID = c.ClienteID
+            JOIN Empleado e ON o.EmpleadoID = e.EmpleadoID
+            WHERE o.OrdenID = @OrdenID";
+
+                CConexion conexion = new CConexion();
+                SqlConnection con = conexion.EstablecerConexion();
+                    SqlCommand cmd = new SqlCommand(query, con);
+
+                    cmd.Parameters.AddWithValue("@OrdenID", ordenID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    VisualizarOrden formDetalles = new VisualizarOrden();
+
+                    formDetalles.labelOrden.Text = reader["OrdenID"].ToString();
+                    formDetalles.labelCliente.Text = reader["NombreCliente"].ToString();
+                    formDetalles.labelEmpleado.Text = reader["NombreEmpleado"].ToString();
+                    formDetalles.labelTipo.Text = reader["TipoOrden"].ToString();
+                    formDetalles.labelEstado.Text = reader["Estado"].ToString();
+                    formDetalles.labelFI.Text = Convert.ToDateTime(reader["FechaInicio"]).ToShortDateString();
+
+                   
+                    if (reader["FechaFinal"] != DBNull.Value)
+                    {
+                        formDetalles.labelFF.Text = Convert.ToDateTime(reader["FechaFinal"]).ToShortDateString();
+                    }
+                    else
+                    {
+                        formDetalles.labelFF.Text = "Pendiente";
+                    }
+
+                    formDetalles.labelActivo.Text = (bool)reader["Activo"] ? "Activo" : "Inactivo";
+
+                    
+                    formDetalles.ShowDialog();
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una orden de la lista.");
+            }
+        }
     }
 }

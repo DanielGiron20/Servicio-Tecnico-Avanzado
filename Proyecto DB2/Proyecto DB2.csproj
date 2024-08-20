@@ -277,6 +277,12 @@
     <Compile Include="VistaOrdenCliente.Designer.cs">
       <DependentUpon>VistaOrdenCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="VisualizarOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisualizarOrden.Designer.cs">
+      <DependentUpon>VisualizarOrden.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Agenda.resx">
       <DependentUpon>Agenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -389,6 +395,9 @@
     <EmbeddedResource Include="VistaOrdenCliente.resx">
       <DependentUpon>VistaOrdenCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VisualizarOrden.resx">
+      <DependentUpon>VisualizarOrden.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -413,6 +422,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\notebook-background-vo962ec6p7mb0jw4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %281%29.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
