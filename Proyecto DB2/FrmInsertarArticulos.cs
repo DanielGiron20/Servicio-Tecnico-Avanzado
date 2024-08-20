@@ -99,7 +99,24 @@ namespace Proyecto_DB2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+            DialogResult result = MessageBox.Show(
+                "¿Seguro que quieres cancelar el ingreso?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+
+            if (result == DialogResult.Yes)
+            {
+
+                this.Close();
+            }
+            else
+            {
+
+            }
         }
 
         private void FrmInsertarArticulos_Load(object sender, EventArgs e)
