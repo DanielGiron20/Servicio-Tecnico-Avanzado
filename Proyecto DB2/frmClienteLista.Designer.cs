@@ -155,6 +155,7 @@
             this.cmbCampo.Name = "cmbCampo";
             this.cmbCampo.Size = new System.Drawing.Size(165, 21);
             this.cmbCampo.TabIndex = 14;
+            this.cmbCampo.Click += new System.EventHandler(this.cmbCampo_Click);
             // 
             // txtTexto
             // 

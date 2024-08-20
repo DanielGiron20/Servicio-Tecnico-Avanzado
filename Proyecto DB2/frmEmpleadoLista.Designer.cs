@@ -169,6 +169,7 @@
             this.cmbCampo.Size = new System.Drawing.Size(165, 21);
             this.cmbCampo.TabIndex = 20;
             this.cmbCampo.SelectedIndexChanged += new System.EventHandler(this.cmbCampo_SelectedIndexChanged);
+            this.cmbCampo.Click += new System.EventHandler(this.cmbCampo_Click);
             // 
             // frmEmpleadoLista
             // 

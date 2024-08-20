@@ -252,6 +252,7 @@
             this.cmbCampo.Size = new System.Drawing.Size(142, 21);
             this.cmbCampo.TabIndex = 19;
             this.cmbCampo.SelectedIndexChanged += new System.EventHandler(this.cmbCampo_SelectedIndexChanged);
+            this.cmbCampo.Click += new System.EventHandler(this.cmbCampo_Click);
             // 
             // txtTexto
             // 
