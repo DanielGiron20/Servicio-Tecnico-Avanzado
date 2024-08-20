@@ -223,10 +223,8 @@ namespace Proyecto_DB2
             adpOrdenDet.SelectCommand = new SqlCommand("spSelectOrdenDetParaFactura", cnx);
             adpOrdenDet.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-            adpOrdenDet.Fill(dtOrdenDet);
-            cmbOrdenDetID.DataSource = dtOrdenDet;
-            cmbOrdenDetID.ValueMember = "OrdenDetalleID";
-            cmbOrdenDetID.DisplayMember = "OrdenDetalleID";
+            // Agregar el parámetro @clienteid al comando
+            adpOrdenDet.SelectCommand.Parameters.Add(new SqlParameter("@clienteid", SqlDbType.Int));
 
             con = cnx;
         }
@@ -446,8 +444,40 @@ namespace Proyecto_DB2
 
         private void dgvFactura_SelectionChanged(object sender, EventArgs e)
         {
-            
-           
+            if (dgvFactura.SelectedRows.Count > 0)
+            {
+                int clienteID = Convert.ToInt32(dgvFactura.SelectedRows[0].Cells["ClienteID"].Value);
+
+                // Actualizar el parámetro @clienteid con el nuevo valor
+                if (adpOrdenDet.SelectCommand.Parameters["@clienteid"] != null)
+                {
+                    adpOrdenDet.SelectCommand.Parameters["@clienteid"].Value = clienteID;
+                }
+                else
+                {
+                    adpOrdenDet.SelectCommand.Parameters.Add(new SqlParameter("@clienteid", SqlDbType.Int) { Value = clienteID });
+                }
+
+                dtOrdenDet.Clear();
+
+                // Usar un nuevo SqlDataAdapter para evitar conflictos con DataReader abierto
+                using (SqlDataAdapter adapter = new SqlDataAdapter(adpOrdenDet.SelectCommand))
+                {
+                    DataTable newDataTable = new DataTable();
+                    try
+                    {
+                        adapter.Fill(newDataTable);
+                        cmbOrdenDetID.DataSource = newDataTable;
+                        cmbOrdenDetID.DisplayMember = "OrdenDetalleID";
+                        cmbOrdenDetID.ValueMember = "OrdenDetalleID";
+                    }
+                    catch (Exception)
+                    {
+                        // Manejar el error de manera silenciosa o de otra forma según sea necesario
+                    }
+                }
+            }
+
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -567,7 +597,7 @@ namespace Proyecto_DB2
                     filaDatos["ArticuloID"] = cmbArticuloID.SelectedIndex == -1 ? DBNull.Value : (object)cmbArticuloID.Text;
                     filaDatos["OrdenDetalleID"] = cmbOrdenDetID.SelectedIndex == -1 ? DBNull.Value : (object)cmbOrdenDetID.Text;
                     filaDatos["HorasExtras"] = string.IsNullOrWhiteSpace(txtHorasExtras.Text) ? 0 : Convert.ToInt32(txtHorasExtras.Text);
-                    filaDatos["Cantidad"] = Convert.ToInt32(txtCantidad.Text);
+                    filaDatos["Cantidad"] = string.IsNullOrWhiteSpace(txtCantidad.Text) ? 0 : Convert.ToInt32(txtCantidad.Text);
                     filaDatos["Activo"] = chkActivoFacturaDet.Checked ? 1 : 0;
 
                     try
@@ -624,7 +654,7 @@ namespace Proyecto_DB2
                     cmbOrdenDetID.Text = filaSeleccionada.Cells["OrdenDetalleID"].Value.ToString();
                     cmbArticuloID.Text = "";
                     cmbNombreArticulo.Text = "";
-                    txtCantidad.Text = "1";
+                    txtCantidad.Text = "";
                     txtHorasExtras.Text = filaSeleccionada.Cells["HorasExtras"].Value.ToString();
                     chkActivoFacturaDet.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
                 }
@@ -706,6 +736,7 @@ namespace Proyecto_DB2
 
         private void cmbArticuloID_Click(object sender, EventArgs e)
         {
+            cmbOrdenDetID.SelectedIndex = -1;
             cmbOrdenDetID.Enabled = false;
             txtHorasExtras.Enabled = false;
         }
@@ -788,6 +819,11 @@ namespace Proyecto_DB2
         {
             if (MessageBox.Show("Esta seguro de salir del formulario?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Dispose();
+        }
+
+        private void cmbClienteID_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

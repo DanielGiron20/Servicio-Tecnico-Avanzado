@@ -376,6 +376,7 @@
             this.cmbClienteID.Name = "cmbClienteID";
             this.cmbClienteID.Size = new System.Drawing.Size(62, 21);
             this.cmbClienteID.TabIndex = 2;
+            this.cmbClienteID.SelectedValueChanged += new System.EventHandler(this.cmbClienteID_SelectedValueChanged);
             // 
             // label3
             // 
@@ -540,7 +541,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(828, 749);
+            this.ClientSize = new System.Drawing.Size(845, 749);
             this.Controls.Add(this.cmdSalir);
             this.Controls.Add(this.cmdBorrarDet);
             this.Controls.Add(this.cmdBorrar);

@@ -26,8 +26,7 @@ namespace Proyecto_DB2
             conexion = new CConexion();
             this.Load += new EventHandler(ConsultaAreasPuestos_Load);
             cmbArea.SelectedIndexChanged += new EventHandler(cmbArea_SelectedIndexChanged);
-
-            // Centrar la pantalla
+            txtBuscar.TextChanged += new EventHandler(txtBuscar_TextChanged);
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
@@ -48,7 +47,14 @@ namespace Proyecto_DB2
             {
                 using (SqlConnection con = conexion.EstablecerConexion())
                 {
-                    string query = "SELECT AreaID, Nombre FROM Area WHERE Activo = 1";
+                    string query = @"
+                        SELECT a.AreaID, a.Nombre, COUNT(e.EmpleadoID) AS CantidadEmpleados 
+                        FROM Area a
+                        LEFT JOIN Puesto p ON a.AreaID = p.AreaID
+                        LEFT JOIN Empleado e ON p.PuestoID = e.PuestoID
+                        WHERE a.Activo = 1
+                        GROUP BY a.AreaID, a.Nombre";
+
                     adpAreas = new SqlDataAdapter(query, con);
                     tabAreas = new DataTable();
                     adpAreas.Fill(tabAreas);
@@ -77,18 +83,28 @@ namespace Proyecto_DB2
             {
                 using (SqlConnection con = conexion.EstablecerConexion())
                 {
-                    adpPuestos = new SqlDataAdapter("EXEC spObtenerPuestosPorArea @AreaID", con);
+                    string query = @"
+                        SELECT P.PuestoID, P.Nombre AS NombrePuesto, 
+                               COUNT(E.EmpleadoID) AS CantidadEmpleados
+                        FROM Puesto P
+                        LEFT JOIN Empleado E ON P.PuestoID = E.PuestoID
+                        WHERE P.AreaID = @AreaID AND P.Activo = 1
+                        GROUP BY P.PuestoID, P.Nombre";
+
+                    adpPuestos = new SqlDataAdapter(query, con);
                     adpPuestos.SelectCommand.Parameters.AddWithValue("@AreaID", areaId);
                     tabPuestos = new DataTable();
                     adpPuestos.Fill(tabPuestos);
 
                     dgAreaPuestos.DataSource = tabPuestos;
-                    dgAreaPuestos.Refresh();
+                    dgAreaPuestos.AutoResizeColumns();
 
                     if (tabPuestos.Rows.Count == 0)
                     {
                         MessageBox.Show($"No se encontraron puestos para el área seleccionada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+
+                    AplicarFiltro();
                 }
             }
             catch (Exception ex)
@@ -99,7 +115,7 @@ namespace Proyecto_DB2
 
         private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!isInitializing)
+            if (!isInitializing && cmbArea.SelectedValue != null)
             {
                 CargarPuestosParaAreaSeleccionada();
             }
@@ -107,15 +123,57 @@ namespace Proyecto_DB2
 
         private void CargarPuestosParaAreaSeleccionada()
         {
-            if (cmbArea.SelectedValue != null && int.TryParse(cmbArea.SelectedValue.ToString(), out int areaId))
+            if (cmbArea.SelectedValue != null)
             {
+                int areaId = Convert.ToInt32(cmbArea.SelectedValue);
                 CargarPuestos(areaId);
+                MostrarInformacionArea();
             }
-            else
+        }
+
+        private void MostrarInformacionArea()
+        {
+            if (cmbArea.SelectedItem != null)
             {
-                dgAreaPuestos.DataSource = null;
-                dgAreaPuestos.Refresh();
+                DataRowView row = (DataRowView)cmbArea.SelectedItem;
+                string nombreArea = row["Nombre"].ToString();
+                int cantidadEmpleados = Convert.ToInt32(row["CantidadEmpleados"]);
+                lblInfoArea.Text = $"Área: {nombreArea} - Empleados: {cantidadEmpleados}";
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            AplicarFiltro();
+        }
+
+        private void AplicarFiltro()
+        {
+            if (tabPuestos != null)
+            {
+                string filtro = txtBuscar.Text.Trim().ToLower();
+                if (string.IsNullOrEmpty(filtro))
+                {
+                    tabPuestos.DefaultView.RowFilter = string.Empty;
+                }
+                else
+                {
+                    tabPuestos.DefaultView.RowFilter = $"NombrePuesto LIKE '%{filtro}%' OR " +
+                                                       $"CONVERT(CantidadEmpleados, System.String) LIKE '%{filtro}%'";
+                }
+                ActualizarEstadisticas();
+            }
+        }
+
+        private void ActualizarEstadisticas()
+        {
+            int totalPuestos = tabPuestos.DefaultView.Count;
+            int totalEmpleados = 0;
+            foreach (DataRowView row in tabPuestos.DefaultView)
+            {
+                totalEmpleados += Convert.ToInt32(row["CantidadEmpleados"]);
+            }
+            lblEstadisticas.Text = $"Total Puestos: {totalPuestos}, Total Empleados: {totalEmpleados}";
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
