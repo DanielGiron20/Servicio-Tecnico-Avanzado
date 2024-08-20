@@ -541,7 +541,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(845, 749);
+            this.ClientSize = new System.Drawing.Size(862, 749);
             this.Controls.Add(this.cmdSalir);
             this.Controls.Add(this.cmdBorrarDet);
             this.Controls.Add(this.cmdBorrar);

@@ -243,6 +243,7 @@ namespace Proyecto_DB2
             cmdBorrarDet.Enabled = false;
             cmdBorrar.Enabled = false;
 
+
             limpiarFactura();
             limpiarFacturaDet();
             try
@@ -605,9 +606,15 @@ namespace Proyecto_DB2
                         adpFacturaDet.Update(dtFacturaDet);
                         dtFacturaDet.Clear();
                         CargarFacturaDetallePorFacturaID(Convert.ToInt32(txtFacturaID2.Text));
+                        
                         adpFacturaDet.Fill(dtFacturaDet);
 
                         dgvFacturaDet.Refresh();
+
+                        dtFactura.Clear();
+                        adpFactura.Fill(dtFactura);
+                        dgvFacturaDet.Refresh();
+
                         MessageBox.Show("Los datos se actualizaron correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpiarFacturaDet();
 
@@ -636,6 +643,7 @@ namespace Proyecto_DB2
 
         private void dgvFacturaDet_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            cmbOrdenDetID.SelectedIndex = -1;
             txtCantidad.Enabled = false;
             if(e.RowIndex >= 0)
             {
