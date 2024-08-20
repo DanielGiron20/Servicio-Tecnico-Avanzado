@@ -108,7 +108,6 @@
             this.server.Name = "server";
             this.server.Size = new System.Drawing.Size(143, 20);
             this.server.TabIndex = 5;
-            this.server.Text = "3.128.144.165";
             // 
             // bd2
             // 
@@ -117,7 +116,6 @@
             this.bd2.Name = "bd2";
             this.bd2.Size = new System.Drawing.Size(143, 20);
             this.bd2.TabIndex = 6;
-            this.bd2.Text = "DB20212000317";
             // 
             // user
             // 
@@ -126,7 +124,6 @@
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(143, 20);
             this.user.TabIndex = 7;
-            this.user.Text = "Evelyn.Sabillon";
             // 
             // pw
             // 
@@ -136,7 +133,6 @@
             this.pw.PasswordChar = '*';
             this.pw.Size = new System.Drawing.Size(143, 20);
             this.pw.TabIndex = 8;
-            this.pw.Text = "ES20212000317";
             // 
             // button1
             // 

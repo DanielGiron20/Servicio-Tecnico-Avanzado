@@ -110,25 +110,34 @@ namespace Proyecto_DB2
 
         private void frmProveedor_Load(object sender, EventArgs e)
         {
-            cmbOpcion.Items.Add("Todos");
-            cmbOpcion.Items.Add("Activos");
-            cmbOpcion.Items.Add("Inactivos");
+            try 
+            {
+                cmbOpcion.Items.Add("Todos");
+                cmbOpcion.Items.Add("Activos");
+                cmbOpcion.Items.Add("Inactivos");
+                txtTexto.Enabled = false;
 
 
-            //cuando se abre el formProveedor
-            dgcrudProv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgcrudProv.AllowUserToAddRows = false;
-            dgcrudProv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgcrudProv.ReadOnly = true;
+                //cuando se abre el formProveedor
+                dgcrudProv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgcrudProv.AllowUserToAddRows = false;
+                dgcrudProv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgcrudProv.ReadOnly = true;
 
-            //esto hace la funcion de mostrar solo los proveedores de estado activo
-            //su funcion es cuando se eliminan , evitar que aparezcan en el dg.
-            adpLeer.Fill(dtleer);
-            //DataView verActivos = dtleer.DefaultView;
-            //verActivos.RowFilter = "Activo = true";
-            dgcrudProv.DataSource= dtleer;
-            //dgcrudProv.DataSource = verActivos.ToTable();
-           conexion.Close();
+                //esto hace la funcion de mostrar solo los proveedores de estado activo
+                //su funcion es cuando se eliminan , evitar que aparezcan en el dg.
+                adpLeer.Fill(dtleer);
+                //DataView verActivos = dtleer.DefaultView;
+                //verActivos.RowFilter = "Activo = true";
+                dgcrudProv.DataSource = dtleer;
+                //dgcrudProv.DataSource = verActivos.ToTable();
+                conexion.Close();
+            }
+            catch(Exception ex) 
+            { 
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -499,6 +508,11 @@ namespace Proyecto_DB2
         private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbCampo_Click(object sender, EventArgs e)
+        {
+            txtTexto.Enabled = true;
         }
     }
 }

@@ -39,6 +39,7 @@ namespace Proyecto_DB2
 
         private void frmClienteLista_Load(object sender, EventArgs e)
         {
+            txtTexto.Enabled = false;
             try
             {
                 cmbOpcion.Items.Add("Todos");
@@ -228,6 +229,11 @@ namespace Proyecto_DB2
                 }
 
             }
+        }
+
+        private void cmbCampo_Click(object sender, EventArgs e)
+        {
+            txtTexto.Enabled = true;
         }
     }
 }

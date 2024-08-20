@@ -186,6 +186,7 @@
             this.btnFacturaPorCliente.Text = "Factura/Cliente";
             this.btnFacturaPorCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFacturaPorCliente.UseVisualStyleBackColor = false;
+            this.btnFacturaPorCliente.Visible = false;
             // 
             // btnOrdenPorCliente
             // 
